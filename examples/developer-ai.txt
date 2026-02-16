@@ -1,0 +1,91 @@
+# developer-ai.txt for Horizon Strategic Consulting
+# https://www.horizonconsulting.example.com/developer-ai.txt
+# Last updated: 16 February 2026
+
+[overview]
+Horizon Strategic Consulting operates several web properties:
+- Marketing website (www.horizonconsulting.example.com) - public content
+- Client portal (portal.horizonconsulting.example.com) - authenticated access
+- Partner API (api.horizonconsulting.example.com) - restricted access
+
+The marketing site is a content-focused website publishing services information,
+case studies, insights articles, and team profiles.
+The client portal is a custom application for project management and deliverables.
+
+[platforms]
+www.horizonconsulting.example.com
+- Purpose: Marketing, insights, and public information
+- Technology: WordPress with custom theme
+- Access: Public, no authentication required
+
+portal.horizonconsulting.example.com
+- Purpose: Client project management and document access
+- Technology: React SPA with Node.js backend
+- Access: Authenticated clients only (SSO via Azure AD)
+
+api.horizonconsulting.example.com
+- Purpose: Partner integrations
+- Technology: REST API (OpenAPI 3.0 documented)
+- Access: Approved partners only
+
+[public-areas]
+- Marketing website (www) - fully public
+- Insights and blog content - fully public, no paywall
+- Service descriptions - fully public
+- Case studies - summaries public, some detailed content gated
+- Client portal - requires authentication (not publicly accessible)
+- Partner API - requires approved credentials (not publicly accessible)
+
+[public-api]
+status: partner-only
+notes: API access is available to approved integration partners only.
+       No public API registration is available.
+       Partners must contact partnerships@horizonconsulting.example.com
+
+[authentication]
+Client Portal:
+- Method: SSO via Azure Active Directory
+- Users: Client employees provisioned by account managers
+- No self-registration available
+
+Partner API:
+- Method: OAuth 2.0 client credentials flow
+- Credentials: Issued upon partner agreement
+- Scope: Limited to approved integration use cases
+
+Marketing Website:
+- No authentication required for public content
+
+[rate-limits]
+Partner API:
+- Rate limit: 1000 requests per hour per client
+- Burst: 100 requests per minute
+- Contact partner support if higher limits required
+
+[documentation]
+Partner API documentation: https://api.horizonconsulting.example.com/docs
+- OpenAPI 3.0 specification
+- Authentication guide
+- Endpoint reference
+- Available to approved partners only
+
+Marketing site has no public technical documentation.
+
+[technology-stack]
+Note: This information is provided for context only.
+- Marketing site: WordPress, PHP, MySQL
+- Client portal: React, Node.js, PostgreSQL
+- Partner API: Node.js, Express, PostgreSQL
+- Hosting: Cloud-based (AWS)
+- CDN: Cloudflare
+
+[technical-contact]
+Partner integration enquiries: partnerships@horizonconsulting.example.com
+Technical support for partners: api-support@horizonconsulting.example.com
+General technical enquiries: tech@horizonconsulting.example.com
+Security issues: security@horizonconsulting.example.com
+
+[metadata]
+version: 1.0.0
+last_updated: 2026-02-16
+related_files: /llms.txt, /ai.txt, /robots-ai.txt

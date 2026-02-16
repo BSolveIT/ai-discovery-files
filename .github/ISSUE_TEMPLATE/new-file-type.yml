@@ -1,0 +1,138 @@
+name: New File Type Proposal
+description: Propose a new AI Discovery File type (ADF-011+)
+title: "Proposed File Type: "
+labels: ["new-file-type", "spec"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for proposing a new AI Discovery File type. New file types follow a structured process:
+
+        1. Submit this proposal
+        2. Community discussion period (minimum 30 days)
+        3. Address feedback and submit a specification pull request
+        4. Maintainer review and merge
+
+        Please provide as much detail as possible to facilitate productive discussion.
+
+  - type: input
+    id: purpose
+    attributes:
+      label: Purpose
+      description: What problem does this file solve that existing ADF files do not?
+      placeholder: "e.g., Communicates API versioning and deprecation schedules to AI agents"
+    validations:
+      required: true
+
+  - type: input
+    id: filename
+    attributes:
+      label: Proposed Filename
+      description: What should the file be named? Must be served from the site root.
+      placeholder: "e.g., api-ai.txt"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: format
+    attributes:
+      label: File Format
+      description: What format should the file use?
+      options:
+        - Plain text (key-value or sectioned, like ai.txt)
+        - JSON (structured, like ai.json)
+        - Markdown (CommonMark, like llms.txt)
+        - HTML (like llms.html)
+        - YAML
+        - Other (describe below)
+    validations:
+      required: true
+
+  - type: textarea
+    id: format-justification
+    attributes:
+      label: Format Justification
+      description: Why is this format the right choice for the file's purpose?
+      placeholder: |
+        Explain why the chosen format is appropriate. Consider:
+        - Is the file primarily for humans, machines, or both?
+        - Does it need to be parseable without a specialised library?
+        - How does the format align with existing ADF files?
+    validations:
+      required: true
+
+  - type: textarea
+    id: required-sections
+    attributes:
+      label: Required Sections or Fields
+      description: What MUST the file contain at minimum?
+      placeholder: |
+        List the required sections, fields, or structure.
+        Use RFC 2119 keywords (MUST, SHOULD, MAY) if possible.
+
+        Example:
+        - MUST include a "version" field
+        - MUST include at least one API endpoint
+        - SHOULD include deprecation dates
+    validations:
+      required: true
+
+  - type: textarea
+    id: optional-sections
+    attributes:
+      label: Optional Sections or Fields
+      description: What MAY the file additionally contain?
+      placeholder: |
+        List any optional content that enhances the file but is not required.
+    validations:
+      required: false
+
+  - type: textarea
+    id: example
+    attributes:
+      label: Complete Example
+      description: Provide at least one fully worked example of the proposed file.
+      render: text
+      placeholder: |
+        Provide a complete, realistic example that could be published
+        on a real website. This should demonstrate all required sections
+        and at least some optional sections.
+    validations:
+      required: true
+
+  - type: textarea
+    id: relationship
+    attributes:
+      label: Relationship to Existing Files
+      description: How does this file relate to the existing 10 ADF file types?
+      placeholder: |
+        Address:
+        - Does it overlap with any existing file? If so, how is it distinct?
+        - Does it depend on or extend another ADF file?
+        - Which implementation tier should it belong to (Essential, Recommended, Complete)?
+        - Could this information be added to an existing file instead?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tier
+    attributes:
+      label: Suggested Implementation Tier
+      description: Which tier should this file belong to?
+      options:
+        - Essential (minimum viable AI discoverability)
+        - Recommended (standard implementation)
+        - Complete (full coverage)
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information that supports this proposal?
+      placeholder: |
+        References, prior art, real-world use cases, or evidence
+        that this file type would be adopted.
+    validations:
+      required: false

@@ -1,0 +1,9 @@
+# INVALID: Missing required [identity] section.
+# ai.txt requires an [identity] section with at least "name" and "url" fields.
+# This file only has [permissions] and [restrictions].
+
+[permissions]
+- Summarise publicly available content from our website
+
+[restrictions]
+- Do not generate fictional quotes attributed to our staff

@@ -1,0 +1,11 @@
+{
+    "$schema": "https://www.ai-visibility.org.uk/specifications/ai-json/ai-json.schema.json",
+    "name": "Acme Corporation",
+    "url": "https://www.acme.example.com",
+    "permissions": [
+        "Summarise content"
+    ]
+    "restrictions": [
+        "Do not quote"
+    ]
+}

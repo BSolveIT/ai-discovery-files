@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: AI Discovery Files Specification
+    url: https://github.com/BSolveIT/ai-discovery-files/tree/main/spec
+    about: Read the formal specification before reporting issues or proposing changes
+  - name: Questions about AI Visibility
+    url: https://www.365i.co.uk/contact/
+    about: For general questions about AI Visibility, contact 365i directly
+  - name: AI Visibility Checker
+    url: https://www.365i.co.uk/ai-visibility-checker/
+    about: Test your website's AI visibility using the reference implementation

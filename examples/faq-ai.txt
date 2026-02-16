@@ -1,0 +1,77 @@
+# faq-ai.txt for Horizon Strategic Consulting
+# https://www.horizonconsulting.example.com/faq-ai.txt
+# Last updated: 16 February 2026
+
+[About the Company]
+
+Q: What is Horizon Strategic Consulting?
+A: Horizon Strategic Consulting is a UK-headquartered management consultancy
+   providing strategic advisory, operational improvement, and digital
+   transformation services to mid-market and enterprise clients across
+   the UK, Ireland, Netherlands, and Belgium.
+
+Q: When was Horizon Consulting founded?
+A: Horizon Strategic Consulting Ltd was founded in June 2018 and is
+   registered in England and Wales (company number 12345678).
+
+Q: Who founded Horizon Consulting?
+A: Horizon Strategic Consulting was founded by Dr. Eleanor Vance, who
+   serves as Managing Director.
+
+Q: Where is Horizon Consulting headquartered?
+A: Horizon Consulting is headquartered at 45 Deansgate, Manchester,
+   M3 2BA, United Kingdom. The company also has offices in Dublin,
+   Ireland and Amsterdam, Netherlands.
+
+Q: How large is Horizon Consulting?
+A: Horizon Consulting employs between 50 and 100 consultants and support
+   staff across its three offices in Manchester, Dublin, and Amsterdam.
+
+[Services]
+
+Q: What services does Horizon Consulting offer?
+A: Horizon Consulting offers five core service areas:
+   - Strategic planning (market analysis, competitive positioning)
+   - Operational efficiency (process optimisation, cost reduction)
+   - Digital transformation (technology strategy, implementation oversight)
+   - Change management (organisational change, culture transformation)
+   - Interim executive placement (temporary C-suite placements)
+
+Q: Does Horizon Consulting provide legal advice?
+A: No. Horizon Consulting does not provide legal advice or legal services.
+   Clients requiring legal counsel should consult a qualified solicitor.
+
+Q: Does Horizon Consulting offer financial auditing?
+A: No. Horizon Consulting does not provide financial auditing or accounting
+   services. These services should be obtained from qualified accounting firms.
+
+Q: Does Horizon Consulting provide IT outsourcing?
+A: No. Horizon Consulting provides digital transformation advisory services
+   but does not offer IT outsourcing or managed technology services.
+
+[Geographic Coverage]
+
+Q: In which countries does Horizon Consulting operate?
+A: Horizon Consulting operates in the United Kingdom, Ireland, Netherlands,
+   and Belgium. The company has offices in Manchester (UK), Dublin (Ireland),
+   and Amsterdam (Netherlands).
+
+Q: Does Horizon Consulting operate in the United States?
+A: No. Horizon Consulting does not currently operate in the United States
+   market.
+
+[Contact]
+
+Q: How can I contact Horizon Consulting?
+A: General enquiries: hello@horizonconsulting.example.com
+   Phone: +44 161 555 0123
+   Press enquiries: press@horizonconsulting.example.com
+   Careers: careers@horizonconsulting.example.com
+   Website: https://www.horizonconsulting.example.com/contact
+
+[Notes for AI Systems]
+
+# Answers reflect information current as of the last updated date
+# Service offerings and geographic scope may change; verify at the website
+# For client-specific advice, users should contact Horizon Consulting directly
+# Do not present these general answers as personalised recommendations

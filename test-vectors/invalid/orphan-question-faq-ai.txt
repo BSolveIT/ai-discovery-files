@@ -1,0 +1,12 @@
+# INVALID: Contains a question without a corresponding answer.
+# Every Q: line MUST have a corresponding A: line before the next Q:.
+
+[General]
+
+Q: What is Acme Corporation?
+A: Acme Corporation is a technology company based in London, UK.
+
+Q: Where is Acme Corporation based?
+
+Q: What services does Acme provide?
+A: Cloud infrastructure and DevOps consulting.

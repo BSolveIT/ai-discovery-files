@@ -1,0 +1,117 @@
+name: Tool or Library
+description: Announce a tool, library, or service that works with AI Discovery Files
+title: "[Tool] "
+labels: ["tool", "community"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for building tools for the AI Discovery Files ecosystem. We track community tools to help implementers find solutions and to understand how the specification is being used in practice.
+
+  - type: input
+    id: tool-name
+    attributes:
+      label: Tool Name
+      description: What is the name of your tool or library?
+      placeholder: "e.g., adf-validator"
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: Where can people find the tool? (GitHub repo, npm package, website, etc.)
+      placeholder: "e.g., https://github.com/example/adf-validator"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tool-type
+    attributes:
+      label: Tool Type
+      description: What kind of tool is this?
+      options:
+        - Validator (checks files for correctness)
+        - Generator (creates ADF files)
+        - Parser / Reader (consumes ADF files)
+        - CMS Plugin (WordPress, Drupal, etc.)
+        - Static Site Generator Plugin (Hugo, Jekyll, etc.)
+        - CLI Tool
+        - Library / SDK
+        - Web Service / API
+        - Other
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: file-types
+    attributes:
+      label: Supported File Types
+      description: Which AI Discovery Files does this tool support?
+      options:
+        - label: "ADF-001 llms.txt"
+        - label: "ADF-002 llm.txt"
+        - label: "ADF-003 llms.html"
+        - label: "ADF-004 ai.txt"
+        - label: "ADF-005 ai.json"
+        - label: "ADF-006 identity.json"
+        - label: "ADF-007 brand.txt"
+        - label: "ADF-008 faq-ai.txt"
+        - label: "ADF-009 developer-ai.txt"
+        - label: "ADF-010 robots-ai.txt"
+
+  - type: input
+    id: language
+    attributes:
+      label: Language / Platform
+      description: What language or platform is the tool built for?
+      placeholder: "e.g., Python, Node.js, PHP, Go, Ruby, WordPress, Hugo"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Briefly describe what the tool does and how it relates to the ADF specification.
+      placeholder: |
+        Include:
+        - What the tool does
+        - How it uses the ADF specification
+        - Current status (stable, beta, proof-of-concept)
+        - Any notable features
+    validations:
+      required: true
+
+  - type: dropdown
+    id: license
+    attributes:
+      label: License
+      description: What license is the tool released under?
+      options:
+        - MIT
+        - Apache 2.0
+        - GPL v3
+        - BSD 2-Clause
+        - BSD 3-Clause
+        - ISC
+        - CC BY 4.0
+        - Proprietary
+        - Other (specify in description)
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Information
+      description: Anything else you would like to share about the tool?
+      placeholder: |
+        For example:
+        - Installation instructions
+        - Links to documentation
+        - Known limitations
+        - Plans for future development
+    validations:
+      required: false

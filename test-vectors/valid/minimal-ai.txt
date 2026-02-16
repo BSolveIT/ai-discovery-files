@@ -1,0 +1,9 @@
+[identity]
+name: Acme Corporation
+url: https://www.acme.example.com
+
+[permissions]
+- Summarise publicly available content from our website
+
+[restrictions]
+- Do not generate fictional quotes attributed to our staff

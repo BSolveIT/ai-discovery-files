@@ -1,0 +1,6 @@
+{
+    "$schema": "https://www.ai-visibility.org.uk/specifications/identity-json/identity-json.schema.json",
+    "name": "Acme Corporation",
+    "url": "https://www.acme.example.com",
+    "description": "Acme Corporation is a technology company."
+}

@@ -1,0 +1,12 @@
+<!-- INVALID: Missing required blockquote description. -->
+<!-- After the H1, llms.txt requires a blockquote ("> ...") providing a -->
+<!-- one-line summary. This file has plain text instead of a blockquote. -->
+
+# Acme Corporation
+
+This file is missing the required blockquote description after the H1.
+The next line after the H1 should be a Markdown blockquote (> ...).
+
+## Contact
+
+- Email: hello@acme.example.com

@@ -1,0 +1,70 @@
+name: Bug or Ambiguity
+description: Report an error, inconsistency, or ambiguous section in the specification
+title: "[Spec] "
+labels: ["bug", "spec"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping improve the AI Discovery Files specification. Please provide details about the issue you have found.
+
+  - type: input
+    id: section
+    attributes:
+      label: Section Reference
+      description: Which section number(s) are affected?
+      placeholder: "e.g., Section 3.2.4"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue-type
+    attributes:
+      label: Issue Type
+      description: What kind of issue is this?
+      options:
+        - Error (factual mistake or incorrect statement)
+        - Ambiguity (language that could be interpreted multiple ways)
+        - Inconsistency (contradicts another section or file)
+        - Missing information (something that should be specified but is not)
+        - Formatting (broken cross-reference, numbering error, rendering issue)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: file-affected
+    attributes:
+      label: File Affected
+      description: Which file contains the issue?
+      options:
+        - spec/adf-spec.md
+        - schemas/ai-json.schema.json
+        - schemas/identity-json.schema.json
+        - examples/ (example files)
+        - test-vectors/ (test vector files)
+        - Other (specify in description)
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What is the issue? Quote the relevant text if possible.
+      placeholder: |
+        Describe the issue clearly. If reporting ambiguity, explain the
+        multiple interpretations. If reporting an inconsistency, reference
+        both locations.
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested Fix
+      description: If you have a suggested correction, describe it here.
+      placeholder: |
+        Provide specific replacement text if possible.
+        For ambiguity, explain what you believe the intended meaning is.
+    validations:
+      required: false

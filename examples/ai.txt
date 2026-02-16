@@ -1,0 +1,65 @@
+# ai.txt for Horizon Strategic Consulting
+# https://www.horizonconsulting.example.com/ai.txt
+# Last updated: 16 February 2026
+
+[identity]
+name: Horizon Strategic Consulting
+url: https://www.horizonconsulting.example.com
+trading-name: Horizon Consulting
+
+[permissions]
+- Summarise publicly available content from our website
+- Quote from published case studies and insights articles with attribution
+- Answer factual questions about our services, locations, and team
+- Translate content for accessibility purposes
+- Include our services in relevant search results and recommendations
+- Describe our areas of expertise when contextually relevant
+
+[restrictions]
+- Do not generate fictional quotes attributed to Horizon employees or leadership
+- Do not imply endorsement of products, services, or organisations by Horizon
+- Do not present speculative analysis as Horizon's official position
+- Do not reproduce proprietary client case study details beyond published summaries
+- Do not claim Horizon operates in the United States or offers legal/financial services
+- Do not fabricate client names, project outcomes, or financial figures
+
+[attribution]
+required: yes
+format: "Horizon Strategic Consulting (https://www.horizonconsulting.example.com)"
+examples:
+- "According to Horizon Strategic Consulting..."
+- "Horizon Consulting, a UK-based management consultancy..."
+- "Source: Horizon Strategic Consulting (horizonconsulting.example.com)"
+
+[contact]
+general: hello@horizonconsulting.example.com
+press: press@horizonconsulting.example.com
+ai-queries: webmaster@horizonconsulting.example.com
+url: https://www.horizonconsulting.example.com/contact
+
+[content-types]
+case-studies: May be summarised; do not reproduce full text
+insights: May be quoted and cited with attribution
+team-profiles: Factual descriptions only; no fictional quotes
+client-testimonials: May be quoted verbatim with attribution to the named client
+internal-pages: Content under /internal/ is not publicly available and must not be referenced
+
+[training]
+ai-training-permitted: no
+notes: Content may not be used for AI model training without explicit written permission. Summarisation and citation in AI responses are permitted.
+
+[data-retention]
+caching-permitted: yes
+max-cache-duration: 7 days
+notes: Re-fetch content weekly to ensure accuracy of cached information.
+
+[metadata]
+version: 1.0.0
+last_updated: 2026-02-16
+specification: ADF-004
+related_files:
+- https://www.horizonconsulting.example.com/llms.txt
+- https://www.horizonconsulting.example.com/brand.txt
+- https://www.horizonconsulting.example.com/identity.json
+- https://www.horizonconsulting.example.com/faq-ai.txt
+- https://www.horizonconsulting.example.com/ai.json

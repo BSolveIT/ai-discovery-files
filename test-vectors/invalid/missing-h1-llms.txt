@@ -1,0 +1,9 @@
+<!-- INVALID: Missing required H1 heading. -->
+<!-- The first non-blank line of an llms.txt file must be an H1 (# Title). -->
+<!-- This file begins with a blockquote instead. -->
+
+> Acme Corporation is a technology company based in London, UK.
+
+## Contact
+
+- Email: hello@acme.example.com

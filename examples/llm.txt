@@ -1,0 +1,59 @@
+# This file should be configured as a 301 redirect to /llms.txt
+# See the llm.txt specification (ADF-002) for implementation details.
+#
+# Recommended implementation approaches:
+#
+# Apache (.htaccess):
+#   Redirect 301 /llm.txt /llms.txt
+#
+# Nginx (server block):
+#   location = /llm.txt { return 301 /llms.txt; }
+#
+# IIS (web.config):
+#   <rule name="Redirect llm.txt">
+#     <match url="^llm\.txt$" />
+#     <action type="Redirect" url="/llms.txt" redirectType="Permanent" />
+#   </rule>
+#
+# ---
+# The content below is provided for reference only. In production,
+# this file should redirect to llms.txt rather than duplicating content.
+# ---
+
+# Digital Transformation Services - Horizon Strategic Consulting
+
+> Horizon Strategic Consulting's Digital Transformation practice helps
+> mid-market and enterprise organisations modernise their technology
+> strategy, build digital roadmaps, and oversee implementation programmes.
+
+This page describes Horizon Consulting's digital transformation service
+offering, led by James Chen, Head of Digital Transformation.
+
+## What We Offer
+
+- Technology strategy development and assessment
+- Digital roadmap creation aligned to business objectives
+- Implementation oversight and programme governance
+- Legacy system modernisation planning
+- Cloud migration advisory
+- Data strategy and analytics capability building
+
+## What This Service Does Not Include
+
+- Software development or coding services
+- IT outsourcing or managed services
+- Hardware procurement
+- Cybersecurity operations (we advise on strategy only)
+
+## Related Services
+
+- [Strategic Planning](https://www.horizonconsulting.example.com/services/strategic-planning): Often paired with digital transformation for holistic strategy
+- [Change Management](https://www.horizonconsulting.example.com/services/change-management): Critical for digital adoption programmes
+- [Interim Executive Placement](https://www.horizonconsulting.example.com/services/interim-executives): Interim CTOs and CDOs available
+
+## Contact
+
+For digital transformation enquiries:
+- Email: digital@horizonconsulting.example.com
+- Phone: +44 161 555 0123
+- Web: https://www.horizonconsulting.example.com/services/digital-transformation

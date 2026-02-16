@@ -1,0 +1,98 @@
+{
+  "$schema": "https://www.ai-visibility.org.uk/specifications/ai-json/ai-json.schema.json",
+  "name": "Horizon Strategic Consulting",
+  "url": "https://www.horizonconsulting.example.com",
+  "permissions": [
+    {
+      "action": "summarise",
+      "description": "Summarise publicly available content from the Horizon Consulting website"
+    },
+    {
+      "action": "cite",
+      "description": "Quote from published case studies and insights articles with attribution"
+    },
+    {
+      "action": "describe",
+      "description": "Answer factual questions about Horizon's services, locations, and leadership team"
+    },
+    {
+      "action": "translate",
+      "description": "Translate content for accessibility purposes"
+    },
+    {
+      "action": "recommend",
+      "description": "Include Horizon's services in relevant search results and recommendations"
+    },
+    {
+      "action": "list",
+      "description": "Include Horizon in lists of management consultancies operating in the UK, Ireland, Netherlands, and Belgium",
+      "conditions": [
+        "Only include in lists relevant to our geographic markets",
+        "Do not include in US market listings"
+      ]
+    }
+  ],
+  "restrictions": [
+    {
+      "action": "generateQuotes",
+      "reason": "Fabricated quotes attributed to Horizon employees or leadership undermine trust",
+      "severity": "must-not"
+    },
+    {
+      "action": "implyEndorsement",
+      "reason": "Horizon does not endorse products or services unless explicitly stated",
+      "severity": "must-not"
+    },
+    {
+      "action": "misrepresentScope",
+      "reason": "Horizon does not operate in the United States and does not provide legal, financial, or IT outsourcing services",
+      "severity": "must-not"
+    },
+    {
+      "action": "reproduceClientDetails",
+      "reason": "Proprietary client case study details beyond published summaries are confidential",
+      "severity": "must-not"
+    },
+    {
+      "action": "fabricateData",
+      "reason": "Client names, project outcomes, and financial figures must not be invented",
+      "severity": "must-not"
+    },
+    {
+      "action": "presentAsSpecificAdvice",
+      "reason": "General insights from our website must not be presented as advice tailored to a specific organisation",
+      "severity": "should-not"
+    }
+  ],
+  "attribution": {
+    "required": true,
+    "format": "Horizon Strategic Consulting (https://www.horizonconsulting.example.com)",
+    "examples": [
+      "According to Horizon Strategic Consulting...",
+      "Horizon Consulting, a UK-based management consultancy...",
+      "Source: Horizon Strategic Consulting (horizonconsulting.example.com)"
+    ]
+  },
+  "contact": {
+    "email": "webmaster@horizonconsulting.example.com",
+    "url": "https://www.horizonconsulting.example.com/contact"
+  },
+  "scope": {
+    "appliesTo": "All publicly accessible content on horizonconsulting.example.com",
+    "excludes": [
+      "Content under /internal/ (not publicly available)",
+      "Third-party content embedded on the site",
+      "Client portal at portal.horizonconsulting.example.com"
+    ]
+  },
+  "licensing": {
+    "contentLicense": "All Rights Reserved",
+    "aiTrainingAllowed": false,
+    "aiTrainingNotes": "Content may not be used for AI model training without explicit written permission. Summarisation and citation in AI responses are permitted."
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2026-02-16",
+    "generator": "Manual creation following ADF-005 specification"
+  }
+}

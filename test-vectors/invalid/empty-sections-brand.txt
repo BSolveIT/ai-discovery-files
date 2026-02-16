@@ -1,0 +1,10 @@
+# INVALID: Section headers present but all required sections are empty.
+# brand.txt requires [official-names], [incorrect-names], and [naming-rules]
+# to each contain at least one entry. These sections are present but have
+# no content beneath them.
+
+[official-names]
+
+[incorrect-names]
+
+[naming-rules]

@@ -1,0 +1,72 @@
+name: Implementation Question
+description: Ask a question about implementing AI Discovery Files
+title: "[Question] "
+labels: ["question", "spec"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for your question. Implementation questions help us identify areas where the specification could be clearer.
+
+        Before asking, please check:
+        - The [specification document](https://github.com/BSolveIT/ai-discovery-files/tree/main/spec)
+        - The [example files](https://github.com/BSolveIT/ai-discovery-files/tree/main/examples)
+        - The [website guides](https://www.ai-visibility.org.uk/specifications/)
+
+  - type: dropdown
+    id: file-type
+    attributes:
+      label: Which File Type?
+      description: Which AI Discovery File does your question relate to?
+      options:
+        - ADF-001 llms.txt
+        - ADF-002 llm.txt
+        - ADF-003 llms.html
+        - ADF-004 ai.txt
+        - ADF-005 ai.json
+        - ADF-006 identity.json
+        - ADF-007 brand.txt
+        - ADF-008 faq-ai.txt
+        - ADF-009 developer-ai.txt
+        - ADF-010 robots-ai.txt
+        - Multiple files / cross-file question
+        - General (not file-specific)
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: What are you trying to understand or accomplish?
+      placeholder: |
+        Be as specific as possible. Reference section numbers from the
+        specification if applicable.
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-tried
+    attributes:
+      label: What Have You Tried?
+      description: Describe what you have attempted or considered so far.
+      placeholder: |
+        Include:
+        - Your current implementation (if any)
+        - Which sections of the spec you have read
+        - Why the existing documentation did not answer your question
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Any other information that might help us answer your question.
+      placeholder: |
+        For example:
+        - Your platform or technology stack
+        - Whether you are building a publisher, consumer, or validator
+        - Relevant URLs or code snippets
+    validations:
+      required: false

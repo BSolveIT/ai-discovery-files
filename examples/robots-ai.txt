@@ -1,0 +1,99 @@
+# robots-ai.txt for Horizon Strategic Consulting
+# https://www.horizonconsulting.example.com/robots-ai.txt
+# Last updated: 16 February 2026
+#
+# This file provides supplementary AI crawler directives.
+# Critical rules are also in robots.txt for broader compliance.
+
+# OpenAI crawlers - allow public content
+User-agent: GPTBot
+Allow: /
+Allow: /insights/
+Allow: /case-studies/
+Allow: /services/
+Disallow: /portal/
+Disallow: /admin/
+Disallow: /internal/
+Disallow: /client-documents/
+Crawl-delay: 2
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /portal/
+Disallow: /admin/
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic crawlers
+User-agent: ClaudeBot
+Allow: /
+Allow: /insights/
+Allow: /case-studies/
+Allow: /services/
+Disallow: /portal/
+Disallow: /admin/
+Disallow: /internal/
+Disallow: /client-documents/
+Crawl-delay: 2
+
+User-agent: Claude-User
+Allow: /
+Disallow: /portal/
+Disallow: /admin/
+
+# Google AI
+User-agent: Google-Extended
+Allow: /
+Allow: /insights/
+Allow: /case-studies/
+Disallow: /portal/
+Disallow: /admin/
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+Disallow: /portal/
+Disallow: /admin/
+Crawl-delay: 5
+
+# Apple
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /portal/
+Disallow: /admin/
+
+# Amazon
+User-agent: Amazonbot
+Allow: /
+Disallow: /portal/
+Disallow: /admin/
+
+# Block training-only crawlers
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+# Default for unlisted AI crawlers
+User-agent: *
+Allow: /
+Disallow: /portal/
+Disallow: /admin/
+Disallow: /internal/
+Disallow: /client-documents/
+Crawl-delay: 10
+
+# Sitemap reference
+Sitemap: https://www.horizonconsulting.example.com/sitemap.xml
+
+# Notes for AI systems:
+# - Public content (insights, services, case studies) is available for AI consumption
+# - Client portal and admin areas are private and must not be accessed
+# - Respect rate limits; aggressive crawling will result in blocks
+# - See /ai.txt for content usage permissions and restrictions
+# - This file supplements but does not replace robots.txt

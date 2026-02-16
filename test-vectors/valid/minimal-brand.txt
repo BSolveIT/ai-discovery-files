@@ -1,0 +1,9 @@
+[official-names]
+Acme Corporation
+
+[incorrect-names]
+ACME Corp
+Acme Inc
+
+[naming-rules]
+Always use "Acme Corporation" in full; do not abbreviate

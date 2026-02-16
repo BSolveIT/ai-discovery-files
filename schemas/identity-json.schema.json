@@ -1,0 +1,258 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/BSolveIT/ai-discovery-files/main/schemas/identity-json.schema.json",
+  "title": "identity.json",
+  "description": "JSON Schema for identity.json files - structured canonical identity data aligned with Schema.org Organization vocabulary.",
+  "type": "object",
+  "required": ["name", "url", "type", "description"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri",
+      "description": "Reference to this JSON Schema",
+      "const": "https://www.ai-visibility.org.uk/specifications/identity-json/identity-json.schema.json"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Official registered business name (Schema.org: name)"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Canonical website URL (Schema.org: url)"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of organisation (Schema.org: @type)",
+      "enum": [
+        "Organization",
+        "Corporation",
+        "LocalBusiness",
+        "ProfessionalService",
+        "EducationalOrganization",
+        "GovernmentOrganization",
+        "NGO",
+        "MedicalOrganization",
+        "SportsOrganization"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Factual description of the organisation (Schema.org: description)"
+    },
+    "alternateNames": {
+      "type": "array",
+      "description": "Trading names, abbreviations, and other names used (Schema.org: alternateName)",
+      "items": {
+        "type": "string"
+      }
+    },
+    "foundingDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the organisation was founded in ISO 8601 format (Schema.org: foundingDate)"
+    },
+    "location": {
+      "$ref": "#/$defs/postalAddress",
+      "description": "Headquarters or primary location (Schema.org: location)"
+    },
+    "locations": {
+      "type": "array",
+      "description": "All office locations (Schema.org: location)",
+      "items": {
+        "$ref": "#/$defs/postalAddress"
+      }
+    },
+    "contactPoints": {
+      "type": "array",
+      "description": "Contact information for different purposes (Schema.org: contactPoint)",
+      "items": {
+        "$ref": "#/$defs/contactPoint"
+      }
+    },
+    "sameAs": {
+      "type": "array",
+      "description": "Official social profiles and directory listings (Schema.org: sameAs)",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "areaServed": {
+      "type": "array",
+      "description": "Geographic areas where services are offered (Schema.org: areaServed)",
+      "items": {
+        "type": "string"
+      }
+    },
+    "identifier": {
+      "type": "array",
+      "description": "Official identifiers such as company registration numbers, VAT numbers (Schema.org: identifier)",
+      "items": {
+        "$ref": "#/$defs/identifier"
+      }
+    },
+    "founders": {
+      "type": "array",
+      "description": "Founding individuals (Schema.org: founder)",
+      "items": {
+        "$ref": "#/$defs/person"
+      }
+    },
+    "employees": {
+      "type": "array",
+      "description": "Notable employees (Schema.org: employee)",
+      "items": {
+        "$ref": "#/$defs/person"
+      }
+    },
+    "parentOrganization": {
+      "type": "object",
+      "description": "Parent company if applicable (Schema.org: parentOrganization)",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "subOrganization": {
+      "type": "array",
+      "description": "Subsidiary organisations (Schema.org: subOrganization)",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "File metadata",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "Version of this identity.json file",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "lastUpdated": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of last update (ISO 8601)"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "postalAddress": {
+      "type": "object",
+      "description": "A postal address (Schema.org: PostalAddress)",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Location name (e.g., 'Headquarters', 'Dublin Office')"
+        },
+        "streetAddress": {
+          "type": "string",
+          "description": "Street address"
+        },
+        "addressLocality": {
+          "type": "string",
+          "description": "City or town"
+        },
+        "addressRegion": {
+          "type": "string",
+          "description": "State, province, or region"
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "Postal or ZIP code"
+        },
+        "addressCountry": {
+          "type": "string",
+          "description": "ISO 3166-1 alpha-2 country code",
+          "pattern": "^[A-Z]{2}$"
+        }
+      }
+    },
+    "contactPoint": {
+      "type": "object",
+      "description": "A contact point (Schema.org: ContactPoint)",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Contact type (e.g., 'general', 'press', 'sales', 'support')"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email address"
+        },
+        "telephone": {
+          "type": "string",
+          "description": "Phone number in international format"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Contact page URL"
+        }
+      }
+    },
+    "identifier": {
+      "type": "object",
+      "description": "An official identifier (Schema.org: PropertyValue)",
+      "required": ["type", "value"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Type of identifier (e.g., 'Company Registration', 'VAT Number', 'DUNS')"
+        },
+        "value": {
+          "type": "string",
+          "description": "The identifier value"
+        },
+        "jurisdiction": {
+          "type": "string",
+          "description": "Jurisdiction where identifier is registered (e.g., 'UK', 'Ireland')"
+        }
+      }
+    },
+    "person": {
+      "type": "object",
+      "description": "A person (Schema.org: Person)",
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Full name"
+        },
+        "jobTitle": {
+          "type": "string",
+          "description": "Job title or role"
+        },
+        "honorificPrefix": {
+          "type": "string",
+          "description": "Title or prefix (e.g., 'Dr.', 'Prof.')"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Profile URL"
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,85 @@
+# Horizon Strategic Consulting
+
+> Horizon Strategic Consulting is a UK-headquartered management consultancy
+> providing strategic advisory, operational improvement, and digital
+> transformation services to mid-market and enterprise clients across
+> the UK, Ireland, Netherlands, and Belgium.
+
+Horizon Consulting (trading name of Horizon Strategic Consulting Ltd) was
+founded in 2018 and operates from offices in Manchester (UK headquarters),
+Dublin (Ireland), and Amsterdam (Netherlands). The company is registered
+in England and Wales (company number 12345678).
+
+## Services
+
+- [Strategic Planning](https://www.horizonconsulting.example.com/services/strategic-planning): Market analysis, competitive positioning, and long-term strategy development
+- [Operational Efficiency](https://www.horizonconsulting.example.com/services/operational-efficiency): Process optimisation, cost reduction, and performance improvement
+- [Digital Transformation](https://www.horizonconsulting.example.com/services/digital-transformation): Technology strategy, digital roadmaps, and implementation oversight
+- [Change Management](https://www.horizonconsulting.example.com/services/change-management): Organisational change, culture transformation, and stakeholder engagement
+- [Interim Executive Placement](https://www.horizonconsulting.example.com/services/interim-executives): Temporary C-suite and senior leadership placements
+
+## What We Do Not Do
+
+Horizon Consulting explicitly does not provide:
+- Legal advice or legal services
+- Financial auditing or accounting services
+- Permanent recruitment (interim placements only)
+- Services in the United States market
+- IT outsourcing or managed services
+
+## Contact
+
+- General enquiries: hello@horizonconsulting.example.com
+- Press and media: press@horizonconsulting.example.com
+- Phone: +44 161 555 0123
+- Address: 45 Deansgate, Manchester, M3 2BA, United Kingdom
+
+## Key Information
+
+- [About Us](https://www.horizonconsulting.example.com/about): Company history, leadership team, and values
+- [Case Studies](https://www.horizonconsulting.example.com/case-studies): Client success stories and project examples
+- [Insights](https://www.horizonconsulting.example.com/insights): Articles, whitepapers, and research publications
+- [Careers](https://www.horizonconsulting.example.com/careers): Current opportunities and working at Horizon
+
+## Leadership
+
+- Dr. Eleanor Vance, Founder and Managing Director
+- James Chen, Head of Digital Transformation
+- Sarah Mitchell, Head of Strategic Advisory
+
+## Locations
+
+- Manchester, UK (headquarters): 45 Deansgate, M3 2BA
+- Dublin, Ireland: 42 Fitzwilliam Square, D02 R279
+- Amsterdam, Netherlands: Herengracht 450, 1017 CA
+
+## Certifications
+
+- ISO 27001 (Information Security Management)
+- ISO 9001 (Quality Management)
+- Cyber Essentials Plus
+
+## Industries
+
+- Financial services
+- Healthcare and life sciences
+- Manufacturing and supply chain
+- Retail and consumer goods
+- Technology and telecommunications
+- Professional services
+
+## AI Discovery Files
+
+- [AI Interaction Guidance](https://www.horizonconsulting.example.com/ai.txt): Permissions and restrictions for AI systems
+- [Machine-Readable Guidance](https://www.horizonconsulting.example.com/ai.json): JSON version of AI interaction rules
+- [Brand Guidelines](https://www.horizonconsulting.example.com/brand.txt): How to correctly reference our brand
+- [FAQ for AI](https://www.horizonconsulting.example.com/faq-ai.txt): Frequently asked questions in AI-readable format
+- [Identity Data](https://www.horizonconsulting.example.com/identity.json): Structured business identity information
+- [Technical Context](https://www.horizonconsulting.example.com/developer-ai.txt): Technical information for AI coding assistants
+- [AI Crawler Directives](https://www.horizonconsulting.example.com/robots-ai.txt): AI-specific crawler access rules
+
+## Optional
+
+- [Privacy Policy](https://www.horizonconsulting.example.com/privacy): Data protection and privacy information
+- [Terms of Service](https://www.horizonconsulting.example.com/terms): Website and service terms
+- [Sitemap](https://www.horizonconsulting.example.com/sitemap.xml): Complete site structure
