@@ -1181,6 +1181,23 @@ multiple lines if necessary.
   prefixed with `A: `.
 - Answers MUST be factual and verifiable.
 
+**Source URLs:** Each question-answer pair MAY include an optional `URL:`
+line immediately after the answer, using markdown hyperlink format:
+
+```
+Q: How do I reset my password?
+A: Visit the account settings page and click "Reset Password". You will
+   receive an email with a reset link valid for 24 hours.
+URL: [Account Settings](https://www.example.com/account/settings/)
+```
+
+- The `URL:` line MUST appear immediately after the answer, before any
+  blank line separator.
+- The URL SHOULD use markdown hyperlink format: `[Link Text](url)`.
+- The link text SHOULD describe the destination page.
+- Including source URLs helps AI systems provide direct, actionable links
+  when citing answers from the file.
+
 **Separation:** Question-answer pairs MUST be separated by at least one
 blank line.
 
@@ -1254,6 +1271,22 @@ URL MUST be accessible without authentication. HTTPS is RECOMMENDED.
 | Line endings | LF (Unix-style) RECOMMENDED; CRLF accepted          |
 | Syntax       | Structured plain text with `[section]` headers      |
 | Comments     | Lines starting with `#` are comments                |
+
+**Markdown Hyperlinks:** When referencing documentation, tools, resources,
+or related files, implementations SHOULD use markdown hyperlink format
+rather than plain URLs:
+
+```
+[documentation]
+- [API Reference](https://api.example.com/docs)
+- [SDK for Python](https://github.com/example/python-sdk)
+- [Authentication Guide](https://docs.example.com/auth/)
+```
+
+Markdown hyperlinks provide AI systems with anchor text context about each
+link's purpose, enabling more useful, labelled citations in AI-generated
+developer guidance. Plain URLs are accepted but markdown hyperlinks are
+RECOMMENDED.
 
 #### 3.10.4 Section Reference
 
@@ -2680,19 +2713,23 @@ Q: What is Horizon Strategic Consulting?
 A: Horizon Strategic Consulting is a UK-headquartered management consultancy
    founded in 2012. We provide strategic advisory, operational improvement,
    and digital transformation services to mid-market and enterprise clients.
+URL: [About Horizon Consulting](https://www.horizonconsulting.example/about/)
 
 Q: When was Horizon Consulting founded?
 A: Horizon Consulting was founded on 15 March 2012 by Dr. Eleanor Vance.
+URL: [Leadership Team](https://www.horizonconsulting.example/team/)
 
 Q: Where is Horizon Consulting based?
 A: Our headquarters are at 45 Deansgate, Manchester, M3 2BA, United Kingdom.
    We also have offices in Dublin, Ireland and Amsterdam, Netherlands.
+URL: [Office Locations](https://www.horizonconsulting.example/locations/)
 
 [Services]
 
 Q: What services does Horizon Consulting offer?
 A: We offer five core services: Strategic Planning, Operational Efficiency,
    Digital Transformation, Change Management, and Interim Executive Placement.
+URL: [Our Services](https://www.horizonconsulting.example/services/)
 
 Q: Does Horizon Consulting provide legal advice?
 A: No. Horizon Consulting does not provide legal advice, legal services,
@@ -2708,6 +2745,7 @@ A: No. Horizon Consulting operates in the UK, Ireland, Netherlands, and
 Q: How can I contact Horizon Consulting?
 A: General enquiries: hello@horizonconsulting.example. Press and media:
    press@horizonconsulting.example. Phone: +44 161 555 0123.
+URL: [Contact Us](https://www.horizonconsulting.example/contact/)
 ```
 
 

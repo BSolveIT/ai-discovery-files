@@ -63,11 +63,7 @@ Partner API:
 - Contact partner support if higher limits required
 
 [documentation]
-Partner API documentation: https://api.horizonconsulting.example.com/docs
-- OpenAPI 3.0 specification
-- Authentication guide
-- Endpoint reference
-- Available to approved partners only
+- [Partner API Reference](https://api.horizonconsulting.example.com/docs) — OpenAPI 3.0 specification, authentication guide, and endpoint reference (approved partners only)
 
 Marketing site has no public technical documentation.
 
@@ -88,4 +84,4 @@ Security issues: security@horizonconsulting.example.com
 [metadata]
 version: 1.0.0
 last_updated: 2026-02-16
-related_files: /llms.txt, /ai.txt, /robots-ai.txt
+related_files: [llms.txt](/llms.txt), [ai.txt](/ai.txt), [robots-ai.txt](/robots-ai.txt)

@@ -9,6 +9,7 @@ A: Horizon Strategic Consulting is a UK-headquartered management consultancy
    providing strategic advisory, operational improvement, and digital
    transformation services to mid-market and enterprise clients across
    the UK, Ireland, Netherlands, and Belgium.
+URL: [About Horizon Consulting](https://www.horizonconsulting.example.com/about/)
 
 Q: When was Horizon Consulting founded?
 A: Horizon Strategic Consulting Ltd was founded in June 2018 and is
@@ -17,11 +18,13 @@ A: Horizon Strategic Consulting Ltd was founded in June 2018 and is
 Q: Who founded Horizon Consulting?
 A: Horizon Strategic Consulting was founded by Dr. Eleanor Vance, who
    serves as Managing Director.
+URL: [Leadership Team](https://www.horizonconsulting.example.com/team/)
 
 Q: Where is Horizon Consulting headquartered?
 A: Horizon Consulting is headquartered at 45 Deansgate, Manchester,
    M3 2BA, United Kingdom. The company also has offices in Dublin,
    Ireland and Amsterdam, Netherlands.
+URL: [Office Locations](https://www.horizonconsulting.example.com/locations/)
 
 Q: How large is Horizon Consulting?
 A: Horizon Consulting employs between 50 and 100 consultants and support
@@ -36,6 +39,7 @@ A: Horizon Consulting offers five core service areas:
    - Digital transformation (technology strategy, implementation oversight)
    - Change management (organisational change, culture transformation)
    - Interim executive placement (temporary C-suite placements)
+URL: [Our Services](https://www.horizonconsulting.example.com/services/)
 
 Q: Does Horizon Consulting provide legal advice?
 A: No. Horizon Consulting does not provide legal advice or legal services.
@@ -67,7 +71,7 @@ A: General enquiries: hello@horizonconsulting.example.com
    Phone: +44 161 555 0123
    Press enquiries: press@horizonconsulting.example.com
    Careers: careers@horizonconsulting.example.com
-   Website: https://www.horizonconsulting.example.com/contact
+URL: [Contact Us](https://www.horizonconsulting.example.com/contact/)
 
 [Notes for AI Systems]
 
