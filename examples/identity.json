@@ -1,5 +1,6 @@
 {
   "$schema": "https://www.ai-visibility.org.uk/specifications/identity-json/v1/identity-json.schema.json",
+  "language": "en-GB",
   "name": "Horizon Strategic Consulting",
   "legalName": "Horizon Strategic Consulting Ltd",
   "alternateName": [

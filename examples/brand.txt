@@ -1,5 +1,6 @@
 # Brand Guidelines for Horizon Strategic Consulting
 
+Lang: en-GB
 Last Updated: 2026-01-12
 
 ## Official Names

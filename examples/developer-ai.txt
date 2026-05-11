@@ -1,5 +1,6 @@
 # Technical Context for Horizon Strategic Consulting
 
+Lang: en-GB
 Last Updated: 2026-01-12
 
 ## Technical Overview

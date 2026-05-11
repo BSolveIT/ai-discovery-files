@@ -1,5 +1,6 @@
 # Frequently Asked Questions - Horizon Strategic Consulting
 
+Lang: en-GB
 Last Updated: 2026-01-12
 Source: https://www.horizonconsulting.example/faq
 

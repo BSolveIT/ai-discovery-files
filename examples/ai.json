@@ -1,5 +1,6 @@
 {
   "$schema": "https://www.ai-visibility.org.uk/specifications/ai-json/v1/ai-json.schema.json",
+  "language": "en-GB",
   "name": "Horizon Strategic Consulting",
   "url": "https://www.horizonconsulting.example",
   "lastUpdated": "2026-01-12",

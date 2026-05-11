@@ -1,5 +1,6 @@
 # AI Interaction Guidance for Horizon Strategic Consulting
 
+Lang: en-GB
 Name: Horizon Strategic Consulting
 URL: https://www.horizonconsulting.example
 Last Updated: 2026-01-12
