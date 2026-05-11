@@ -1,16 +1,139 @@
 ---
 title: AI Discovery Files Specification
 abbreviation: ADF
-version: 1.0.0
-status: Informational
-date: 2026-02-16
-authors: 365i (https://www.365i.co.uk/)
+version: 1.10.0
+status: Community Specification (Stable)
+date: 2026-05-11
+authors: 365i / AI Visibility (https://www.ai-visibility.org.uk/)
 canonical-url: https://www.ai-visibility.org.uk/specifications/
 repository: https://github.com/BSolveIT/ai-discovery-files
-license: CC BY 4.0
+license: CC BY 4.0 (specification text and examples) / MIT (JSON Schemas)
 ---
 
 # AI Discovery Files Specification
+
+> **Note on this document.** This Markdown document is a snapshot of the
+> AI Discovery Files specification suitable for offline reading and for
+> packaging with implementations. The **working specification is published
+> on the web** at <https://www.ai-visibility.org.uk/specifications/>, where
+> every per-file specification, the framework pages (conformance, registry,
+> versioning, governance, security & privacy, HTTP behaviour, processing
+> model, consumer guidance, test vectors, related standards, implementations,
+> extensions, i18n & accessibility, roadmap, conformance registry, badges)
+> are individually navigable and versioned. The on-line specification is
+> authoritative if this document and the web version disagree on a point
+> of substance.
+
+## Specification additions since v1.0.0
+
+The original v1.0.0 release (Feb 2026) defined the ten AI Discovery Files,
+the AI Visibility vocabulary, and the implementation tiers. Versions 1.1.0
+through 1.10.0 added the standards-framework layer that turns the original
+specification from a useful convention into a credible community
+specification. Each addition is published in full on the web at the URL
+listed below; this document carries the v1.0.0 normative text plus the
+additions are summarised here.
+
+**v1.4.0 — Phase 1: standards-framework foundations.** RFC 2119 / RFC 8174
+requirement-keyword discipline applied across every spec. Status-block
+introduced (Draft, Stable, Deprecated, Retired). Conventions page
+established as the single source for editorial and structural conventions
+used across every AI Discovery File specification. Licensing page
+established at <https://www.ai-visibility.org.uk/licensing/>. References
+section added to every spec.
+
+**v1.5.0 — Phase 2: conformance and machine-readable infrastructure.**
+Formal Conformance specification (Essential / Recommended / Complete
+classes). Machine-readable Specification Registry at
+<https://www.ai-visibility.org.uk/specifications/registry.json>. Spec
+meta-schema documenting the shape of every `*-specification.json` data
+file. Validator-output schema as the standard output contract for
+conformant validators. Versioned JSON Schema URLs (`/v1/`) alongside
+unversioned "latest" aliases. Optional BCP 47 language declaration field
+across all applicable AI Discovery Files (`Lang:` header in text files,
+`"language"` property in JSON files).
+
+**v1.6.0 — Phase 3: process, policy, security.** Versioning and
+Deprecation Policy (SemVer 2.0.0; 12-month minimum deprecation timeline).
+Governance and Editorial Process (5-status proposal lifecycle: Proposed,
+Accepted, Published, Stable, Deprecated). Security and Privacy
+Considerations (trust model, content-injection patterns, GDPR
+considerations, access-control boundary, integrity primitives roadmap).
+HTTP Behaviour (status codes, redirect handling, soft-404 detection,
+caching, rate limits, CORS).
+
+**v1.7.0 — Phase 4: implementer-facing depth.** Processing Model: the
+seven-stage algorithm a conformant consumer MUST follow (discover, fetch,
+validate, resolve identity, resolve permissions, detect contradictions,
+emit normalised summary). AI Consumer Guidance: what AI systems SHOULD
+do at training time, retrieval time, and citation time. Test Vectors
+framing: this repository's `test-vectors/` directory is the canonical
+test suite. Reference-implementation framing on the AI Visibility
+Checker.
+
+**v1.8.0 — Phase 5: positioning.** Relationship to Other Standards
+positioning the specification against llmstxt.org (backwards compatible),
+IETF AI Preferences (complementary), robots.txt and RFC 9309
+(complementary; robots.txt takes precedence for access control),
+Schema.org (alignment via `identity.json`), Common Crawl, W3C AI Use
+Disclosure, BCP 14, JSON Schema 2020-12, SemVer 2.0.0. Implementations
+report listing the five current conformant implementations
+(WordPress plugin, AI Visibility Checker, AI Visible Directory,
+templates, Service Pack). Explicit llmstxt.org backward-compatibility
+statement: an llmstxt.org-conformant file is a valid `llms.txt` at
+Essential conformance class. Formal multi-domain and subdomain scoping
+rule: files are host-scoped per RFC 3986; cross-host identity asserted
+via mutual `sameAs` declarations.
+
+**v1.9.0 — Phase 6: long-term / forward-looking.** Public theme-pegged
+Roadmap. Extension mechanism: experimental files use an `x-` prefix
+(`x-products-ai.txt`); extension fields inside core JSON files use
+`x-`-prefixed property names. Internationalisation and Accessibility:
+locale-tagged fields (`nameLocalized`, `descriptionLocalized`),
+experimental multi-variant file naming (`/llms-fr.txt`), RTL handling,
+WCAG 2.1 AA targets for `llms.html`. **`Discovery:` directive added to
+`robots-ai.txt`** (only normative addition in this release; publishers
+MAY advertise AI Discovery Files on the same host, one absolute URL per
+line). Formal media-type stance: reuse existing IANA-registered types,
+no bespoke registrations. Expanded file integrity and signing roadmap
+(four candidate mechanisms, six cross-cutting concerns).
+
+**v1.10.0 — Conformance registry and certification badges.** Formal
+documentation of the AI Visible Directory's role as canonical conformance
+registry (verification process, re-check cadence, dispute resolution,
+data protection). Three Directory-issued visual certification badges
+(Essential / Recommended / Complete) with embed snippets, sizing
+guidance, anti-fraud measures via linked per-publisher verification
+records at `/directory/verify/<slug>/`, and licensing rules.
+
+Canonical URLs for each addition:
+
+| Addition                       | URL                                                                        |
+|--------------------------------|----------------------------------------------------------------------------|
+| Conventions                    | <https://www.ai-visibility.org.uk/specifications/conventions/>             |
+| Licensing & Trademark          | <https://www.ai-visibility.org.uk/licensing/>                              |
+| Conformance                    | <https://www.ai-visibility.org.uk/specifications/conformance/>             |
+| Specification Registry         | <https://www.ai-visibility.org.uk/specifications/registry/>                |
+| Validator-output schema        | <https://www.ai-visibility.org.uk/specifications/validator-output.schema.json> |
+| Versioning & Deprecation       | <https://www.ai-visibility.org.uk/specifications/versioning/>              |
+| Governance                     | <https://www.ai-visibility.org.uk/specifications/governance/>              |
+| Security & Privacy             | <https://www.ai-visibility.org.uk/specifications/security-privacy/>        |
+| HTTP Behaviour                 | <https://www.ai-visibility.org.uk/specifications/http-behaviour/>          |
+| Processing Model               | <https://www.ai-visibility.org.uk/specifications/processing-model/>        |
+| Consumer Guidance              | <https://www.ai-visibility.org.uk/specifications/consumer-guidance/>       |
+| Test Vectors framing           | <https://www.ai-visibility.org.uk/specifications/test-vectors/>            |
+| Related Standards              | <https://www.ai-visibility.org.uk/specifications/related-standards/>       |
+| Implementations                | <https://www.ai-visibility.org.uk/specifications/implementations/>         |
+| Roadmap                        | <https://www.ai-visibility.org.uk/specifications/roadmap/>                 |
+| Extensions                     | <https://www.ai-visibility.org.uk/specifications/extensions/>              |
+| i18n & Accessibility           | <https://www.ai-visibility.org.uk/specifications/i18n-a11y/>               |
+| The Conformance Registry       | <https://www.ai-visibility.org.uk/specifications/conformance-registry/>    |
+| Certification Badges           | <https://www.ai-visibility.org.uk/specifications/badges/>                  |
+
+For the full version history with dates and detailed change notes, see
+<https://www.ai-visibility.org.uk/changelog/>.
+
+---
 
 ## Abstract
 

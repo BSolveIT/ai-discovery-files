@@ -2,11 +2,19 @@
 
 **A framework of machine-readable files that help AI systems discover, interpret, trust, and safely use websites.**
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Version](https://img.shields.io/badge/version-1.10.0-blue)
 ![License](https://img.shields.io/badge/license-CC%20BY%204.0-green)
-![Status](https://img.shields.io/badge/status-Informational-yellow)
+![Status](https://img.shields.io/badge/status-Community%20Specification%20(Stable)-brightgreen)
 
 ---
+
+> **Working specification:** the authoritative, navigable, continuously
+> updated specification lives at
+> **<https://www.ai-visibility.org.uk/specifications/>**.
+> This repository is a snapshot suitable for offline reading, packaging
+> with implementations, and `git clone` access to the test vectors and
+> schemas. If the website and this repository disagree on substance, the
+> website wins.
 
 ## Quick Overview
 
@@ -110,29 +118,58 @@ JSON Schemas for the two structured formats are also available in [schemas/](sch
 
 ### Test Your Live Implementation
 
-Use the [365i AI Visibility Checker](https://www.365i.co.uk/ai-visibility-checker/) to validate your live site against the specification.
+Use the [AI Visibility Checker](https://www.ai-visibility.org.uk/ai-visibility-checker/) (the reference implementation) to validate your live site against the specification.
+
+---
+
+## Standards-framework pages
+
+Beyond the per-file specifications, the working specification on the
+website includes a standards-framework layer covering conformance,
+governance, security & privacy, the processing model, and the rest.
+The full list (with one-line summaries) lives on the
+[specifications hub](https://www.ai-visibility.org.uk/specifications/#standards-framework).
+
+Key pages:
+
+- [Conformance](https://www.ai-visibility.org.uk/specifications/conformance/) — Essential / Recommended / Complete classes
+- [Conformance Registry](https://www.ai-visibility.org.uk/specifications/conformance-registry/) — the AI Visible Directory as canonical registry
+- [Certification Badges](https://www.ai-visibility.org.uk/specifications/badges/) — three Directory-issued visual badges
+- [Specification Registry](https://www.ai-visibility.org.uk/specifications/registry/) — machine-readable list of all 10 files
+- [Versioning & Deprecation](https://www.ai-visibility.org.uk/specifications/versioning/) — SemVer 2.0.0; 12-month deprecation timeline
+- [Governance](https://www.ai-visibility.org.uk/specifications/governance/) — 5-status proposal lifecycle
+- [Security & Privacy](https://www.ai-visibility.org.uk/specifications/security-privacy/) — trust model, integrity roadmap
+- [HTTP Behaviour](https://www.ai-visibility.org.uk/specifications/http-behaviour/) — status codes, media-type stance
+- [Processing Model](https://www.ai-visibility.org.uk/specifications/processing-model/) — 7-stage consumer algorithm
+- [Consumer Guidance](https://www.ai-visibility.org.uk/specifications/consumer-guidance/) — what AI systems SHOULD do
+- [Related Standards](https://www.ai-visibility.org.uk/specifications/related-standards/) — positioning vs llmstxt.org, IETF, robots.txt, Schema.org, BCP 14, JSON Schema, SemVer
+- [Implementations](https://www.ai-visibility.org.uk/specifications/implementations/) — public record of conformant implementations
+- [Extensions](https://www.ai-visibility.org.uk/specifications/extensions/) — `x-` prefix rule and promotion path
+- [i18n & Accessibility](https://www.ai-visibility.org.uk/specifications/i18n-a11y/) — multi-language publication, WCAG 2.1 AA targets
+- [Roadmap](https://www.ai-visibility.org.uk/specifications/roadmap/) — theme-pegged forward plan
+
+The full specification version history is at <https://www.ai-visibility.org.uk/changelog/>.
 
 ---
 
 ## Relationship to the Website
 
-The canonical human-readable reference for AI Discovery Files is published at:
+The **working specification** is published at:
 
-**https://www.ai-visibility.org.uk/specifications/**
+**<https://www.ai-visibility.org.uk/specifications/>**
 
-The website provides guides, interactive examples, a quick-start tutorial, and a directory of sites implementing AI Discovery Files. It is designed for a broad audience including business owners, SEO practitioners, and marketers.
+The website is the authoritative, continuously updated, navigable form
+of the specification. Every per-file spec, every framework page, and the
+changelog are individually versioned and tied together by a coordinated
+release cadence. This repository tracks the website releases as snapshots.
 
-This RFC document is the **formal technical specification**. It is designed for engineers, standards bodies, researchers, and tool authors who need precise, implementation-focused language with RFC 2119 conformance keywords.
-
-Both are authoritative. They should not contradict each other. When the website specification is updated, this document is updated to match, and a new version is tagged.
-
-| Aspect | Website | This Specification |
-|--------|---------|-------------------|
-| Audience | Business owners, SEOs, marketers | Engineers, standards bodies, researchers |
-| Tone | Accessible, guide-oriented | Formal, implementation-precise |
-| Format | PHP-rendered pages with navigation | Markdown document with section numbers |
-| Examples | Inline with explanations | Appendix and test vectors |
-| Updates | Continuous deployment | Versioned releases (tagged) |
+| Aspect | Website | This Repository |
+|--------|---------|-----------------|
+| Status | Authoritative working specification | Snapshot |
+| Audience | Business owners, SEOs, marketers, engineers, researchers | Engineers, tool authors, archivists, offline readers |
+| Format | PHP-rendered pages with navigation | Markdown, JSON Schemas, test vectors |
+| Examples | Inline with each spec page | `examples/` directory mirrors the website |
+| Updates | Continuous deployment with coordinated MINOR releases | Tagged releases when the website ships a coordinated MINOR |
 
 ---
 
@@ -178,9 +215,9 @@ See [LICENSE](LICENSE) for the full text.
 
 ## Authors
 
-**365i** -- [https://www.365i.co.uk/](https://www.365i.co.uk/)
+**AI Visibility / 365i** -- [https://www.ai-visibility.org.uk/](https://www.ai-visibility.org.uk/)
 
-365i is a digital agency that builds tools for AI visibility verification. The [365i AI Visibility Checker](https://www.365i.co.uk/ai-visibility-checker/) is the reference implementation of this specification.
+AI Visibility is a 365i product. The [AI Visibility Checker](https://www.ai-visibility.org.uk/ai-visibility-checker/) is the reference implementation of this specification. The [AI Visible Directory](https://www.ai-visibility.org.uk/) is the canonical conformance registry, documented at [The Conformance Registry](https://www.ai-visibility.org.uk/specifications/conformance-registry/).
 
 ---
 

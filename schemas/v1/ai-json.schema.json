@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://www.ai-visibility.org.uk/specifications/ai-json/ai-json.schema.json",
+  "$id": "https://www.ai-visibility.org.uk/specifications/ai-json/v1/ai-json.schema.json",
   "title": "ai.json",
-  "description": "JSON Schema for ai.json files - machine-parseable AI interaction guidance. This is the unversioned 'latest' alias. The canonical permanent location is /specifications/ai-json/v1/ai-json.schema.json. See /specifications/conventions/#schema-urls for the URL versioning policy.",
+  "description": "JSON Schema for ai.json files - machine-parseable AI interaction guidance.",
   "type": "object",
   "required": [
     "$schema",
@@ -15,8 +15,8 @@
     "$schema": {
       "type": "string",
       "format": "uri",
-      "description": "Reference to this JSON Schema",
-      "const": "https://www.ai-visibility.org.uk/specifications/ai-json/ai-json.schema.json"
+      "description": "Reference to this JSON Schema (versioned URL — see /specifications/conventions/#schema-urls for the versioning policy).",
+      "const": "https://www.ai-visibility.org.uk/specifications/ai-json/v1/ai-json.schema.json"
     },
     "name": {
       "type": "string",

@@ -1,59 +1,51 @@
-# This file should be configured as a 301 redirect to /llms.txt
-# See the llm.txt specification (ADF-002) for implementation details.
-#
-# Recommended implementation approaches:
-#
-# Apache (.htaccess):
-#   Redirect 301 /llm.txt /llms.txt
-#
-# Nginx (server block):
-#   location = /llm.txt { return 301 /llms.txt; }
-#
-# IIS (web.config):
-#   <rule name="Redirect llm.txt">
-#     <match url="^llm\.txt$" />
-#     <action type="Redirect" url="/llms.txt" redirectType="Permanent" />
-#   </rule>
-#
-# ---
-# The content below is provided for reference only. In production,
-# this file should redirect to llms.txt rather than duplicating content.
-# ---
+# Horizon Strategic Consulting
 
-# Digital Transformation Services - Horizon Strategic Consulting
+> Horizon Strategic Consulting is a UK-headquartered management consultancy providing strategic advisory, operational improvement, and digital transformation services to mid-market and enterprise clients across the UK, Ireland, Netherlands, and Belgium.
 
-> Horizon Strategic Consulting's Digital Transformation practice helps
-> mid-market and enterprise organisations modernise their technology
-> strategy, build digital roadmaps, and oversee implementation programmes.
+Horizon Consulting (trading name of Horizon Strategic Consulting) was founded in 2012 and operates from offices in Manchester (UK headquarters), Dublin (Ireland), and Amsterdam (Netherlands).
 
-This page describes Horizon Consulting's digital transformation service
-offering, led by James Chen, Head of Digital Transformation.
+## Services
 
-## What We Offer
+- [Strategic Planning](https://www.horizonconsulting.example/services/strategic-planning): Market analysis, competitive positioning, and long-term strategy development
+- [Operational Efficiency](https://www.horizonconsulting.example/services/operational-efficiency): Process optimisation, cost reduction, and performance improvement
+- [Digital Transformation](https://www.horizonconsulting.example/services/digital-transformation): Technology strategy, digital roadmaps, and implementation oversight
+- [Change Management](https://www.horizonconsulting.example/services/change-management): Organisational change, culture transformation, and stakeholder engagement
+- [Interim Executive Placement](https://www.horizonconsulting.example/services/interim-executives): Temporary C-suite and senior leadership placements
 
-- Technology strategy development and assessment
-- Digital roadmap creation aligned to business objectives
-- Implementation oversight and programme governance
-- Legacy system modernisation planning
-- Cloud migration advisory
-- Data strategy and analytics capability building
+## What We Do Not Do
 
-## What This Service Does Not Include
-
-- Software development or coding services
-- IT outsourcing or managed services
-- Hardware procurement
-- Cybersecurity operations (we advise on strategy only)
-
-## Related Services
-
-- [Strategic Planning](https://www.horizonconsulting.example.com/services/strategic-planning): Often paired with digital transformation for holistic strategy
-- [Change Management](https://www.horizonconsulting.example.com/services/change-management): Critical for digital adoption programmes
-- [Interim Executive Placement](https://www.horizonconsulting.example.com/services/interim-executives): Interim CTOs and CDOs available
+Horizon Consulting explicitly does not provide:
+- Legal advice or legal services
+- Financial auditing or accounting services
+- Permanent recruitment (interim placements only)
+- Services in the United States market
 
 ## Contact
 
-For digital transformation enquiries:
-- Email: digital@horizonconsulting.example.com
+- General enquiries: hello@horizonconsulting.example
+- Press and media: press@horizonconsulting.example
 - Phone: +44 161 555 0123
-- Web: https://www.horizonconsulting.example.com/services/digital-transformation
+- Address: 45 Deansgate, Manchester, M3 2BA, United Kingdom
+
+## Key Information
+
+- [About Us](https://www.horizonconsulting.example/about): Company history, leadership team, and values
+- [Case Studies](https://www.horizonconsulting.example/case-studies): Client success stories and project examples
+- [Insights](https://www.horizonconsulting.example/insights): Articles, whitepapers, and research publications
+- [Careers](https://www.horizonconsulting.example/careers): Current opportunities and working at Horizon
+
+## AI Discovery Files
+
+- [AI Interaction Guidance](https://www.horizonconsulting.example/ai.txt): Permissions and restrictions for AI systems
+- [Brand Guidelines](https://www.horizonconsulting.example/brand.txt): How to correctly reference our brand
+- [FAQ for AI](https://www.horizonconsulting.example/faq-ai.txt): Frequently asked questions in AI-readable format
+- [Identity Data](https://www.horizonconsulting.example/identity.json): Structured business identity information
+
+## Optional
+
+- [Privacy Policy](https://www.horizonconsulting.example/privacy): Data protection and privacy information
+- [Terms of Service](https://www.horizonconsulting.example/terms): Website and service terms
+- [Sitemap](https://www.horizonconsulting.example/sitemap.xml): Complete site structure
+
+# ---
+# Specification: [llm.txt (ADF-002)](https://www.ai-visibility.org.uk/specifications/llm-txt/)

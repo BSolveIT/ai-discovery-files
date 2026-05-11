@@ -1,87 +1,105 @@
-# developer-ai.txt for Horizon Strategic Consulting
-# https://www.horizonconsulting.example.com/developer-ai.txt
-# Last updated: 16 February 2026
+# Technical Context for Horizon Strategic Consulting
 
-[overview]
-Horizon Strategic Consulting operates several web properties:
-- Marketing website (www.horizonconsulting.example.com) - public content
-- Client portal (portal.horizonconsulting.example.com) - authenticated access
-- Partner API (api.horizonconsulting.example.com) - restricted access
+Last Updated: 2026-01-12
 
-The marketing site is a content-focused website publishing services information,
-case studies, insights articles, and team profiles.
-The client portal is a custom application for project management and deliverables.
+## Technical Overview
 
-[platforms]
-www.horizonconsulting.example.com
-- Purpose: Marketing, insights, and public information
-- Technology: WordPress with custom theme
-- Access: Public, no authentication required
+Horizon Consulting operates two primary web properties:
+1. Marketing website: www.horizonconsulting.example
+2. Client portal: portal.horizonconsulting.example
 
-portal.horizonconsulting.example.com
-- Purpose: Client project management and document access
-- Technology: React SPA with Node.js backend
-- Access: Authenticated clients only (SSO via Azure AD)
+## Public Website (www.horizonconsulting.example)
 
-api.horizonconsulting.example.com
-- Purpose: Partner integrations
-- Technology: REST API (OpenAPI 3.0 documented)
-- Access: Approved partners only
+Platform: WordPress (managed hosting)
+Purpose: Marketing, content publishing, contact forms
 
-[public-areas]
-- Marketing website (www) - fully public
-- Insights and blog content - fully public, no paywall
-- Service descriptions - fully public
-- Case studies - summaries public, some detailed content gated
-- Client portal - requires authentication (not publicly accessible)
-- Partner API - requires approved credentials (not publicly accessible)
+Public areas:
+- Homepage and service pages
+- Case studies and insights blog
+- Team and about pages
+- Contact and careers pages
 
-[public-api]
-status: partner-only
-notes: API access is available to approved integration partners only.
-       No public API registration is available.
-       Partners must contact partnerships@horizonconsulting.example.com
+No authentication required for public content.
 
-[authentication]
-Client Portal:
-- Method: SSO via Azure Active Directory
-- Users: Client employees provisioned by account managers
-- No self-registration available
+## Client Portal (portal.horizonconsulting.example)
 
-Partner API:
-- Method: OAuth 2.0 client credentials flow
-- Credentials: Issued upon partner agreement
-- Scope: Limited to approved integration use cases
+Platform: Custom React application
+Purpose: Client project collaboration, document sharing, reporting
 
-Marketing Website:
-- No authentication required for public content
+Access: Authentication required
+- Client login only
+- No public registration
+- SSO integration available for enterprise clients
 
-[rate-limits]
-Partner API:
-- Rate limit: 1000 requests per hour per client
-- Burst: 100 requests per minute
-- Contact partner support if higher limits required
+This area is NOT accessible to AI crawlers or public users.
 
-[documentation]
-- [Partner API Reference](https://api.horizonconsulting.example.com/docs) — OpenAPI 3.0 specification, authentication guide, and endpoint reference (approved partners only)
+## API Availability
 
-Marketing site has no public technical documentation.
+Public API: None
+Partner API: Available at api.horizonconsulting.example (authentication required)
 
-[technology-stack]
-Note: This information is provided for context only.
-- Marketing site: WordPress, PHP, MySQL
-- Client portal: React, Node.js, PostgreSQL
-- Partner API: Node.js, Express, PostgreSQL
-- Hosting: Cloud-based (AWS)
-- CDN: Cloudflare
+We do not offer a public API. Partner integrations are handled on a case-by-case basis through formal agreements. Contact partnerships@horizonconsulting.example for API access enquiries.
 
-[technical-contact]
-Partner integration enquiries: partnerships@horizonconsulting.example.com
-Technical support for partners: api-support@horizonconsulting.example.com
-General technical enquiries: tech@horizonconsulting.example.com
-Security issues: security@horizonconsulting.example.com
+## Rate Limiting
 
-[metadata]
-version: 1.0.0
-last_updated: 2026-02-16
-related_files: [llms.txt](/llms.txt), [ai.txt](/ai.txt), [robots-ai.txt](/robots-ai.txt)
+Website:
+- No specific rate limiting for normal browsing
+- Aggressive scraping will be blocked
+- Respect robots.txt directives
+
+API:
+- Rate limits apply to authenticated partners
+- Details provided in partner documentation
+
+## Authentication
+
+Website: No authentication for public content
+Portal: OAuth 2.0 / SAML SSO
+API: API key + OAuth 2.0
+
+## Content Delivery
+
+- Primary CDN: Cloudflare
+- Static assets cached aggressively
+- Dynamic content served from origin
+
+## Structured Data
+
+Our website implements:
+- Schema.org Organization markup
+- Schema.org Article markup on blog posts
+- Schema.org FAQPage on FAQ section
+- Open Graph tags for social sharing
+
+## AI Discovery Files
+
+Located at website root:
+- /llms.txt - Business context for AI systems
+- /ai.txt - AI interaction permissions
+- /ai.json - Machine-readable AI guidance
+- /identity.json - Structured identity data
+- /brand.txt - Brand guidelines
+- /faq-ai.txt - FAQ for AI consumption
+- /robots.txt - Crawler directives
+
+## Technical Contact
+
+For technical integration queries:
+- Email: tech@horizonconsulting.example
+- Reference: Technical Integration Enquiry
+
+For security issues:
+- See: /.well-known/security.txt
+- Email: security@horizonconsulting.example
+
+## Integration Documentation
+
+Partner integration documentation is available to approved partners at:
+docs.horizonconsulting.example (authentication required)
+
+## Change Notifications
+
+We do not currently offer webhooks or change notification feeds for public content. Partners may subscribe to API changelog notifications.
+
+# ---
+# Specification: [developer-ai.txt (ADF-009)](https://www.ai-visibility.org.uk/specifications/developer-ai-txt/)

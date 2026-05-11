@@ -1,92 +1,133 @@
 {
-  "$schema": "https://www.ai-visibility.org.uk/specifications/identity-json/identity-json.schema.json",
-  "name": "Horizon Strategic Consulting Ltd",
-  "type": "Corporation",
-  "url": "https://www.horizonconsulting.example.com",
-  "description": "UK-headquartered management consultancy providing strategic advisory, operational improvement, and digital transformation services to mid-market and enterprise clients across the UK, Ireland, Netherlands, and Belgium.",
-  "alternateNames": [
-    "Horizon Strategic Consulting",
+  "$schema": "https://www.ai-visibility.org.uk/specifications/identity-json/v1/identity-json.schema.json",
+  "name": "Horizon Strategic Consulting",
+  "legalName": "Horizon Strategic Consulting Ltd",
+  "alternateName": [
     "Horizon Consulting"
   ],
-  "foundingDate": "2018-06-01",
+  "url": "https://www.horizonconsulting.example",
+  "type": "Corporation",
+  "description": "UK-headquartered management consultancy providing strategic advisory, operational improvement, and digital transformation services to mid-market and enterprise clients.",
+  "foundingDate": "2012-03-15",
+  "foundingLocation": {
+    "name": "Manchester",
+    "addressCountry": "GB"
+  },
+  "headquarters": {
+    "streetAddress": "45 Deansgate",
+    "addressLocality": "Manchester",
+    "postalCode": "M3 2BA",
+    "addressCountry": "GB"
+  },
   "locations": [
     {
       "name": "Manchester Office (Headquarters)",
       "streetAddress": "45 Deansgate",
       "addressLocality": "Manchester",
       "postalCode": "M3 2BA",
-      "addressCountry": "GB"
+      "addressCountry": "GB",
+      "isHeadquarters": true
     },
     {
       "name": "Dublin Office",
       "streetAddress": "42 Fitzwilliam Square",
       "addressLocality": "Dublin",
       "postalCode": "D02 R279",
-      "addressCountry": "IE"
+      "addressCountry": "IE",
+      "isHeadquarters": false
     },
     {
       "name": "Amsterdam Office",
       "streetAddress": "Herengracht 450",
       "addressLocality": "Amsterdam",
       "postalCode": "1017 CA",
-      "addressCountry": "NL"
+      "addressCountry": "NL",
+      "isHeadquarters": false
+    }
+  ],
+  "areaServed": [
+    {
+      "type": "Country",
+      "name": "United Kingdom",
+      "code": "GB"
+    },
+    {
+      "type": "Country",
+      "name": "Ireland",
+      "code": "IE"
+    },
+    {
+      "type": "Country",
+      "name": "Netherlands",
+      "code": "NL"
+    },
+    {
+      "type": "Country",
+      "name": "Belgium",
+      "code": "BE"
     }
   ],
   "contactPoints": [
     {
-      "type": "General Enquiries",
-      "email": "hello@horizonconsulting.example.com",
+      "type": "GeneralEnquiries",
+      "email": "hello@horizonconsulting.example",
       "telephone": "+44 161 555 0123"
     },
     {
-      "type": "Press and Media",
-      "email": "press@horizonconsulting.example.com"
+      "type": "Press",
+      "email": "press@horizonconsulting.example"
     },
     {
       "type": "Careers",
-      "email": "careers@horizonconsulting.example.com"
-    },
-    {
-      "type": "AI Enquiries",
-      "email": "webmaster@horizonconsulting.example.com"
+      "email": "careers@horizonconsulting.example"
     }
   ],
-  "areaServed": ["GB", "IE", "NL", "BE"],
+  "services": [
+    "Strategic planning and market analysis",
+    "Operational efficiency consulting",
+    "Digital transformation advisory",
+    "Change management",
+    "Interim executive placement"
+  ],
+  "servicesNotProvided": [
+    "Legal advice",
+    "Financial auditing",
+    "Permanent recruitment",
+    "Services in the United States"
+  ],
+  "industry": "Management Consulting",
+  "naicsCode": "541611",
+  "numberOfEmployees": {
+    "minValue": 50,
+    "maxValue": 100
+  },
+  "identifier": [
+    {
+      "type": "CompanyRegistration",
+      "value": "08123456",
+      "jurisdiction": "GB"
+    },
+    {
+      "type": "VAT",
+      "value": "GB123456789",
+      "jurisdiction": "GB"
+    }
+  ],
   "sameAs": [
     "https://www.linkedin.com/company/horizon-consulting-example",
     "https://twitter.com/HorizonConsult"
   ],
-  "identifier": [
-    {
-      "type": "Company Registration",
-      "value": "12345678",
-      "jurisdiction": "England and Wales"
-    },
-    {
-      "type": "VAT Number",
-      "value": "GB123456789",
-      "jurisdiction": "UK"
-    }
-  ],
-  "founders": [
-    {
-      "name": "Dr. Eleanor Vance",
-      "jobTitle": "Founder and Managing Director",
-      "honorificPrefix": "Dr."
-    }
-  ],
-  "employees": [
-    {
-      "name": "James Chen",
-      "jobTitle": "Head of Digital Transformation"
-    },
-    {
-      "name": "Sarah Mitchell",
-      "jobTitle": "Head of Strategic Advisory"
-    }
-  ],
+  "founder": {
+    "name": "Dr. Eleanor Vance",
+    "jobTitle": "Founder and Managing Director"
+  },
   "metadata": {
-    "version": "1.0.0",
-    "lastUpdated": "2026-02-16"
+    "lastUpdated": "2026-01-12",
+    "specificationVersion": "1.0.0"
+  },
+  "_specification": {
+    "name": "identity.json",
+    "code": "ADF-006",
+    "url": "https://www.ai-visibility.org.uk/specifications/identity-json/"
   }
 }

@@ -1,11 +1,8 @@
-# robots-ai.txt for Horizon Strategic Consulting
-# https://www.horizonconsulting.example.com/robots-ai.txt
-# Last updated: 16 February 2026
-#
-# This file provides supplementary AI crawler directives.
-# Critical rules are also in robots.txt for broader compliance.
+# AI Crawler Directives for Horizon Strategic Consulting
+# This file provides supplementary AI-specific guidance
+# Standard robots.txt remains the authoritative source for all crawlers
 
-# OpenAI crawlers - allow public content
+# OpenAI Crawlers
 User-agent: GPTBot
 Allow: /
 Allow: /insights/
@@ -13,19 +10,15 @@ Allow: /case-studies/
 Allow: /services/
 Disallow: /portal/
 Disallow: /admin/
-Disallow: /internal/
 Disallow: /client-documents/
-Crawl-delay: 2
 
 User-agent: ChatGPT-User
 Allow: /
-Disallow: /portal/
-Disallow: /admin/
 
 User-agent: OAI-SearchBot
 Allow: /
 
-# Anthropic crawlers
+# Anthropic Crawlers
 User-agent: ClaudeBot
 Allow: /
 Allow: /insights/
@@ -33,14 +26,10 @@ Allow: /case-studies/
 Allow: /services/
 Disallow: /portal/
 Disallow: /admin/
-Disallow: /internal/
 Disallow: /client-documents/
-Crawl-delay: 2
 
 User-agent: Claude-User
 Allow: /
-Disallow: /portal/
-Disallow: /admin/
 
 # Google AI
 User-agent: Google-Extended
@@ -55,13 +44,27 @@ User-agent: PerplexityBot
 Allow: /
 Disallow: /portal/
 Disallow: /admin/
-Crawl-delay: 5
 
-# Apple
-User-agent: Applebot-Extended
+# Meta
+User-agent: meta-externalagent
 Allow: /
 Disallow: /portal/
 Disallow: /admin/
+Disallow: /client-documents/
+
+# Common Crawl (used for AI training datasets)
+User-agent: CCBot
+Allow: /insights/
+Allow: /services/
+Disallow: /
+Disallow: /portal/
+Disallow: /admin/
+Disallow: /client-documents/
+# Note: We permit limited crawling of public content only
+
+# ByteDance
+User-agent: Bytespider
+Disallow: /
 
 # Amazon
 User-agent: Amazonbot
@@ -69,27 +72,26 @@ Allow: /
 Disallow: /portal/
 Disallow: /admin/
 
-# Block training-only crawlers
-User-agent: CCBot
-Disallow: /
-
-User-agent: Bytespider
-Disallow: /
-
-User-agent: meta-externalagent
-Disallow: /
-
-# Default for unlisted AI crawlers
-User-agent: *
+# Apple
+User-agent: Applebot-Extended
 Allow: /
 Disallow: /portal/
 Disallow: /admin/
-Disallow: /internal/
+
+# Default for unlisted AI crawlers
+User-agent: *-ai
+Allow: /
+Disallow: /portal/
+Disallow: /admin/
 Disallow: /client-documents/
+Disallow: /internal/
+
+# Crawl rate preferences
+# We request AI crawlers respect a reasonable crawl rate
 Crawl-delay: 10
 
 # Sitemap reference
-Sitemap: https://www.horizonconsulting.example.com/sitemap.xml
+Sitemap: https://www.horizonconsulting.example/sitemap.xml
 
 # Notes for AI systems:
 # - Public content (insights, services, case studies) is available for AI consumption
@@ -97,3 +99,6 @@ Sitemap: https://www.horizonconsulting.example.com/sitemap.xml
 # - Respect rate limits; aggressive crawling will result in blocks
 # - See /ai.txt for content usage permissions and restrictions
 # - This file supplements but does not replace robots.txt
+
+# ---
+# Specification: [robots-ai.txt (ADF-010)](https://www.ai-visibility.org.uk/specifications/robots-ai-txt/)

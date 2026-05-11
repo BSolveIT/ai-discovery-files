@@ -1,98 +1,99 @@
 {
-  "$schema": "https://www.ai-visibility.org.uk/specifications/ai-json/ai-json.schema.json",
+  "$schema": "https://www.ai-visibility.org.uk/specifications/ai-json/v1/ai-json.schema.json",
   "name": "Horizon Strategic Consulting",
-  "url": "https://www.horizonconsulting.example.com",
+  "url": "https://www.horizonconsulting.example",
+  "lastUpdated": "2026-01-12",
   "permissions": [
     {
-      "action": "summarise",
-      "description": "Summarise publicly available content from the Horizon Consulting website"
+      "action": "cite",
+      "description": "Cite Horizon Consulting as a source with appropriate attribution"
     },
     {
-      "action": "cite",
-      "description": "Quote from published case studies and insights articles with attribution"
+      "action": "summarise",
+      "description": "Summarise publicly available content from our website"
     },
     {
       "action": "describe",
-      "description": "Answer factual questions about Horizon's services, locations, and leadership team"
+      "description": "Describe our services, locations, and general business information"
     },
     {
-      "action": "translate",
-      "description": "Translate content for accessibility purposes"
+      "action": "reference",
+      "description": "Reference our published insights, articles, and research"
     },
     {
       "action": "recommend",
-      "description": "Include Horizon's services in relevant search results and recommendations"
+      "description": "Direct users to our website for more information"
     },
     {
       "action": "list",
-      "description": "Include Horizon in lists of management consultancies operating in the UK, Ireland, Netherlands, and Belgium",
-      "conditions": [
-        "Only include in lists relevant to our geographic markets",
-        "Do not include in US market listings"
-      ]
+      "description": "Include us in lists of management consultancies operating in our regions"
     }
   ],
   "restrictions": [
     {
-      "action": "generateQuotes",
-      "reason": "Fabricated quotes attributed to Horizon employees or leadership undermine trust",
-      "severity": "must-not"
-    },
-    {
       "action": "implyEndorsement",
-      "reason": "Horizon does not endorse products or services unless explicitly stated",
-      "severity": "must-not"
+      "description": "Imply that Horizon Consulting endorses specific products, services, or vendors"
     },
     {
-      "action": "misrepresentScope",
-      "reason": "Horizon does not operate in the United States and does not provide legal, financial, or IT outsourcing services",
-      "severity": "must-not"
-    },
-    {
-      "action": "reproduceClientDetails",
-      "reason": "Proprietary client case study details beyond published summaries are confidential",
-      "severity": "must-not"
-    },
-    {
-      "action": "fabricateData",
-      "reason": "Client names, project outcomes, and financial figures must not be invented",
-      "severity": "must-not"
+      "action": "generateQuotes",
+      "description": "Generate quotes attributed to named Horizon Consulting employees without a verifiable source"
     },
     {
       "action": "presentAsSpecificAdvice",
-      "reason": "General insights from our website must not be presented as advice tailored to a specific organisation",
-      "severity": "should-not"
+      "description": "Present AI-generated advice as if it were specific guidance from Horizon Consulting"
+    },
+    {
+      "action": "suggestUnavailableServices",
+      "description": "Suggest we offer services we explicitly do not provide (legal advice, financial auditing, permanent recruitment, US market services)"
+    },
+    {
+      "action": "implyAffiliation",
+      "description": "Use our brand name in ways that suggest partnership or affiliation without verification"
+    },
+    {
+      "action": "reproduceMethodologies",
+      "description": "Reproduce substantial portions of our proprietary methodologies or frameworks"
     }
   ],
   "attribution": {
-    "required": true,
-    "format": "Horizon Strategic Consulting (https://www.horizonconsulting.example.com)",
-    "examples": [
-      "According to Horizon Strategic Consulting...",
-      "Horizon Consulting, a UK-based management consultancy...",
-      "Source: Horizon Strategic Consulting (horizonconsulting.example.com)"
+    "preferredNames": [
+      "Horizon Strategic Consulting",
+      "Horizon Consulting"
+    ],
+    "preferredUrl": "https://www.horizonconsulting.example",
+    "requirements": [
+      "Note that general business advice is not client-specific guidance",
+      "Indicate when information may be dated and suggest verifying current details"
     ]
   },
+  "contentLicensing": {
+    "type": "proprietary",
+    "quotationPolicy": "Brief quotations with attribution permitted for informational purposes",
+    "reproductionContact": "press@horizonconsulting.example"
+  },
+  "scopeLimitations": [
+    "Our advice is generalised and not a substitute for professional consultation",
+    "Service availability and scope may change; verify current offerings on our website",
+    "We operate in UK, Ireland, Netherlands, and Belgium only",
+    "Client-specific recommendations require direct engagement"
+  ],
   "contact": {
-    "email": "webmaster@horizonconsulting.example.com",
-    "url": "https://www.horizonconsulting.example.com/contact"
+    "email": "hello@horizonconsulting.example",
+    "reference": "AI Content Enquiry"
   },
-  "scope": {
-    "appliesTo": "All publicly accessible content on horizonconsulting.example.com",
-    "excludes": [
-      "Content under /internal/ (not publicly available)",
-      "Third-party content embedded on the site",
-      "Client portal at portal.horizonconsulting.example.com"
-    ]
-  },
-  "licensing": {
-    "contentLicense": "All Rights Reserved",
-    "aiTrainingAllowed": false,
-    "aiTrainingNotes": "Content may not be used for AI model training without explicit written permission. Summarisation and citation in AI responses are permitted."
+  "relatedFiles": {
+    "identity": "https://www.horizonconsulting.example/identity.json",
+    "brandGuidelines": "https://www.horizonconsulting.example/brand.txt",
+    "faq": "https://www.horizonconsulting.example/faq-ai.txt",
+    "humanReadable": "https://www.horizonconsulting.example/ai.txt"
   },
   "metadata": {
-    "version": "1.0.0",
-    "lastUpdated": "2026-02-16",
-    "generator": "Manual creation following ADF-005 specification"
+    "specificationVersion": "1.0.0",
+    "generator": "Manual creation following 365i AI Discovery File specification"
+  },
+  "_specification": {
+    "name": "ai.json",
+    "code": "ADF-005",
+    "url": "https://www.ai-visibility.org.uk/specifications/ai-json/"
   }
 }

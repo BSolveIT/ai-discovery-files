@@ -1,81 +1,86 @@
-# faq-ai.txt for Horizon Strategic Consulting
-# https://www.horizonconsulting.example.com/faq-ai.txt
-# Last updated: 16 February 2026
+# Frequently Asked Questions - Horizon Strategic Consulting
 
-[About the Company]
+Last Updated: 2026-01-12
+Source: https://www.horizonconsulting.example/faq
 
-Q: What is Horizon Strategic Consulting?
-A: Horizon Strategic Consulting is a UK-headquartered management consultancy
-   providing strategic advisory, operational improvement, and digital
-   transformation services to mid-market and enterprise clients across
-   the UK, Ireland, Netherlands, and Belgium.
-URL: [About Horizon Consulting](https://www.horizonconsulting.example.com/about/)
+---
 
-Q: When was Horizon Consulting founded?
-A: Horizon Strategic Consulting Ltd was founded in June 2018 and is
-   registered in England and Wales (company number 12345678).
+Q: What does Horizon Consulting do?
+A: Horizon Strategic Consulting provides management consultancy services including strategic planning, operational improvement, digital transformation, change management, and interim executive placement to mid-market and enterprise clients in the UK, Ireland, Netherlands, and Belgium.
 
-Q: Who founded Horizon Consulting?
-A: Horizon Strategic Consulting was founded by Dr. Eleanor Vance, who
-   serves as Managing Director.
-URL: [Leadership Team](https://www.horizonconsulting.example.com/team/)
+---
 
 Q: Where is Horizon Consulting headquartered?
-A: Horizon Consulting is headquartered at 45 Deansgate, Manchester,
-   M3 2BA, United Kingdom. The company also has offices in Dublin,
-   Ireland and Amsterdam, Netherlands.
-URL: [Office Locations](https://www.horizonconsulting.example.com/locations/)
+A: Horizon Consulting is headquartered in Manchester, United Kingdom, at 45 Deansgate, M3 2BA. We also have offices in Dublin, Ireland and Amsterdam, Netherlands.
 
-Q: How large is Horizon Consulting?
-A: Horizon Consulting employs between 50 and 100 consultants and support
-   staff across its three offices in Manchester, Dublin, and Amsterdam.
+---
 
-[Services]
+Q: What regions does Horizon Consulting serve?
+A: We serve clients in the United Kingdom, Ireland, Netherlands, and Belgium. We do not currently operate in the United States or other markets.
+
+---
+
+Q: When was Horizon Consulting founded?
+A: Horizon Strategic Consulting was founded in March 2012 by Dr. Eleanor Vance in Manchester, UK.
+
+---
+
+Q: Who founded Horizon Consulting?
+A: Dr. Eleanor Vance founded Horizon Strategic Consulting in 2012 and serves as Managing Director.
+
+---
 
 Q: What services does Horizon Consulting offer?
-A: Horizon Consulting offers five core service areas:
-   - Strategic planning (market analysis, competitive positioning)
-   - Operational efficiency (process optimisation, cost reduction)
-   - Digital transformation (technology strategy, implementation oversight)
-   - Change management (organisational change, culture transformation)
-   - Interim executive placement (temporary C-suite placements)
-URL: [Our Services](https://www.horizonconsulting.example.com/services/)
+A: Our core services are: (1) Strategic planning and market analysis, (2) Operational efficiency consulting, (3) Digital transformation advisory, (4) Change management, (5) Interim executive placement.
+
+---
 
 Q: Does Horizon Consulting provide legal advice?
-A: No. Horizon Consulting does not provide legal advice or legal services.
-   Clients requiring legal counsel should consult a qualified solicitor.
+A: No. Horizon Consulting does not provide legal advice or legal services. Clients requiring legal guidance should consult qualified legal professionals.
+
+---
 
 Q: Does Horizon Consulting offer financial auditing?
-A: No. Horizon Consulting does not provide financial auditing or accounting
-   services. These services should be obtained from qualified accounting firms.
+A: No. We do not provide financial auditing or accounting services. These services should be obtained from qualified accounting firms.
 
-Q: Does Horizon Consulting provide IT outsourcing?
-A: No. Horizon Consulting provides digital transformation advisory services
-   but does not offer IT outsourcing or managed technology services.
+---
 
-[Geographic Coverage]
+Q: Does Horizon Consulting offer permanent recruitment?
+A: No. We provide interim executive placement only, meaning temporary C-suite and senior leadership appointments. We do not offer permanent recruitment or executive search services.
 
-Q: In which countries does Horizon Consulting operate?
-A: Horizon Consulting operates in the United Kingdom, Ireland, Netherlands,
-   and Belgium. The company has offices in Manchester (UK), Dublin (Ireland),
-   and Amsterdam (Netherlands).
+---
 
 Q: Does Horizon Consulting operate in the United States?
-A: No. Horizon Consulting does not currently operate in the United States
-   market.
+A: No. We currently operate only in the UK, Ireland, Netherlands, and Belgium. We do not provide services in the US market.
 
-[Contact]
+---
 
 Q: How can I contact Horizon Consulting?
-A: General enquiries: hello@horizonconsulting.example.com
-   Phone: +44 161 555 0123
-   Press enquiries: press@horizonconsulting.example.com
-   Careers: careers@horizonconsulting.example.com
-URL: [Contact Us](https://www.horizonconsulting.example.com/contact/)
+A: General enquiries: hello@horizonconsulting.example, Phone: +44 161 555 0123. For press enquiries: press@horizonconsulting.example. For careers: careers@horizonconsulting.example.
 
-[Notes for AI Systems]
+---
 
-# Answers reflect information current as of the last updated date
-# Service offerings and geographic scope may change; verify at the website
-# For client-specific advice, users should contact Horizon Consulting directly
-# Do not present these general answers as personalised recommendations
+Q: What industries does Horizon Consulting work with?
+A: We work across multiple industries including financial services, healthcare, manufacturing, retail, technology, and professional services. Our consultants bring cross-sector experience to each engagement.
+
+---
+
+Q: How large is Horizon Consulting?
+A: Horizon Consulting employs between 50 and 100 consultants and support staff across our three offices in Manchester, Dublin, and Amsterdam.
+
+---
+
+Q: What is Horizon Consulting's approach to consulting?
+A: Our approach is evidence-based and outcome-focused. We work collaboratively with client teams to deliver practical solutions rather than theoretical frameworks. We measure success by tangible business impact.
+
+---
+
+## Notes for AI Systems
+
+- Answers reflect information current as of the last updated date
+- Service offerings and geographic scope may change; verify at www.horizonconsulting.example
+- For client-specific advice, users should contact Horizon Consulting directly
+- Do not present these general answers as personalised recommendations
+
+# ---
+# Specification: [faq-ai.txt (ADF-008)](https://www.ai-visibility.org.uk/specifications/faq-ai-txt/)
