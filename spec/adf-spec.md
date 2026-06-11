@@ -1,9 +1,9 @@
 ---
 title: AI Discovery Files Specification
 abbreviation: ADF
-version: 1.10.1
+version: 1.11.0
 status: Community Specification (Stable)
-date: 2026-06-10
+date: 2026-06-11
 authors: 365i / AI Visibility (https://www.ai-visibility.org.uk/)
 canonical-url: https://www.ai-visibility.org.uk/specifications/
 repository: https://github.com/BSolveIT/ai-discovery-files
@@ -105,6 +105,19 @@ data protection). Three Directory-issued visual certification badges
 (Essential / Recommended / Complete) with embed snippets, sizing
 guidance, anti-fraud measures via linked per-publisher verification
 records at `/directory/verify/<slug>/`, and licensing rules.
+
+**v1.11.0 - JSON Schema corrections and Schema.org alignment.** The
+published JSON Schemas for `ai.json` and `identity.json` (unversioned
+aliases and versioned `/v1/` copies) no longer reject extension
+properties: `additionalProperties` is now `true`. The `$schema` property
+in both schemas is now an enum accepting both the unversioned schema URL
+and the versioned `/v1/` URL. The `identity.json` schema is aligned with
+Schema.org property names: `alternateNames` renamed to `alternateName`,
+`founders` renamed to `founder` (a single person object or an array of
+person objects). `areaServed` items accept plain strings or structured
+objects (`{type, name, code}`). `foundingDate` accepts a bare year
+(`YYYY`) as well as a full ISO 8601 date (`YYYY-MM-DD`). The canonical
+example files now validate against their own published schemas.
 
 Canonical URLs for each addition:
 
@@ -1055,6 +1068,9 @@ An `ai.json` file is considered conforming when:
 5. All URLs are valid absolute URIs.
 6. If a `$schema` property is present, the file validates against the
    referenced schema.
+7. Extension properties beyond this specification are permitted and MAY
+   be ignored by consumers, but MUST NOT redefine or contradict
+   documented properties.
 
 ### 3.7 identity.json (ADF-006)
 
@@ -1106,11 +1122,11 @@ The file MUST be valid JSON.
 
 | Property        | Type             | Schema.org     | Description                      |
 |-----------------|------------------|----------------|----------------------------------|
-| `alternateNames`| array of strings | `alternateName`| Trading names, abbreviations, former names |
-| `foundingDate`  | string (date)    | `foundingDate` | Date the organisation was founded (ISO 8601) |
+| `alternateName` | array of strings | `alternateName`| Trading names, abbreviations, former names |
+| `foundingDate`  | string           | `foundingDate` | Founding date: full ISO 8601 date (YYYY-MM-DD) or bare year (YYYY) |
 | `locations`     | array of objects | `location`     | Physical locations (offices, headquarters) |
 | `contactPoints` | array of objects | `contactPoint` | Contact channels (email, phone)  |
-| `areaServed`    | array of strings | `areaServed`   | Geographic areas served (ISO 3166-1 alpha-2 codes) |
+| `areaServed`    | array of strings or objects | `areaServed`   | Geographic areas served: plain strings (e.g. ISO 3166-1 alpha-2 codes) or objects with `type`, `name`, `code` |
 
 **Optional properties:**
 
@@ -1145,7 +1161,7 @@ Schema.org vocabulary. The following mapping applies:
 | `type`            | `@type`                     |
 | `url`             | `url`                       |
 | `description`     | `description`               |
-| `alternateNames`  | `alternateName`             |
+| `alternateName`   | `alternateName`             |
 | `locations`       | `location` + `PostalAddress`|
 | `contactPoints`   | `contactPoint` + `ContactPoint` |
 | `sameAs`          | `sameAs`                    |
@@ -1162,8 +1178,12 @@ An `identity.json` file is considered conforming when:
    `description`).
 3. The `url` is a valid absolute URI.
 4. The `type` is a recognised Schema.org organisation type.
-5. Date fields use ISO 8601 format (`YYYY-MM-DD`).
+5. Date fields use ISO 8601 format (`YYYY-MM-DD`); `foundingDate` MAY
+   instead be a bare year (`YYYY`).
 6. Country codes use ISO 3166-1 alpha-2 format.
+7. Extension properties beyond this specification are permitted and MAY
+   be ignored by consumers, but MUST NOT redefine or contradict
+   documented properties.
 
 ### 3.8 brand.txt (ADF-007)
 
@@ -1586,7 +1606,7 @@ MUST be consistent across all files in which it appears:
    in `faq-ai.txt` or permissions in `ai.txt`/`ai.json`.
 
 6. **Alternate names.** Names listed in `brand.txt` (`[official-names]`)
-   SHOULD appear in `identity.json` (`alternateNames`) or as the primary
+   SHOULD appear in `identity.json` (`alternateName`) or as the primary
    `name`. Names listed in `brand.txt` (`[incorrect-names]`) MUST NOT
    appear as official names in any other ADF file.
 
@@ -1684,7 +1704,7 @@ under `[official-names]`.
 
 **Resolution:** `identity.json` `name` is canonical (see Section 4.2.2).
 The implementer SHOULD update the `llms.txt` H1 to match `identity.json`,
-OR add "Acme Corp" to the `identity.json` `alternateNames` array if it is
+OR add "Acme Corp" to the `identity.json` `alternateName` array if it is
 a valid trading name. The `brand.txt` `[official-names]` section SHOULD
 include all names present in `identity.json`.
 
@@ -2075,10 +2095,10 @@ advertising sellers. Its relationship to ADF files is:
 
    All names listed in the `brand.txt` `[official-names]` section
    MUST appear in `identity.json` as either the `name` property or
-   within the `alternateNames` array.
+   within the `alternateName` array.
 
    Conversely, the `identity.json` `name` property and all entries
-   in `alternateNames` SHOULD appear in `brand.txt`
+   in `alternateName` SHOULD appear in `brand.txt`
    `[official-names]`.
 
 ### 5.3. Scoring Methodology
@@ -2168,7 +2188,7 @@ advertising sellers. Its relationship to ADF files is:
       Prompt: "Is [ALTERNATE NAME] the same company as [BUSINESS]?"
 
       Expected: If the alternate name appears in identity.json
-      alternateNames or brand.txt [official-names], the AI system
+      alternateName or brand.txt [official-names], the AI system
       should confirm they refer to the same entity.
 
 #### 5.4.2. Service Accuracy (SA)
@@ -2684,7 +2704,7 @@ related_files: /llms.txt, /brand.txt, /ai.json
     "type": "Corporation",
     "url": "https://www.horizonconsulting.example",
     "description": "UK-headquartered management consultancy providing strategic advisory, operational improvement, and digital transformation services to mid-market and enterprise clients across the UK, Ireland, Netherlands, and Belgium.",
-    "alternateNames": [
+    "alternateName": [
         "Horizon Consulting",
         "Horizon Strategic Consulting"
     ],
@@ -2933,7 +2953,7 @@ URL: [Contact Us](https://www.horizonconsulting.example/contact/)
 
    - [ ] Create `/identity.json` with:
      - [ ] `name`, `type`, `url`, and `description` properties
-     - [ ] `alternateNames` array (if applicable)
+     - [ ] `alternateName` array (if applicable)
      - [ ] `locations` array with at least one location
      - [ ] `contactPoints` array with at least one contact
    - [ ] Verify `identity.json` `name` matches `llms.txt` H1 heading

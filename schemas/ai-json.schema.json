@@ -15,8 +15,11 @@
     "$schema": {
       "type": "string",
       "format": "uri",
-      "description": "Reference to this JSON Schema",
-      "const": "https://www.ai-visibility.org.uk/specifications/ai-json/ai-json.schema.json"
+      "description": "Reference to this JSON Schema (unversioned alias or versioned /v1/ URL)",
+      "enum": [
+        "https://www.ai-visibility.org.uk/specifications/ai-json/ai-json.schema.json",
+        "https://www.ai-visibility.org.uk/specifications/ai-json/v1/ai-json.schema.json"
+      ]
     },
     "name": {
       "type": "string",
@@ -196,5 +199,5 @@
       }
     }
   },
-  "additionalProperties": false
+  "additionalProperties": true
 }

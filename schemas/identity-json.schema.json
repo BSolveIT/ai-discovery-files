@@ -15,8 +15,11 @@
     "$schema": {
       "type": "string",
       "format": "uri",
-      "description": "Reference to this JSON Schema",
-      "const": "https://www.ai-visibility.org.uk/specifications/identity-json/identity-json.schema.json"
+      "description": "Reference to this JSON Schema (unversioned alias or versioned /v1/ URL)",
+      "enum": [
+        "https://www.ai-visibility.org.uk/specifications/identity-json/identity-json.schema.json",
+        "https://www.ai-visibility.org.uk/specifications/identity-json/v1/identity-json.schema.json"
+      ]
     },
     "name": {
       "type": "string",
@@ -48,7 +51,7 @@
       "minLength": 1,
       "description": "Factual description of the organisation (Schema.org: description)"
     },
-    "alternateNames": {
+    "alternateName": {
       "type": "array",
       "description": "Trading names, abbreviations, and other names used (Schema.org: alternateName)",
       "items": {
@@ -57,8 +60,8 @@
     },
     "foundingDate": {
       "type": "string",
-      "format": "date",
-      "description": "Date the organisation was founded in ISO 8601 format (Schema.org: foundingDate)"
+      "pattern": "^\\d{4}(-\\d{2}-\\d{2})?$",
+      "description": "Date the organisation was founded: a full ISO 8601 date (YYYY-MM-DD) or a year (YYYY) (Schema.org: foundingDate)"
     },
     "location": {
       "$ref": "#/$defs/postalAddress",
@@ -88,9 +91,30 @@
     },
     "areaServed": {
       "type": "array",
-      "description": "Geographic areas where services are offered (Schema.org: areaServed)",
+      "description": "Geographic areas where services are offered, as plain names or structured objects (Schema.org: areaServed)",
       "items": {
-        "type": "string"
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "Area type (e.g., 'Country', 'Region', 'City')"
+              },
+              "name": {
+                "type": "string",
+                "description": "Area name"
+              },
+              "code": {
+                "type": "string",
+                "description": "ISO code where applicable (e.g., ISO 3166-1 alpha-2 for countries)"
+              }
+            }
+          }
+        ]
       }
     },
     "identifier": {
@@ -100,12 +124,19 @@
         "$ref": "#/$defs/identifier"
       }
     },
-    "founders": {
-      "type": "array",
-      "description": "Founding individuals (Schema.org: founder)",
-      "items": {
-        "$ref": "#/$defs/person"
-      }
+    "founder": {
+      "description": "Founding individual or individuals (Schema.org: founder)",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/person"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/person"
+          }
+        }
+      ]
     },
     "employees": {
       "type": "array",
@@ -270,5 +301,5 @@
       }
     }
   },
-  "additionalProperties": false
+  "additionalProperties": true
 }
