@@ -31,6 +31,9 @@ Disallow: /client-documents/
 User-agent: Claude-User
 Allow: /
 
+User-agent: Claude-SearchBot
+Allow: /
+
 # Google AI
 User-agent: Google-Extended
 Allow: /

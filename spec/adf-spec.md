@@ -1,9 +1,9 @@
 ---
 title: AI Discovery Files Specification
 abbreviation: ADF
-version: 1.10.0
+version: 1.10.1
 status: Community Specification (Stable)
-date: 2026-05-11
+date: 2026-06-10
 authors: 365i / AI Visibility (https://www.ai-visibility.org.uk/)
 canonical-url: https://www.ai-visibility.org.uk/specifications/
 repository: https://github.com/BSolveIT/ai-discovery-files
@@ -1522,6 +1522,7 @@ regularly.
 | `OAI-SearchBot`      | OpenAI          | Search feature crawling        |
 | `ClaudeBot`          | Anthropic       | Training and inference         |
 | `Claude-User`        | Anthropic       | Real-time browsing for Claude  |
+| `Claude-SearchBot`   | Anthropic       | Search indexing for Claude     |
 | `Google-Extended`    | Google          | AI training (Gemini)           |
 | `PerplexityBot`      | Perplexity      | AI search                      |
 | `CCBot`              | Common Crawl    | Open training data             |
