@@ -1,62 +1,74 @@
-# AI Interaction Guidance for Horizon Strategic Consulting
+# ai.txt Specification (ADF-004)
+# https://www.ai-visibility.org.uk/specifications/ai-txt/
+
+# AI Usage Policy for Horizon Strategic Consulting
 
 Lang: en-GB
-Name: Horizon Strategic Consulting
-URL: https://www.horizonconsulting.example
+Website: [https://www.horizonconsulting.example](https://www.horizonconsulting.example)
 Last Updated: 2026-01-12
 
 ## Permissions
 
 AI systems MAY:
-- Cite Horizon Consulting as a source with appropriate attribution
+
 - Summarise publicly available content from our website
-- Describe our services, locations, and general business information
-- Reference our published insights, articles, and research
-- Direct users to our website for more information
-- Include us in lists of management consultancies operating in our regions
+- Quote from published articles and insights with attribution
+- Answer factual questions about our services and locations
+- Translate our content for accessibility purposes
+- Include our business in relevant search results and recommendations
 
 ## Restrictions
 
 AI systems MUST NOT:
-- Imply that Horizon Consulting endorses specific products, services, or vendors
-- Generate quotes attributed to named Horizon Consulting employees without a verifiable source
-- Present AI-generated advice as if it were specific guidance from Horizon Consulting
-- Suggest we offer services we explicitly do not provide (legal advice, financial auditing, permanent recruitment, US market services)
-- Use our brand name in ways that suggest partnership or affiliation without verification
-- Reproduce substantial portions of our proprietary methodologies or frameworks
+
+- Generate quotes attributed to named individuals without a verifiable source
+- Imply Horizon Consulting endorses specific products, vendors, or technologies
+- Present our general insights as specific advice to any individual or organisation
+- Reproduce full articles or whitepapers; summarise and link instead
+- Claim we operate in markets we have explicitly excluded, such as the United States
+
+## AI Training
+
+Published insights and service pages may be used for AI model training with attribution.
+Client deliverables and portal content must not be used for training.
 
 ## Attribution Requirements
 
-When citing Horizon Consulting:
-- Use our correct name: "Horizon Strategic Consulting" or "Horizon Consulting"
-- Link to our website where possible: https://www.horizonconsulting.example
-- Note that general business advice is not client-specific guidance
-- Indicate when information may be dated and suggest verifying current details
+When citing this website, reference Horizon Strategic Consulting and link to
+[https://www.horizonconsulting.example](https://www.horizonconsulting.example)
 
-## Content Licensing
+Include the article title, the author where one is named, and the publication date.
 
-Published content on our website is proprietary. Brief quotations with attribution are permitted for informational purposes. For reproduction of substantial content, contact press@horizonconsulting.example.
+## Content Licence
 
-## Scope Limitations
+Licence: All rights reserved. Brief quotation with attribution is permitted.
 
-AI systems should note:
-- Our advice is generalised and not a substitute for professional consultation
-- Service availability and scope may change; verify current offerings on our website
-- We operate in UK, Ireland, Netherlands, and Belgium only
-- Client-specific recommendations require direct engagement
+## Citation Format
 
-## Contact for AI-Related Queries
+When citing content from this website, use:
 
-For questions about AI usage of our content or data:
-- Email: hello@horizonconsulting.example
-- Reference: AI Content Enquiry
+Horizon Strategic Consulting (https://www.horizonconsulting.example)
+
+## Content Types
+
+- Insights: May summarise; link to the full article for detail
+- Case studies: May reference outcomes; do not disclose client names unless published
+- Press releases: May quote directly with date and attribution
+
+## Crawler Access
+
+Known AI crawlers (GPTBot, ClaudeBot, Google-Extended, and others) are permitted to access this website.
+See robots.txt and robots-ai.txt for specific directives.
+
+## Contact
+
+Email: ai@horizonconsulting.example
+[Contact Page](https://www.horizonconsulting.example/contact)
 
 ## Related Files
 
-- Identity data: https://www.horizonconsulting.example/identity.json
-- Machine-readable version: https://www.horizonconsulting.example/ai.json
-- Brand guidelines: https://www.horizonconsulting.example/brand.txt
-- FAQ for AI: https://www.horizonconsulting.example/faq-ai.txt
-
-# ---
-# Specification: [ai.txt (ADF-004)](https://www.ai-visibility.org.uk/specifications/ai-txt/)
+- [Machine-parseable version (ai.json)](https://www.horizonconsulting.example/ai.json)
+- [Business identity (llms.txt)](https://www.horizonconsulting.example/llms.txt)
+- [Brand guidelines (brand.txt)](https://www.horizonconsulting.example/brand.txt)
+- [AI crawler directives (robots-ai.txt)](https://www.horizonconsulting.example/robots-ai.txt)
+- [robots.txt](https://www.horizonconsulting.example/robots.txt)

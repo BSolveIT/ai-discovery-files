@@ -1,4 +1,10 @@
+# robots-ai.txt Specification (ADF-010)
+# https://www.ai-visibility.org.uk/specifications/robots-ai-txt/
+
 # AI Crawler Directives for Horizon Strategic Consulting
+# Website: https://www.horizonconsulting.example
+# Last Updated: 2026-01-12
+#
 # This file provides supplementary AI-specific guidance
 # Standard robots.txt remains the authoritative source for all crawlers
 
@@ -96,12 +102,19 @@ Crawl-delay: 10
 # Sitemap reference
 Sitemap: https://www.horizonconsulting.example/sitemap.xml
 
+# AI Discovery Files published on this host
+Discovery: https://www.horizonconsulting.example/llms.txt
+Discovery: https://www.horizonconsulting.example/llms.html
+Discovery: https://www.horizonconsulting.example/ai.txt
+Discovery: https://www.horizonconsulting.example/ai.json
+Discovery: https://www.horizonconsulting.example/identity.json
+Discovery: https://www.horizonconsulting.example/brand.txt
+Discovery: https://www.horizonconsulting.example/faq-ai.txt
+Discovery: https://www.horizonconsulting.example/developer-ai.txt
+
 # Notes for AI systems:
 # - Public content (insights, services, case studies) is available for AI consumption
 # - Client portal and admin areas are private and must not be accessed
 # - Respect rate limits; aggressive crawling will result in blocks
 # - See /ai.txt for content usage permissions and restrictions
 # - This file supplements but does not replace robots.txt
-
-# ---
-# Specification: [robots-ai.txt (ADF-010)](https://www.ai-visibility.org.uk/specifications/robots-ai-txt/)

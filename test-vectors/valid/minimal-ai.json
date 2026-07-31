@@ -3,9 +3,16 @@
     "name": "Acme Corporation",
     "url": "https://www.acme.example.com",
     "permissions": [
-        "Summarise publicly available content"
+        {
+            "action": "summarise",
+            "description": "Summarise publicly available content"
+        }
     ],
     "restrictions": [
-        "Do not generate fictional quotes"
+        {
+            "action": "fabricateQuotes",
+            "reason": "Generate fictional quotes attributed to our staff",
+            "severity": "must-not"
+        }
     ]
 }

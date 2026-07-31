@@ -182,71 +182,102 @@ function validateLlmsHtml(content, result) {
   }
 }
 
+/**
+ * Section helpers shared by the heading-based text files (ai.txt, brand.txt,
+ * developer-ai.txt).
+ *
+ * H2 Markdown headings are the documented form. Bracketed headers are the
+ * pre-existing form and remain accepted, per the format note in the spec.
+ */
+function isSectionHeader(line) {
+  const t = line.trim();
+  return /^##\s+\S/.test(t) || (t.startsWith('[') && t.endsWith(']'));
+}
+
+function sectionMatches(line, ...aliases) {
+  const t = line.trim().toLowerCase();
+  return aliases.some((a) => {
+    const name = a.toLowerCase();
+    return t === `## ${name}` || t === `[${name}]`;
+  });
+}
+
+function hasSection(lines, ...aliases) {
+  return lines.some((l) => sectionMatches(l, ...aliases));
+}
+
+/** Count list items (`- `) beneath a section. */
+function sectionListCount(lines, ...aliases) {
+  let inSection = false;
+  let count = 0;
+  for (const line of lines) {
+    if (sectionMatches(line, ...aliases)) { inSection = true; continue; }
+    if (inSection && isSectionHeader(line)) { inSection = false; continue; }
+    if (inSection && line.trim().startsWith('- ')) count++;
+  }
+  return count;
+}
+
+/** Count any non-empty, non-comment lines beneath a section. */
+function sectionContentCount(lines, ...aliases) {
+  let inSection = false;
+  let count = 0;
+  for (const line of lines) {
+    if (sectionMatches(line, ...aliases)) { inSection = true; continue; }
+    if (inSection && isSectionHeader(line)) { inSection = false; continue; }
+    const t = line.trim();
+    if (inSection && t.length > 0 && !t.startsWith('#')) count++;
+  }
+  return count;
+}
+
 function validateAiTxt(content, result) {
   const lines = content.split('\n');
 
-  // Check for empty file
   if (content.trim().length === 0) {
     result.error('File is empty');
     return;
   }
 
-  // MUST contain an [identity] section
-  const hasIdentitySection = lines.some(l => {
-    const trimmed = l.trim().toLowerCase();
-    return trimmed === '[identity]';
-  });
+  // Identity: an H1 title plus a Website: line, or a legacy [identity] section.
+  const hasH1 = lines.some((l) => /^#\s+\S/.test(l) && !/^#\s*(https?:)/i.test(l.trim()));
+  const hasWebsite = lines.some((l) => /^(website|url)\s*:/i.test(l.trim()));
+  const hasLegacyIdentity = hasSection(lines, 'identity');
 
-  if (!hasIdentitySection) {
-    result.error('File MUST contain an [identity] section with name and url fields');
-  } else {
-    // Check for name and url within [identity]
+  if (hasLegacyIdentity) {
     let inIdentity = false;
     let hasName = false;
     let hasUrl = false;
     for (const line of lines) {
-      const trimmed = line.trim().toLowerCase();
-      if (trimmed === '[identity]') { inIdentity = true; continue; }
-      if (trimmed.startsWith('[') && trimmed.endsWith(']')) { inIdentity = false; continue; }
+      if (sectionMatches(line, 'identity')) { inIdentity = true; continue; }
+      if (inIdentity && isSectionHeader(line)) { inIdentity = false; continue; }
       if (inIdentity) {
-        if (trimmed.startsWith('name:')) hasName = true;
-        if (trimmed.startsWith('url:')) hasUrl = true;
+        const t = line.trim().toLowerCase();
+        if (t.startsWith('name:')) hasName = true;
+        if (t.startsWith('url:')) hasUrl = true;
       }
     }
     if (!hasName) result.error('[identity] section MUST contain a "name:" field');
     if (!hasUrl) result.error('[identity] section MUST contain a "url:" field');
+  } else {
+    if (!hasH1) {
+      result.error("File MUST begin with an H1 heading naming the file's subject");
+    }
+    if (!hasWebsite) {
+      result.error('File MUST contain a "Website:" line identifying the organisation');
+    }
   }
 
-  // MUST contain a [permissions] section with at least one item
-  const hasPermissions = lines.some(l => l.trim().toLowerCase() === '[permissions]');
-  if (!hasPermissions) {
-    result.error('File MUST contain a [permissions] section');
-  } else {
-    let inPermissions = false;
-    let permCount = 0;
-    for (const line of lines) {
-      const trimmed = line.trim().toLowerCase();
-      if (trimmed === '[permissions]') { inPermissions = true; continue; }
-      if (trimmed.startsWith('[') && trimmed.endsWith(']')) { inPermissions = false; continue; }
-      if (inPermissions && line.trim().startsWith('- ')) permCount++;
-    }
-    if (permCount === 0) result.error('[permissions] section MUST contain at least one item');
+  if (!hasSection(lines, 'permissions')) {
+    result.error('File MUST contain a "## Permissions" section');
+  } else if (sectionListCount(lines, 'permissions') === 0) {
+    result.error('"## Permissions" section MUST contain at least one item');
   }
 
-  // MUST contain a [restrictions] section with at least one item
-  const hasRestrictions = lines.some(l => l.trim().toLowerCase() === '[restrictions]');
-  if (!hasRestrictions) {
-    result.error('File MUST contain a [restrictions] section');
-  } else {
-    let inRestrictions = false;
-    let restCount = 0;
-    for (const line of lines) {
-      const trimmed = line.trim().toLowerCase();
-      if (trimmed === '[restrictions]') { inRestrictions = true; continue; }
-      if (trimmed.startsWith('[') && trimmed.endsWith(']')) { inRestrictions = false; continue; }
-      if (inRestrictions && line.trim().startsWith('- ')) restCount++;
-    }
-    if (restCount === 0) result.error('[restrictions] section MUST contain at least one item');
+  if (!hasSection(lines, 'restrictions')) {
+    result.error('File MUST contain a "## Restrictions" section');
+  } else if (sectionListCount(lines, 'restrictions') === 0) {
+    result.error('"## Restrictions" section MUST contain at least one item');
   }
 }
 
@@ -258,43 +289,18 @@ function validateBrandTxt(content, result) {
     return;
   }
 
-  // Helper: count non-empty, non-comment lines within a [section]
-  function sectionContentCount(sectionName) {
-    let inSection = false;
-    let count = 0;
-    for (const line of lines) {
-      const trimmed = line.trim().toLowerCase();
-      if (trimmed === `[${sectionName}]`) { inSection = true; continue; }
-      if (trimmed.startsWith('[') && trimmed.endsWith(']')) { inSection = false; continue; }
-      if (inSection && line.trim().length > 0 && !line.trim().startsWith('#')) {
-        count++;
-      }
+  const required = [
+    { label: '## Official Name', aliases: ['official name', 'official names'], empty: 'at least one name' },
+    { label: '## Do Not Use', aliases: ['do not use', 'incorrect-names', 'incorrect names'], empty: 'at least one entry' },
+    { label: '## Naming Rules', aliases: ['naming rules', 'naming-rules', 'name usage rules'], empty: 'at least one rule' },
+  ];
+
+  for (const section of required) {
+    if (!hasSection(lines, ...section.aliases)) {
+      result.error(`File MUST contain a "${section.label}" section`);
+    } else if (sectionContentCount(lines, ...section.aliases) === 0) {
+      result.error(`"${section.label}" section MUST contain ${section.empty}`);
     }
-    return count;
-  }
-
-  // MUST contain [official-names] with at least one entry
-  const hasOfficialNames = lines.some(l => l.trim().toLowerCase() === '[official-names]');
-  if (!hasOfficialNames) {
-    result.error('File MUST contain an [official-names] section');
-  } else if (sectionContentCount('official-names') === 0) {
-    result.error('[official-names] section MUST contain at least one name');
-  }
-
-  // MUST contain [incorrect-names] with at least one entry
-  const hasIncorrectNames = lines.some(l => l.trim().toLowerCase() === '[incorrect-names]');
-  if (!hasIncorrectNames) {
-    result.error('File MUST contain an [incorrect-names] section');
-  } else if (sectionContentCount('incorrect-names') === 0) {
-    result.error('[incorrect-names] section MUST contain at least one entry');
-  }
-
-  // MUST contain [naming-rules] with at least one rule
-  const hasNamingRules = lines.some(l => l.trim().toLowerCase() === '[naming-rules]');
-  if (!hasNamingRules) {
-    result.error('File MUST contain a [naming-rules] section');
-  } else if (sectionContentCount('naming-rules') === 0) {
-    result.error('[naming-rules] section MUST contain at least one rule');
   }
 }
 

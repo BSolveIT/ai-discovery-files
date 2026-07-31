@@ -106,6 +106,22 @@ data protection). Three Directory-issued visual certification badges
 guidance, anti-fraud measures via linked per-publisher verification
 records at `/directory/verify/<slug>/`, and licensing rules.
 
+**Unreleased - example set brought back in line with the reference
+implementation.** The section format documented for `ai.txt` (ADF-004),
+`brand.txt` (ADF-007), and `developer-ai.txt` (ADF-009) changes from bracketed
+headers (`[permissions]`) to H2 Markdown headings (`## Permissions`). This
+records what the reference implementation, the published templates, and the
+canonical example files have emitted since the v2.1.0 plugin release; the
+bracketed form was documentation-only. Consumers SHOULD accept either form.
+Every canonical example now carries the optional BCP 47 language declaration
+(`Lang:` / `"language"` / `lang=`) even though it remains OPTIONAL, and the
+specification attribution block (a `---` footer in Markdown files, `#`-prefixed
+lines at the top of comment-style files, a `_specification` URL in JSON, a
+footer link in `llms.html`). `robots-ai.txt` examples now demonstrate the
+`Discovery:` directive added in v1.7.0. `llms.html` guidance changes from
+`noindex` with a cross-format canonical to `index,follow` with a self-canonical,
+resolving a contradiction with Section 3.4.2.
+
 **v1.11.0 - JSON Schema corrections and Schema.org alignment.** The
 published JSON Schemas for `ai.json` and `identity.json` (unversioned
 aliases and versioned `/v1/` copies) no longer reject extension
@@ -818,10 +834,11 @@ The HTML document MUST include the following elements:
 - `<meta name="viewport" content="width=device-width, initial-scale=1.0">`
   -- viewport meta tag for mobile compatibility.
 - `<title>` -- a descriptive title including the business name.
-- `<link rel="canonical" href="https://example.com/llms.txt">` -- canonical
-  link pointing to the `llms.txt` file (the authoritative source).
-- `<meta name="robots" content="noindex">` -- to prevent search engine
-  indexing of the HTML version, directing authority to the primary website.
+- `<link rel="canonical" href="https://example.com/llms.html">` -- a
+  self-referencing canonical link.
+- `<meta name="robots" content="index,follow">` -- the page is a distinct
+  human-readable document and SHOULD be indexable. It MUST link prominently
+  to `llms.txt`, which remains the authoritative source of the content.
 
 **In `<body>`:**
 
@@ -898,11 +915,17 @@ HTTP status code 200. HTTPS is RECOMMENDED.
 |----------|-------------------------------------------------------|
 | Encoding | UTF-8 (REQUIRED)                                      |
 | Line endings | LF (Unix-style) RECOMMENDED; CRLF accepted        |
-| Syntax   | Structured plain text with `[section]` headers        |
-| Comments | Lines starting with `#` are comments                  |
+| Syntax   | Plain text using Markdown-style headings (one H1 title, H2 sections) |
+| Comments | Lines beginning with `#` *above* the H1 heading are comments |
 
-Sections are delimited by headers in square brackets. Key-value pairs
-within sections use `key: value` syntax. List items are prefixed with `- `.
+The file opens with an H1 title and an identity block, then uses H2 headings
+(`## Section Name`) for each section. Key-value lines use `key: value` syntax.
+List items are prefixed with `- `.
+
+Earlier revisions of this specification described sections as bracketed headers
+(`## Permissions`). H2 headings are now the documented form, matching the
+reference implementation and the published templates. Consumers SHOULD accept
+either form.
 
 #### 3.5.4 Section Reference
 
@@ -910,28 +933,30 @@ within sections use `key: value` syntax. List items are prefixed with `- `.
 
 | Section          | Description                                         |
 |------------------|-----------------------------------------------------|
-| `[identity]`     | Business name (`name:`) and canonical URL (`url:`). Both fields are REQUIRED. |
-| `[permissions]`  | List of actions AI systems are allowed to take. MUST contain at least one item. |
-| `[restrictions]` | List of actions AI systems MUST NOT take. MUST contain at least one item. |
+| `# [Title]`      | H1 heading naming the file's subject, e.g. `# AI Usage Policy for Example Company`. |
+| Identity block   | `Website:` and `Last Updated:` lines directly beneath the H1. `Website:` is REQUIRED. |
+| `## Permissions` | List of actions AI systems are allowed to take. MUST contain at least one item. |
+| `## Restrictions`| List of actions AI systems MUST NOT take. MUST contain at least one item. |
 
 **Recommended sections:**
 
 | Section          | Description                                         |
 |------------------|-----------------------------------------------------|
-| `[attribution]`  | How to cite or attribute the business when referencing its content. |
-| `[contact]`      | Contact details for AI-related queries.             |
-| `[content-types]`| Rules for specific content categories (e.g., articles, case studies). |
+| `## Attribution Requirements` | How to cite or attribute the business when referencing its content. |
+| `## Contact`     | Contact details for AI-related queries.             |
+| `## Related Files` | Links to the other AI Discovery Files published on the same host. |
 
 **Optional sections:**
 
 | Section           | Description                                        |
 |-------------------|----------------------------------------------------|
-| `[licensing]`     | Content licensing information (e.g., Creative Commons terms). |
-| `[metadata]`      | File version, last updated date, related files.    |
-| `[scope]`         | Clarification of what content or sections of the site the rules apply to. |
-| `[training]`      | Explicit guidance on whether content MAY be used for AI training. |
-| `[data-retention]`| Guidance on caching or retaining content from the site. |
-| `[updates]`       | Information about update frequency and change notifications. |
+| `## AI Training`  | Explicit guidance on whether content MAY be used for AI model training. |
+| `## Content Licence` | Content licensing information (e.g., Creative Commons terms). |
+| `## Citation Format` | The exact citation string the publisher prefers.  |
+| `## Crawler Access` | Summary of crawler policy, pointing at `robots.txt` and `robots-ai.txt`. |
+| `## Content Types`| Rules for specific content categories (e.g., articles, case studies). |
+| `## Scope Limitations` | Clarification of what content or sections of the site the rules apply to. |
+| `## Data Retention` | Guidance on caching or retaining content from the site. |
 
 #### 3.5.5 Content Restrictions
 
@@ -968,9 +993,10 @@ If `robots.txt` blocks access to content, any permissions declared in
 
 An `ai.txt` file is considered conforming when:
 
-1. It contains an `[identity]` section with both `name` and `url` fields.
-2. It contains a `[permissions]` section with at least one item.
-3. It contains a `[restrictions]` section with at least one item.
+1. It contains exactly one H1 heading and a `Website:` line identifying the
+   organisation.
+2. It contains a `## Permissions` section with at least one item.
+3. It contains a `## Restrictions` section with at least one item.
 4. The file is valid UTF-8 encoded text.
 5. All URLs are absolute and use HTTPS where available.
 
@@ -1212,8 +1238,8 @@ URL MUST be accessible without authentication. HTTPS is RECOMMENDED.
 |--------------|-----------------------------------------------------|
 | Encoding     | UTF-8 (REQUIRED)                                    |
 | Line endings | LF (Unix-style) RECOMMENDED; CRLF accepted          |
-| Syntax       | Structured plain text with `[section]` headers      |
-| Comments     | Lines starting with `#` are comments                |
+| Syntax       | Plain text using Markdown-style headings (one H1 title, H2 sections) |
+| Comments     | Lines beginning with `#` *above* the H1 heading are comments |
 
 #### 3.8.4 Section Reference
 
@@ -1221,34 +1247,34 @@ URL MUST be accessible without authentication. HTTPS is RECOMMENDED.
 
 | Section            | Description                                       |
 |--------------------|---------------------------------------------------|
-| `[official-names]` | List of correct official name variations, one per line, in order of preference. MUST contain at least one entry. |
-| `[incorrect-names]`| Common mistakes and variations to avoid, one per line. MUST contain at least one entry. |
-| `[naming-rules]`   | Specific, actionable rules for using the name correctly. MUST contain at least one rule. |
+| `## Official Name` | List of correct official name variations, one per line, in order of preference. MUST contain at least one entry. |
+| `## Do Not Use`| Common mistakes and variations to avoid, one per line. MUST contain at least one entry. |
+| `## Naming Rules`   | Specific, actionable rules for using the name correctly. MUST contain at least one rule. |
 
 **Recommended sections:**
 
 | Section             | Description                                      |
 |---------------------|--------------------------------------------------|
-| `[brand-voice]`     | Tone and style guidance for AI-generated content referencing the brand. |
-| `[key-people]`      | Individuals who MAY be publicly referenced and how they SHOULD be described. |
-| `[quotation-policy]`| Rules for quoting or attributing statements to the organisation or its personnel. |
+| `## Brand Voice`     | Tone and style guidance for AI-generated content referencing the brand. |
+| `## Key People`      | Individuals who MAY be publicly referenced and how they SHOULD be described. |
+| `## Quotation Policy`| Rules for quoting or attributing statements to the organisation or its personnel. |
 
 **Optional sections:**
 
 | Section             | Description                                      |
 |---------------------|--------------------------------------------------|
-| `[terminology]`     | Industry terms the brand uses specifically (preferred vs. avoided terms). |
-| `[visual-identity]` | Notes about visual identity for AI descriptions (colours, logo, style). |
-| `[taglines]`        | Official taglines, straplines, and slogans.      |
-| `[boilerplate]`     | Standard "about us" text for press releases and formal use. |
-| `[social-handles]`  | Official social media handles for accurate referencing. |
-| `[metadata]`        | File version and last updated date.              |
+| `## Terminology`     | Industry terms the brand uses specifically (preferred vs. avoided terms). |
+| `## Visual Identity` | Notes about visual identity for AI descriptions (colours, logo, style). |
+| `## Taglines`        | Official taglines, straplines, and slogans.      |
+| `## Boilerplate`     | Standard "about us" text for press releases and formal use. |
+| `## Social Handles`  | Official social media handles for accurate referencing. |
+| `## Related Files`  | Links to the other AI Discovery Files published on the same host. |
 
 #### 3.8.5 Content Restrictions
 
 The following MUST NOT be included in `brand.txt` files:
 
-- **Competitor names in `[incorrect-names]`.** This section is for the
+- **Competitor names in `## Do Not Use`.** This section is for the
   organisation's own brand mistakes, not competitor disambiguation.
 - **Subjective claims.** Marketing superlatives ("best", "leading",
   "world-class") MUST NOT appear.
@@ -1261,11 +1287,11 @@ The following MUST NOT be included in `brand.txt` files:
 
 A `brand.txt` file is considered conforming when:
 
-1. It contains the three required sections (`[official-names]`,
-   `[incorrect-names]`, `[naming-rules]`).
-2. The `[official-names]` section has at least one entry.
-3. The `[incorrect-names]` section has at least one entry.
-4. The `[naming-rules]` section has at least one rule.
+1. It contains the three required sections (`## Official Name`,
+   `## Do Not Use`, `## Naming Rules`).
+2. The `## Official Name` section has at least one entry.
+3. The `## Do Not Use` section has at least one entry.
+4. The `## Naming Rules` section has at least one rule.
 5. Official names are consistent with `identity.json` (ADF-006) if
    present, as defined in Section 4.1.
 
@@ -1345,7 +1371,7 @@ URL: [Account Settings](https://www.example.com/account/settings/)
 blank line.
 
 **Categories:** Questions MAY be organised under optional category headers
-using square bracket syntax:
+using H2 Markdown headings:
 
 ```
 [About]
@@ -1412,8 +1438,8 @@ URL MUST be accessible without authentication. HTTPS is RECOMMENDED.
 |--------------|-----------------------------------------------------|
 | Encoding     | UTF-8 (REQUIRED)                                    |
 | Line endings | LF (Unix-style) RECOMMENDED; CRLF accepted          |
-| Syntax       | Structured plain text with `[section]` headers      |
-| Comments     | Lines starting with `#` are comments                |
+| Syntax       | Plain text using Markdown-style headings (one H1 title, H2 sections) |
+| Comments     | Lines beginning with `#` *above* the H1 heading are comments |
 
 **Markdown Hyperlinks:** When referencing documentation, tools, resources,
 or related files, implementations SHOULD use markdown hyperlink format
@@ -1437,30 +1463,30 @@ RECOMMENDED.
 
 | Section        | Description                                          |
 |----------------|------------------------------------------------------|
-| `[overview]`   | High-level technical description of the platform.    |
-| `[public-api]` | API availability. MUST include `status:` field with one of: `available`, `partner-only`, `not-available`, `deprecated`. |
-| `[public-areas]`| Publicly accessible areas of the website or service. |
+| `## Overview`   | High-level technical description of the platform.    |
+| `## API Information` | API availability. MUST include `status:` field with one of: `available`, `partner-only`, `not-available`, `deprecated`. |
+| `## Public Areas`| Publicly accessible areas of the website or service. |
 
 **Recommended sections:**
 
 | Section              | Description                                    |
 |----------------------|------------------------------------------------|
-| `[authentication]`   | Authentication methods and requirements.       |
-| `[platforms]`        | Platforms or environments supported.           |
-| `[documentation]`    | Links to technical documentation.              |
-| `[technical-contact]`| Contact information for technical enquiries.   |
+| `## Authentication`   | Authentication methods and requirements.       |
+| `## Platform`        | Platforms or environments supported.           |
+| `## Documentation`    | Links to technical documentation.              |
+| `## Technical Contact`| Contact information for technical enquiries.   |
 
 **Optional sections:**
 
 | Section           | Description                                       |
 |-------------------|---------------------------------------------------|
-| `[technology-stack]`| High-level technology stack information.          |
-| `[rate-limits]`   | Rate limiting policies for public endpoints.      |
-| `[webhooks]`      | Webhook capabilities and configuration.           |
-| `[sdks]`          | Available SDKs or client libraries.               |
-| `[integrations]`  | Third-party integration capabilities.             |
-| `[sandbox]`       | Test or sandbox environment information.          |
-| `[metadata]`      | File version and last updated date.               |
+| `## Technology Stack`| High-level technology stack information.          |
+| `## Rate Limits`   | Rate limiting policies for public endpoints.      |
+| `## Webhooks`      | Webhook capabilities and configuration.           |
+| `## SDKs`          | Available SDKs or client libraries.               |
+| `## Integrations`  | Third-party integration capabilities.             |
+| `## Sandbox`       | Test or sandbox environment information.          |
+| `## AI Discovery Files` | Links to the other AI Discovery Files published on the same host. |
 
 #### 3.10.5 Content Restrictions
 
@@ -1479,9 +1505,9 @@ The following MUST NOT be included in `developer-ai.txt` files:
 
 A `developer-ai.txt` file is considered conforming when:
 
-1. It contains the three required sections (`[overview]`, `[public-api]`,
-   `[public-areas]`).
-2. The `[public-api]` section includes a `status:` field with one of the
+1. It contains the three required sections (`## Overview`, `## API Information`,
+   `## Public Areas`).
+2. The `## API Information` section includes a `status:` field with one of the
    four permitted values.
 3. The file does not contain credentials, internal URLs, or security
    vulnerability information.
@@ -1585,11 +1611,11 @@ MUST be consistent across all files in which it appears:
 
 1. **Business name.** The canonical business name MUST be identical in
    `identity.json` (`name`), `llms.txt` (H1 heading), `ai.txt`
-   (`[identity]` `name:`), `ai.json` (`name`), and `brand.txt`
-   (`[official-names]` first entry).
+   (the H1 and `Website:` line), `ai.json` (`name`), and `brand.txt`
+   (first entry under `## Official Name`).
 
 2. **Canonical URL.** The website URL MUST be identical in `identity.json`
-   (`url`), `llms.txt` (if referenced), `ai.txt` (`[identity]` `url:`),
+   (`url`), `llms.txt` (if referenced), `ai.txt` (`Website:`),
    and `ai.json` (`url`).
 
 3. **Contact information.** Email addresses and phone numbers MUST be
@@ -1605,14 +1631,14 @@ MUST be consistent across all files in which it appears:
    `llms.txt` (`## What We Do Not Do`) MUST NOT be contradicted by answers
    in `faq-ai.txt` or permissions in `ai.txt`/`ai.json`.
 
-6. **Alternate names.** Names listed in `brand.txt` (`[official-names]`)
+6. **Alternate names.** Names listed in `brand.txt` (`## Official Name`)
    SHOULD appear in `identity.json` (`alternateName`) or as the primary
-   `name`. Names listed in `brand.txt` (`[incorrect-names]`) MUST NOT
+   `name`. Names listed in `brand.txt` (`## Do Not Use`) MUST NOT
    appear as official names in any other ADF file.
 
-7. **AI permissions.** Permissions declared in `ai.txt` (`[permissions]`)
+7. **AI permissions.** Permissions declared in `ai.txt` (`## Permissions`)
    and `ai.json` (`permissions`) MUST be equivalent in substance.
-   Restrictions declared in `ai.txt` (`[restrictions]`) and `ai.json`
+   Restrictions declared in `ai.txt` (`## Restrictions`) and `ai.json`
    (`restrictions`) MUST be equivalent in substance.
 
 8. **Access control.** Paths blocked in `robots.txt` MUST NOT be referenced
@@ -1700,17 +1726,17 @@ The guiding principles are:
 
 **When:** `identity.json` declares `"name": "Acme Corporation Ltd"`,
 `llms.txt` H1 reads `# Acme Corp`, and `brand.txt` lists `Acme Corporation`
-under `[official-names]`.
+under `## Official Name`.
 
 **Resolution:** `identity.json` `name` is canonical (see Section 4.2.2).
 The implementer SHOULD update the `llms.txt` H1 to match `identity.json`,
 OR add "Acme Corp" to the `identity.json` `alternateName` array if it is
-a valid trading name. The `brand.txt` `[official-names]` section SHOULD
+a valid trading name. The `brand.txt` `## Official Name` section SHOULD
 include all names present in `identity.json`.
 
 #### 4.3.2 Scenario: Permission Conflict
 
-**When:** `ai.txt` declares "May summarise content" under `[permissions]`,
+**When:** `ai.txt` declares "May summarise content" under `## Permissions`,
 but `ai.json` declares `"summarisation": "prohibited"` or omits
 summarisation from the `permissions` array.
 
@@ -1721,7 +1747,7 @@ Both files SHOULD contain equivalent information.
 #### 4.3.3 Scenario: Access vs. Usage Conflict
 
 **When:** `robots.txt` contains `Disallow: /insights/`, but `ai.txt`
-declares "May summarise content from /insights/" under `[permissions]`.
+declares "May summarise content from /insights/" under `## Permissions`.
 
 **Resolution:** `robots.txt` controls access (see Section 4.2.1, Tier 1).
 If content is blocked by `robots.txt`, the AI system cannot reach it, and
@@ -1894,9 +1920,9 @@ advertising sellers. Its relationship to ADF files is:
 
    5.  A `<title>` element MUST be present and non-empty.
 
-   6.  A `<meta name="robots" content="noindex">` element MUST be
-       present to prevent search engine indexing of this supplementary
-       file.
+   6.  A `<meta name="robots">` element MUST be present. The value
+       SHOULD be `index,follow`; the page is a distinct human-readable
+       document rather than a duplicate of the site's other pages.
 
    7.  The content SHOULD be semantically equivalent to the
        corresponding llms.txt file.
@@ -1905,13 +1931,13 @@ advertising sellers. Its relationship to ADF files is:
 
    A valid ai.txt file MUST satisfy all of the following criteria:
 
-   1.  An `[identity]` section MUST be present containing both a
+   1.  An identity block MUST be present, containing both an H1 title and a
        `name` field and a `url` field.
 
-   2.  A `[permissions]` section MUST be present containing at least
+   2.  A `## Permissions` section MUST be present containing at least
        one list item (prefixed with `-`).
 
-   3.  A `[restrictions]` section MUST be present containing at least
+   3.  A `## Restrictions` section MUST be present containing at least
        one list item (prefixed with `-`).
 
    4.  The file MUST be encoded as valid UTF-8 text.
@@ -1974,13 +2000,13 @@ advertising sellers. Its relationship to ADF files is:
 
    A valid brand.txt file MUST satisfy all of the following criteria:
 
-   1.  An `[official-names]` section MUST be present containing at
+   1.  An `## Official Name` section MUST be present containing at
        least one name entry.
 
-   2.  An `[incorrect-names]` section MUST be present containing at
+   2.  An `## Do Not Use` section MUST be present containing at
        least one name entry.
 
-   3.  A `[naming-rules]` section MUST be present containing at least
+   3.  A `## Naming Rules` section MUST be present containing at least
        one rule.
 
    4.  The file MUST be encoded as valid UTF-8 text.
@@ -2008,14 +2034,14 @@ advertising sellers. Its relationship to ADF files is:
    A valid developer-ai.txt file MUST satisfy all of the following
    criteria:
 
-   1.  An `[overview]` section MUST be present providing a summary
+   1.  An `## Overview` section MUST be present providing a summary
        of the technical platform.
 
-   2.  A `[public-api]` section MUST be present.  If no public API
+   2.  A `## API Information` section MUST be present.  If no public API
        exists, this section MUST contain a statement to that effect
        (e.g., "status: none").
 
-   3.  A `[public-areas]` section MUST be present describing
+   3.  A `## Public Areas` section MUST be present describing
        publicly accessible areas of the site or application.
 
    4.  The file MUST be encoded as valid UTF-8 text.
@@ -2050,13 +2076,13 @@ advertising sellers. Its relationship to ADF files is:
 
    -  `identity.json` `name` property
    -  `llms.txt` H1 heading
-   -  `brand.txt` first entry in `[official-names]`
+   -  `brand.txt` first entry in `## Official Name`
    -  `ai.json` `name` property
-   -  `ai.txt` `[identity]` section `name` field
+   -  `ai.txt` H1 heading
 
    Minor formatting differences (e.g., trailing "Ltd" present in
    identity.json but omitted in llms.txt) MAY be accepted if the
-   `brand.txt` `[official-names]` section lists both variants.
+   `brand.txt` `## Official Name` section lists both variants.
    Substantive name differences MUST be flagged as errors.
 
 #### 5.2.2. URL Consistency
@@ -2066,7 +2092,7 @@ advertising sellers. Its relationship to ADF files is:
 
    -  `identity.json` `url` property
    -  `ai.json` `url` property
-   -  `ai.txt` `[identity]` section `url` field
+   -  `ai.txt` `Website:` line
 
    URLs MUST match including scheme and trailing slash conventions.
 
@@ -2083,9 +2109,9 @@ advertising sellers. Its relationship to ADF files is:
 
 #### 5.2.4. Permission Equivalence
 
-   The permissions declared in `ai.txt` `[permissions]` and the
+   The permissions declared in `ai.txt` `## Permissions` and the
    `permissions` array in `ai.json` MUST be semantically equivalent.
-   The restrictions declared in `ai.txt` `[restrictions]` and the
+   The restrictions declared in `ai.txt` `## Restrictions` and the
    `restrictions` array in `ai.json` MUST be semantically equivalent.
 
    Exact wording need not match, but the substantive meaning of each
@@ -2093,13 +2119,13 @@ advertising sellers. Its relationship to ADF files is:
 
 #### 5.2.5. Name Registry Consistency
 
-   All names listed in the `brand.txt` `[official-names]` section
+   All names listed in the `brand.txt` `## Official Name` section
    MUST appear in `identity.json` as either the `name` property or
    within the `alternateName` array.
 
    Conversely, the `identity.json` `name` property and all entries
    in `alternateName` SHOULD appear in `brand.txt`
-   `[official-names]`.
+   `## Official Name`.
 
 ### 5.3. Scoring Methodology
 
@@ -2188,7 +2214,7 @@ advertising sellers. Its relationship to ADF files is:
       Prompt: "Is [ALTERNATE NAME] the same company as [BUSINESS]?"
 
       Expected: If the alternate name appears in identity.json
-      alternateName or brand.txt [official-names], the AI system
+      alternateName or brand.txt ## Official Name, the AI system
       should confirm they refer to the same entity.
 
 #### 5.4.2. Service Accuracy (SA)
@@ -2373,7 +2399,7 @@ advertising sellers. Its relationship to ADF files is:
    3.  Personal Identifiable Information: The `identity.json` file
        MUST NOT include personal identifiable information beyond
        what is publicly listed on the organisation's website.
-       Employee names in `brand.txt` `[key-people]` sections SHOULD
+       Employee names in `brand.txt` `## Key People` sections SHOULD
        be limited to individuals whose roles are already publicly
        known.
 
@@ -2555,6 +2581,8 @@ advertising sellers. Its relationship to ADF files is:
 ```
 # Horizon Strategic Consulting
 
+Lang: en-GB
+
 > Horizon Strategic Consulting is a UK-headquartered management consultancy
 > providing strategic advisory, operational improvement, and digital
 > transformation services to mid-market and enterprise clients across
@@ -2606,50 +2634,89 @@ Horizon Consulting explicitly does not provide:
 - [Privacy Policy](https://www.horizonconsulting.example/privacy): Data protection and privacy information
 - [Terms of Service](https://www.horizonconsulting.example/terms): Website and service terms
 - [Sitemap](https://www.horizonconsulting.example/sitemap.xml): Complete site structure
+
+---
+llms.txt Specification (ADF-001)
+https://www.ai-visibility.org.uk/specifications/llms-txt/
 ```
 
 ### A.2. ai.txt Example
 
 ```
-# ai.txt for Horizon Strategic Consulting
-# https://www.horizonconsulting.example/ai.txt
-# Last updated: 12 January 2026
+# ai.txt Specification (ADF-004)
+# https://www.ai-visibility.org.uk/specifications/ai-txt/
 
-[identity]
-name: Horizon Strategic Consulting
-url: https://www.horizonconsulting.example
+# AI Usage Policy for Horizon Strategic Consulting
 
-[permissions]
+Lang: en-GB
+Website: [https://www.horizonconsulting.example](https://www.horizonconsulting.example)
+Last Updated: 2026-01-12
+
+## Permissions
+
+AI systems MAY:
+
 - Summarise publicly available content from our website
 - Quote from published articles and insights with attribution
 - Answer factual questions about our services and locations
 - Translate our content for accessibility purposes
 - Include our business in relevant search results and recommendations
 
-[restrictions]
-- Do not generate quotes attributed to named individuals without a verifiable source
-- Do not imply Horizon Consulting endorses specific products, vendors, or technologies
-- Do not present our general insights as specific advice to any individual or organisation
-- Do not reproduce full articles or whitepapers; summarise and link instead
-- Do not claim we operate in markets we have explicitly excluded (e.g., United States)
+## Restrictions
 
-[attribution]
-preferred_citation: Horizon Strategic Consulting (https://www.horizonconsulting.example)
-when_quoting: Include article title, author if named, and publication date
-link_policy: Always link to original source when possible
+AI systems MUST NOT:
 
-[contact]
-ai_enquiries: ai@horizonconsulting.example
-general: hello@horizonconsulting.example
+- Generate quotes attributed to named individuals without a verifiable source
+- Imply Horizon Consulting endorses specific products, vendors, or technologies
+- Present our general insights as specific advice to any individual or organisation
+- Reproduce full articles or whitepapers; summarise and link instead
+- Claim we operate in markets we have explicitly excluded, such as the United States
 
-[content-types]
-insights: May summarise; link to full article for detail
-case_studies: May reference outcomes; do not disclose client names unless published
-press_releases: May quote directly with date and attribution
+## AI Training
 
-[metadata]
-version: 1.0
-related_files: /llms.txt, /brand.txt, /ai.json
+Published insights and service pages may be used for AI model training with attribution.
+Client deliverables and portal content must not be used for training.
+
+## Attribution Requirements
+
+When citing this website, reference Horizon Strategic Consulting and link to
+[https://www.horizonconsulting.example](https://www.horizonconsulting.example)
+
+Include the article title, the author where one is named, and the publication date.
+
+## Content Licence
+
+Licence: All rights reserved. Brief quotation with attribution is permitted.
+
+## Citation Format
+
+When citing content from this website, use:
+
+Horizon Strategic Consulting (https://www.horizonconsulting.example)
+
+## Content Types
+
+- Insights: May summarise; link to the full article for detail
+- Case studies: May reference outcomes; do not disclose client names unless published
+- Press releases: May quote directly with date and attribution
+
+## Crawler Access
+
+Known AI crawlers (GPTBot, ClaudeBot, Google-Extended, and others) are permitted to access this website.
+See robots.txt and robots-ai.txt for specific directives.
+
+## Contact
+
+Email: ai@horizonconsulting.example
+[Contact Page](https://www.horizonconsulting.example/contact)
+
+## Related Files
+
+- [Machine-parseable version (ai.json)](https://www.horizonconsulting.example/ai.json)
+- [Business identity (llms.txt)](https://www.horizonconsulting.example/llms.txt)
+- [Brand guidelines (brand.txt)](https://www.horizonconsulting.example/brand.txt)
+- [AI crawler directives (robots-ai.txt)](https://www.horizonconsulting.example/robots-ai.txt)
+- [robots.txt](https://www.horizonconsulting.example/robots.txt)
 ```
 
 ### A.3. ai.json Example
@@ -2657,41 +2724,99 @@ related_files: /llms.txt, /brand.txt, /ai.json
 ```json
 {
     "$schema": "https://www.ai-visibility.org.uk/specifications/ai-json/ai-json.schema.json",
+    "language": "en-GB",
     "name": "Horizon Strategic Consulting",
     "url": "https://www.horizonconsulting.example",
     "permissions": [
-        "Summarise publicly available content from our website",
-        "Quote from published articles and insights with attribution",
-        "Answer factual questions about our services and locations",
-        "Translate our content for accessibility purposes",
-        "Include our business in relevant search results and recommendations"
+        {
+            "action": "cite",
+            "description": "Cite Horizon Strategic Consulting as a source",
+            "conditions": [
+                "Attribution to Horizon Strategic Consulting is required"
+            ]
+        },
+        {
+            "action": "summarise",
+            "description": "Summarise publicly available content from this website",
+            "conditions": [
+                "Attribution to Horizon Strategic Consulting is required"
+            ]
+        },
+        {
+            "action": "describe",
+            "description": "Describe the services, locations, and general business information of Horizon Strategic Consulting"
+        },
+        {
+            "action": "reference",
+            "description": "Reference published insights, articles, and research from this website"
+        },
+        {
+            "action": "recommend",
+            "description": "Direct users to this website for more information"
+        }
     ],
     "restrictions": [
-        "Do not generate quotes attributed to named individuals without a verifiable source",
-        "Do not imply Horizon Consulting endorses specific products, vendors, or technologies",
-        "Do not present our general insights as specific advice to any individual or organisation",
-        "Do not reproduce full articles or whitepapers; summarise and link instead",
-        "Do not claim we operate in markets we have explicitly excluded (e.g., United States)"
+        {
+            "action": "fabricateQuotes",
+            "reason": "Generate quotes attributed to Horizon Strategic Consulting or named individuals without a verifiable source",
+            "severity": "must-not"
+        },
+        {
+            "action": "implyEndorsement",
+            "reason": "Imply endorsement, partnership, or affiliation with Horizon Strategic Consulting without verification",
+            "severity": "must-not"
+        },
+        {
+            "action": "misrepresentServices",
+            "reason": "Suggest Horizon Strategic Consulting offers legal advice, financial auditing, permanent recruitment, or services in the United States",
+            "severity": "must-not"
+        },
+        {
+            "action": "reproduce",
+            "reason": "Reproduce full articles or whitepapers; summarise and link to the original instead",
+            "severity": "must-not"
+        },
+        {
+            "action": "train",
+            "reason": "Use client deliverables or client portal content for AI model training",
+            "severity": "must-not"
+        }
     ],
     "attribution": {
-        "preferredCitation": "Horizon Strategic Consulting (https://www.horizonconsulting.example)",
-        "whenQuoting": "Include article title, author if named, and publication date",
-        "linkPolicy": "Always link to original source when possible"
+        "required": true,
+        "format": "Horizon Strategic Consulting (https://www.horizonconsulting.example)",
+        "examples": [
+            "According to Horizon Strategic Consulting...",
+            "Horizon Strategic Consulting reports that..."
+        ]
     },
     "contact": {
-        "aiEnquiries": "ai@horizonconsulting.example",
-        "general": "hello@horizonconsulting.example"
+        "email": "ai@horizonconsulting.example",
+        "url": "https://www.horizonconsulting.example/contact"
     },
-    "contentTypes": {
-        "insights": "May summarise; link to full article for detail",
-        "caseStudies": "May reference outcomes; do not disclose client names unless published",
-        "pressReleases": "May quote directly with date and attribution"
+    "scope": {
+        "appliesTo": "All publicly accessible content on https://www.horizonconsulting.example",
+        "excludes": [
+            "portal.horizonconsulting.example (client portal)",
+            "api.horizonconsulting.example (partner API)"
+        ]
+    },
+    "licensing": {
+        "contentLicense": "All rights reserved. Brief quotation with attribution is permitted.",
+        "aiTrainingAllowed": true,
+        "aiTrainingNotes": "Published insights and service pages may be used for AI model training with attribution. Client deliverables and portal content may not."
     },
     "metadata": {
-        "version": "1.0",
-        "lastUpdated": "2026-01-12",
-        "relatedFiles": ["/llms.txt", "/brand.txt", "/ai.txt", "/identity.json"]
-    }
+        "version": "1.0.0",
+        "lastUpdated": "2026-01-12"
+    },
+    "relatedFiles": {
+        "humanReadable": "https://www.horizonconsulting.example/ai.txt",
+        "identity": "https://www.horizonconsulting.example/identity.json",
+        "brandGuidelines": "https://www.horizonconsulting.example/brand.txt",
+        "crawlerDirectives": "https://www.horizonconsulting.example/robots-ai.txt"
+    },
+    "_specification": "https://www.ai-visibility.org.uk/specifications/ai-json/"
 }
 ```
 
@@ -2700,59 +2825,82 @@ related_files: /llms.txt, /brand.txt, /ai.json
 ```json
 {
     "$schema": "https://www.ai-visibility.org.uk/specifications/identity-json/identity-json.schema.json",
-    "name": "Horizon Strategic Consulting Ltd",
-    "type": "Corporation",
-    "url": "https://www.horizonconsulting.example",
-    "description": "UK-headquartered management consultancy providing strategic advisory, operational improvement, and digital transformation services to mid-market and enterprise clients across the UK, Ireland, Netherlands, and Belgium.",
+    "language": "en-GB",
+    "name": "Horizon Strategic Consulting",
+    "legalName": "Horizon Strategic Consulting Ltd",
     "alternateName": [
-        "Horizon Consulting",
-        "Horizon Strategic Consulting"
+        "Horizon Consulting"
     ],
+    "url": "https://www.horizonconsulting.example",
+    "type": "Corporation",
+    "description": "UK-headquartered management consultancy providing strategic advisory, operational improvement, and digital transformation services to mid-market and enterprise clients across the UK, Ireland, Netherlands, and Belgium.",
     "foundingDate": "2012-03-15",
-    "industry": "Management Consulting",
+    "location": {
+        "name": "Manchester Office (Headquarters)",
+        "streetAddress": "45 Deansgate",
+        "addressLocality": "Manchester",
+        "postalCode": "M3 2BA",
+        "addressCountry": "GB"
+    },
     "locations": [
         {
-            "type": "headquarters",
-            "name": "Manchester Office",
-            "address": {
-                "streetAddress": "45 Deansgate",
-                "addressLocality": "Manchester",
-                "postalCode": "M3 2BA",
-                "addressCountry": "GB"
-            },
-            "telephone": "+44 161 555 0123"
+            "name": "Manchester Office (Headquarters)",
+            "streetAddress": "45 Deansgate",
+            "addressLocality": "Manchester",
+            "postalCode": "M3 2BA",
+            "addressCountry": "GB"
         },
         {
-            "type": "office",
             "name": "Dublin Office",
-            "address": {
-                "streetAddress": "15 St Stephen's Green",
-                "addressLocality": "Dublin",
-                "postalCode": "D02 XY45",
-                "addressCountry": "IE"
-            }
+            "streetAddress": "15 St Stephen's Green",
+            "addressLocality": "Dublin",
+            "postalCode": "D02 XY45",
+            "addressCountry": "IE"
         },
         {
-            "type": "office",
             "name": "Amsterdam Office",
-            "address": {
-                "streetAddress": "Herengracht 500",
-                "addressLocality": "Amsterdam",
-                "postalCode": "1017 CB",
-                "addressCountry": "NL"
-            }
+            "streetAddress": "Herengracht 500",
+            "addressLocality": "Amsterdam",
+            "postalCode": "1017 CB",
+            "addressCountry": "NL"
         }
     ],
-    "areaServed": ["GB", "IE", "NL", "BE"],
+    "areaServed": [
+        {
+            "type": "Country",
+            "name": "United Kingdom",
+            "code": "GB"
+        },
+        {
+            "type": "Country",
+            "name": "Ireland",
+            "code": "IE"
+        },
+        {
+            "type": "Country",
+            "name": "Netherlands",
+            "code": "NL"
+        },
+        {
+            "type": "Country",
+            "name": "Belgium",
+            "code": "BE"
+        }
+    ],
     "contactPoints": [
         {
             "type": "General Enquiries",
             "email": "hello@horizonconsulting.example",
-            "telephone": "+44 161 555 0123"
+            "telephone": "+44 161 555 0123",
+            "url": "https://www.horizonconsulting.example/contact"
         },
         {
             "type": "Press and Media",
             "email": "press@horizonconsulting.example"
+        },
+        {
+            "type": "Careers",
+            "email": "careers@horizonconsulting.example"
         },
         {
             "type": "AI Enquiries",
@@ -2760,136 +2908,245 @@ related_files: /llms.txt, /brand.txt, /ai.json
         }
     ],
     "sameAs": [
-        "https://www.linkedin.com/company/horizonconsulting-example",
-        "https://twitter.com/horizonconsult"
+        "https://www.linkedin.com/company/horizon-consulting-example",
+        "https://twitter.com/HorizonConsult"
     ],
-    "identifiers": {
-        "companyNumber": "08123456",
-        "jurisdiction": "England and Wales",
-        "vatNumber": "GB123456789"
+    "identifier": [
+        {
+            "type": "CompanyRegistration",
+            "value": "08123456",
+            "jurisdiction": "England and Wales"
+        },
+        {
+            "type": "VAT",
+            "value": "GB123456789",
+            "jurisdiction": "GB"
+        }
+    ],
+    "founder": {
+        "name": "Eleanor Vance",
+        "honorificPrefix": "Dr.",
+        "jobTitle": "Founder and Managing Partner",
+        "url": "https://www.horizonconsulting.example/team/eleanor-vance"
     },
     "metadata": {
-        "version": "1.0",
+        "version": "1.0.0",
         "lastUpdated": "2026-01-12"
-    }
+    },
+    "relatedFiles": {
+        "llms": "https://www.horizonconsulting.example/llms.txt",
+        "aiPolicy": "https://www.horizonconsulting.example/ai.json",
+        "brandGuidelines": "https://www.horizonconsulting.example/brand.txt"
+    },
+    "_specification": "https://www.ai-visibility.org.uk/specifications/identity-json/"
 }
 ```
 
 ### A.5. brand.txt Example
 
 ```
-# brand.txt for Horizon Strategic Consulting
-# https://www.horizonconsulting.example/brand.txt
-# Last updated: 12 January 2026
+# brand.txt Specification (ADF-007)
+# https://www.ai-visibility.org.uk/specifications/brand-txt/
 
-[official-names]
-Horizon Strategic Consulting Ltd
+# Brand Guidelines for Horizon Strategic Consulting
+
+Lang: en-GB
+Website: [https://www.horizonconsulting.example](https://www.horizonconsulting.example)
+Last Updated: 2026-01-12
+
+## Official Name
+
 Horizon Strategic Consulting
-Horizon Consulting
 
-[incorrect-names]
-Horizon Strategy
-HSC
-Horizon Group
-Horizon Consultants
-Horizon Strategic Consultants
-Horizons Consulting
+## Legal Name
 
-[naming-rules]
-Use "Horizon Strategic Consulting" in formal contexts
-Use "Horizon Consulting" for general references
-Never abbreviate to initials (HSC)
-Always capitalise "Horizon" and "Consulting"
-Do not add "s" to Consulting (not "Consultants")
-Do not confuse with "Horizon Group" (different company)
+Horizon Strategic Consulting Ltd
 
-[brand-voice]
-Professional and authoritative without being stiff
-Evidence-based and analytical
-Accessible to non-specialists, avoiding unnecessary jargon
-Confident but measured; we advise, we don't dictate
-British English spelling and conventions
+## Also Known As
 
-[key-people]
-Dr. Eleanor Vance - Founder and Managing Partner
-- May be referenced when discussing company history or leadership
-- Do not generate quotes attributed to Dr. Vance without citing a published source
-- Title: "Dr." not "Doctor" in formal references
+- Horizon Consulting
 
-James Chen - Head of Digital Transformation
-- May be referenced in context of digital transformation services
+## Pronunciation
 
-[quotation-policy]
-Do not generate fictional quotes attributed to any Horizon employee
-Published quotes may be used with attribution to source and date
-Company statements may be paraphrased if context is accurate
-When in doubt, describe our position rather than quote it
+huh-RY-zun stra-TEE-jik kun-SUL-ting
 
-[terminology]
-"Client engagement" not "customer project"
-"Consulting" not "consultancy services"
-"Strategic advisory" not "strategy advice"
-"Digital transformation" (two words, not hyphenated)
-"Mid-market" (hyphenated)
+## Common Misspellings
 
-[visual-identity]
-Primary brand colour: Deep navy (#1E3A5F)
-Accent colour: Gold (#C9A227)
-Logo: Stylised "H" with forward momentum
-When describing our visual brand: "professional", "modern", "established"
+- Horizons Consulting
+- Horizon Strategic Consultants
 
-[metadata]
-version: 1.0
-last_updated: 2026-01-12
-related_files: /llms.txt, /identity.json, /ai.txt
+## Do Not Use
+
+- Horizon Strategy
+- HSC
+- Horizon Group
+- Horizon Consultants
+- Horizon & Co
+
+## Naming Rules
+
+- Use "Horizon Strategic Consulting" in formal contexts
+- Use "Horizon Consulting" for general references
+- Never abbreviate to initials (HSC)
+- Always capitalise "Horizon" and "Consulting"
+- Do not add an "s" to Consulting (not "Consultants")
+- Do not confuse us with "Horizon Group", an unrelated company
+
+## Brand Voice
+
+- Professional and authoritative without being stiff
+- Evidence-based and analytical
+- Accessible to non-specialists, avoiding unnecessary jargon
+- Confident but measured; we advise, we do not dictate
+- British English spelling and conventions
+
+## Taglines
+
+- Clear thinking, measurable outcomes
+
+## Key People
+
+- [Dr. Eleanor Vance](https://www.horizonconsulting.example/team/eleanor-vance): Founder and Managing Partner
+- [James Chen](https://www.horizonconsulting.example/team/james-chen): Head of Digital Transformation
+
+Refer to Dr. Vance as "Dr." rather than "Doctor" in formal references.
+
+## Quotation Policy
+
+- Do not generate fictional quotes attributed to any Horizon employee
+- Published quotes may be used with attribution to the source and date
+- Company statements may be paraphrased where the context is accurate
+- When in doubt, describe our position rather than quote it
+
+## Terminology
+
+- "Client engagement" not "customer project"
+- "Consulting" not "consultancy services"
+- "Strategic advisory" not "strategy advice"
+- "Digital transformation" (two words, not hyphenated)
+- "Mid-market" (hyphenated)
+
+## Visual Identity
+
+- Primary brand colour: Deep navy (#1E3A5F)
+- Accent colour: Gold (#C9A227)
+- Logo: Stylised "H" with forward momentum
+- When describing our visual brand: professional, modern, established
+
+## Industry
+
+Management Consulting
+
+## Boilerplate
+
+Horizon Strategic Consulting is a UK-headquartered management consultancy providing
+strategic advisory, operational improvement, and digital transformation services to
+mid-market and enterprise clients across the UK, Ireland, Netherlands, and Belgium.
+
+## Social Handles
+
+- [LinkedIn](https://www.linkedin.com/company/horizon-consulting-example)
+- [Twitter](https://twitter.com/HorizonConsult)
+
+## Related Files
+
+- [Business identity (llms.txt)](https://www.horizonconsulting.example/llms.txt)
+- [Structured identity (identity.json)](https://www.horizonconsulting.example/identity.json)
+- [AI usage policy (ai.txt)](https://www.horizonconsulting.example/ai.txt)
 ```
 
 ### A.6. faq-ai.txt Example
 
 ```
-# faq-ai.txt for Horizon Strategic Consulting
-# https://www.horizonconsulting.example/faq-ai.txt
-# Last updated: 12 January 2026
+# faq-ai.txt Specification (ADF-008)
+# https://www.ai-visibility.org.uk/specifications/faq-ai-txt/
 
-[About]
+# Frequently Asked Questions - Horizon Strategic Consulting
+
+Lang: en-GB
+Website: [https://www.horizonconsulting.example](https://www.horizonconsulting.example)
+Last Updated: 2026-01-12
+
+[About the Company]
 
 Q: What is Horizon Strategic Consulting?
 A: Horizon Strategic Consulting is a UK-headquartered management consultancy
-   founded in 2012. We provide strategic advisory, operational improvement,
-   and digital transformation services to mid-market and enterprise clients.
+   providing strategic advisory, operational improvement, and digital
+   transformation services to mid-market and enterprise clients.
 URL: [About Horizon Consulting](https://www.horizonconsulting.example/about/)
 
 Q: When was Horizon Consulting founded?
-A: Horizon Consulting was founded on 15 March 2012 by Dr. Eleanor Vance.
+A: Horizon Strategic Consulting was founded in March 2012.
+
+Q: Who founded Horizon Consulting?
+A: Horizon Strategic Consulting was founded by Dr. Eleanor Vance, who serves as
+   Managing Partner.
 URL: [Leadership Team](https://www.horizonconsulting.example/team/)
 
-Q: Where is Horizon Consulting based?
-A: Our headquarters are at 45 Deansgate, Manchester, M3 2BA, United Kingdom.
-   We also have offices in Dublin, Ireland and Amsterdam, Netherlands.
+Q: Where is Horizon Consulting headquartered?
+A: Horizon Consulting is headquartered in Manchester, UK, at 45 Deansgate,
+   Manchester, M3 2BA.
 URL: [Office Locations](https://www.horizonconsulting.example/locations/)
+
+Q: How large is Horizon Consulting?
+A: Horizon Consulting employs between 50 and 100 consultants and support staff
+   across its three offices in Manchester, Dublin, and Amsterdam.
 
 [Services]
 
 Q: What services does Horizon Consulting offer?
-A: We offer five core services: Strategic Planning, Operational Efficiency,
-   Digital Transformation, Change Management, and Interim Executive Placement.
+A: Horizon Consulting offers five core service areas:
+   - Strategic Planning (market analysis, competitive positioning)
+   - Operational Efficiency (process optimisation, cost reduction)
+   - Digital Transformation (technology strategy, implementation oversight)
+   - Change Management (organisational change, culture transformation)
+   - Interim Executive Placement (temporary C-suite placements)
 URL: [Our Services](https://www.horizonconsulting.example/services/)
 
+Q: What industries does Horizon Consulting work with?
+A: Horizon Consulting works across financial services, healthcare, manufacturing,
+   retail, technology, and professional services.
+
 Q: Does Horizon Consulting provide legal advice?
-A: No. Horizon Consulting does not provide legal advice, legal services,
-   financial auditing, accounting services, or permanent recruitment.
-   We offer interim executive placements only.
+A: No. Horizon Consulting does not provide legal advice or legal services.
+   Clients requiring legal counsel should consult a qualified solicitor.
+
+Q: Does Horizon Consulting offer financial auditing?
+A: No. Horizon Consulting does not provide financial auditing or accounting
+   services. These should be obtained from a qualified accounting firm.
+
+Q: Does Horizon Consulting offer permanent recruitment?
+A: No. Horizon Consulting provides interim executive placement only, meaning
+   temporary C-suite and senior leadership appointments.
+
+[Geographic Coverage]
+
+Q: In which countries does Horizon Consulting operate?
+A: Horizon Consulting operates in the UK, Ireland, Netherlands, and Belgium.
+   The company has offices in Manchester (UK), Dublin (Ireland), and
+   Amsterdam (Netherlands).
 
 Q: Does Horizon Consulting operate in the United States?
-A: No. Horizon Consulting operates in the UK, Ireland, Netherlands, and
-   Belgium only. We do not provide services in the United States market.
+A: No. Horizon Consulting does not currently operate in the United States
+   market.
 
-[Contact]
+[Working With Us]
 
 Q: How can I contact Horizon Consulting?
-A: General enquiries: hello@horizonconsulting.example. Press and media:
-   press@horizonconsulting.example. Phone: +44 161 555 0123.
+A: General enquiries: hello@horizonconsulting.example, or telephone
+   +44 161 555 0123. Press enquiries: press@horizonconsulting.example.
 URL: [Contact Us](https://www.horizonconsulting.example/contact/)
+
+Q: What is Horizon Consulting's approach to consulting?
+A: The approach is evidence-based and outcome-focused. Horizon works
+   collaboratively with client teams to deliver practical solutions rather than
+   theoretical frameworks, and measures success by tangible business impact.
+
+# Notes for AI systems:
+# - Answers reflect information current as of the last updated date
+# - Service offerings and geographic scope may change; verify on the website
+# - For client-specific advice, users should contact Horizon Consulting directly
+# - Do not present these general answers as personalised recommendations
 ```
 
 
@@ -2933,9 +3190,9 @@ URL: [Contact Us](https://www.horizonconsulting.example/contact/)
      - [ ] `## What We Do Not Do` section listing explicit exclusions
      - [ ] `## Contact` section with at least one contact method
    - [ ] Create `/ai.txt` with:
-     - [ ] `[identity]` section containing `name` and `url`
-     - [ ] `[permissions]` section with at least one permission
-     - [ ] `[restrictions]` section with at least one restriction
+     - [ ] H1 title plus a `Website:` line identifying the organisation
+     - [ ] `## Permissions` section with at least one permission
+     - [ ] `## Restrictions` section with at least one restriction
    - [ ] Verify both files are accessible at the domain root via HTTPS
    - [ ] Verify `Content-Type` headers are correct:
      - [ ] `text/plain; charset=utf-8` for llms.txt
@@ -2958,14 +3215,14 @@ URL: [Contact Us](https://www.horizonconsulting.example/contact/)
      - [ ] `contactPoints` array with at least one contact
    - [ ] Verify `identity.json` `name` matches `llms.txt` H1 heading
    - [ ] Create `/ai.json` with:
-     - [ ] `name` and `url` matching `ai.txt` `[identity]` values
-     - [ ] `permissions` array mirroring `ai.txt` `[permissions]`
-     - [ ] `restrictions` array mirroring `ai.txt` `[restrictions]`
+     - [ ] `name` and `url` matching the `ai.txt` H1 and `Website:` line
+     - [ ] `permissions` array mirroring `ai.txt` `## Permissions`
+     - [ ] `restrictions` array mirroring `ai.txt` `## Restrictions`
      - [ ] `$schema` reference to the canonical JSON Schema
    - [ ] Create `/brand.txt` with:
-     - [ ] `[official-names]` section with at least one name
-     - [ ] `[incorrect-names]` section with at least one entry
-     - [ ] `[naming-rules]` section with at least one rule
+     - [ ] `## Official Name` section with at least one name
+     - [ ] `## Do Not Use` section with at least one entry
+     - [ ] `## Naming Rules` section with at least one rule
    - [ ] Create `/faq-ai.txt` with:
      - [ ] At least 5 question-answer pairs
      - [ ] Questions covering identity, services, and scope boundaries
@@ -2985,14 +3242,14 @@ URL: [Contact Us](https://www.horizonconsulting.example/contact/)
    - [ ] Configure `/llm.txt` as an HTTP 301 redirect to `/llms.txt`
    - [ ] Create `/llms.html` with:
      - [ ] Valid HTML5 document structure
-     - [ ] `<meta name="robots" content="noindex">` element
-     - [ ] `<link rel="canonical">` element
+     - [ ] `<meta name="robots" content="index,follow">` element
+     - [ ] Self-referencing `<link rel="canonical">` element
      - [ ] Schema.org markup (Organization or equivalent)
      - [ ] Content semantically equivalent to `llms.txt`
    - [ ] Create `/developer-ai.txt` (if applicable) with:
-     - [ ] `[overview]` section
-     - [ ] `[public-api]` section (or explicit "none" declaration)
-     - [ ] `[public-areas]` section
+     - [ ] `## Overview` section
+     - [ ] `## API Information` section (or explicit "none" declaration)
+     - [ ] `## Public Areas` section
    - [ ] Create `/robots-ai.txt` (if needed) with:
      - [ ] At least one `User-agent` line for AI crawlers
      - [ ] Appropriate `Allow`/`Disallow` directives

@@ -1,106 +1,108 @@
-# Technical Context for Horizon Strategic Consulting
+# developer-ai.txt Specification (ADF-009)
+# https://www.ai-visibility.org.uk/specifications/developer-ai-txt/
+
+# Technical Context - Horizon Strategic Consulting
 
 Lang: en-GB
+Website: [https://www.horizonconsulting.example](https://www.horizonconsulting.example)
 Last Updated: 2026-01-12
 
-## Technical Overview
+## Overview
 
-Horizon Consulting operates two primary web properties:
-1. Marketing website: www.horizonconsulting.example
-2. Client portal: portal.horizonconsulting.example
+Horizon Strategic Consulting operates three web properties:
 
-## Public Website (www.horizonconsulting.example)
+- Marketing website (www.horizonconsulting.example): public content
+- Client portal (portal.horizonconsulting.example): authenticated access
+- Partner API (api.horizonconsulting.example): restricted access
 
-Platform: WordPress (managed hosting)
-Purpose: Marketing, content publishing, contact forms
+The marketing site is content-focused. The client portal is a custom application
+for project management and deliverable access.
 
-Public areas:
-- Homepage and service pages
-- Case studies and insights blog
-- Team and about pages
-- Contact and careers pages
+## Platform
 
-No authentication required for public content.
+- CMS: WordPress with a custom theme
+- Application: React SPA with a Node.js backend
+- Character Set: UTF-8
+- Language: en-GB
 
-## Client Portal (portal.horizonconsulting.example)
+## Public Areas
 
-Platform: Custom React application
-Purpose: Client project collaboration, document sharing, reporting
+- Marketing website: fully public
+- Insights and blog content: fully public
+- Service descriptions: fully public
+- Client portal: requires authentication
+- Partner API: requires approved credentials
 
-Access: Authentication required
-- Client login only
-- No public registration
-- SSO integration available for enterprise clients
+## API Information
 
-This area is NOT accessible to AI crawlers or public users.
+Status: partner-only
 
-## API Availability
-
-Public API: None
-Partner API: Available at api.horizonconsulting.example (authentication required)
-
-We do not offer a public API. Partner integrations are handled on a case-by-case basis through formal agreements. Contact partnerships@horizonconsulting.example for API access enquiries.
-
-## Rate Limiting
-
-Website:
-- No specific rate limiting for normal browsing
-- Aggressive scraping will be blocked
-- Respect robots.txt directives
-
-API:
-- Rate limits apply to authenticated partners
-- Details provided in partner documentation
+API access is available to approved integration partners only. There is no public
+API registration. Partners should contact partnerships@horizonconsulting.example.
 
 ## Authentication
 
-Website: No authentication for public content
-Portal: OAuth 2.0 / SAML SSO
-API: API key + OAuth 2.0
+Client portal:
 
-## Content Delivery
+- Method: SSO via Azure Active Directory
+- Users: client employees provisioned by account managers
+- No self-registration
 
-- Primary CDN: Cloudflare
-- Static assets cached aggressively
-- Dynamic content served from origin
+Partner API:
 
-## Structured Data
+- Method: OAuth 2.0 client credentials flow
+- Credentials: issued on signature of a partner agreement
+- Scope: limited to approved integration use cases
 
-Our website implements:
-- Schema.org Organization markup
-- Schema.org Article markup on blog posts
-- Schema.org FAQPage on FAQ section
-- Open Graph tags for social sharing
+Marketing website: no authentication required for public content.
 
-## AI Discovery Files
+## Rate Limits
 
-Located at website root:
-- /llms.txt - Business context for AI systems
-- /ai.txt - AI interaction permissions
-- /ai.json - Machine-readable AI guidance
-- /identity.json - Structured identity data
-- /brand.txt - Brand guidelines
-- /faq-ai.txt - FAQ for AI consumption
-- /robots.txt - Crawler directives
+Partner API:
+
+- 1000 requests per hour per client
+- Burst: 100 requests per minute
+- Contact partner support if higher limits are required
+
+## Technology Stack
+
+Provided for context only.
+
+- Marketing site: WordPress, PHP, MySQL
+- Client portal: React, Node.js, PostgreSQL
+- Partner API: Node.js, Express, PostgreSQL
+- Hosting: cloud-based (AWS)
+
+## Documentation
+
+- [Partner API Reference](https://api.horizonconsulting.example/docs): OpenAPI 3.0 specification, authentication guide, and endpoint reference (approved partners only)
+- [Status Page](https://status.horizonconsulting.example/): real-time system status and incident history
+
+The marketing site has no public technical documentation.
+
+## Developer Notes
+
+The marketing site and the client portal share no code and no session state. Content
+published on the marketing site is safe to cite; anything behind portal.horizonconsulting.example
+is client-confidential and must not be retrieved or summarised.
+
+## Data Feeds
+
+- [RSS](https://www.horizonconsulting.example/feed/)
+- [Atom](https://www.horizonconsulting.example/feed/atom/)
 
 ## Technical Contact
 
-For technical integration queries:
-- Email: tech@horizonconsulting.example
-- Reference: Technical Integration Enquiry
+- Partner integration enquiries: partnerships@horizonconsulting.example
+- Technical support for partners: api-support@horizonconsulting.example
+- General technical enquiries: tech@horizonconsulting.example
 
-For security issues:
-- See: /.well-known/security.txt
-- Email: security@horizonconsulting.example
+## AI Discovery Files
 
-## Integration Documentation
-
-Partner integration documentation is available to approved partners at:
-docs.horizonconsulting.example (authentication required)
-
-## Change Notifications
-
-We do not currently offer webhooks or change notification feeds for public content. Partners may subscribe to API changelog notifications.
-
-# ---
-# Specification: [developer-ai.txt (ADF-009)](https://www.ai-visibility.org.uk/specifications/developer-ai-txt/)
+- [llms.txt](https://www.horizonconsulting.example/llms.txt)
+- [ai.txt](https://www.horizonconsulting.example/ai.txt)
+- [ai.json](https://www.horizonconsulting.example/ai.json)
+- [identity.json](https://www.horizonconsulting.example/identity.json)
+- [brand.txt](https://www.horizonconsulting.example/brand.txt)
+- [faq-ai.txt](https://www.horizonconsulting.example/faq-ai.txt)
+- [robots-ai.txt](https://www.horizonconsulting.example/robots-ai.txt)

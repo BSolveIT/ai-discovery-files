@@ -1,9 +1,15 @@
-# INVALID: Missing required [identity] section.
-# ai.txt requires an [identity] section with at least "name" and "url" fields.
-# This file only has [permissions] and [restrictions].
+# INVALID: Missing the required identity block.
+# ai.txt requires an H1 title and a "Website:" line identifying the organisation.
+# This file only has the Permissions and Restrictions sections.
 
-[permissions]
+## Permissions
+
+AI systems MAY:
+
 - Summarise publicly available content from our website
 
-[restrictions]
-- Do not generate fictional quotes attributed to our staff
+## Restrictions
+
+AI systems MUST NOT:
+
+- Generate fictional quotes attributed to our staff

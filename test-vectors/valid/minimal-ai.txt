@@ -1,9 +1,16 @@
-[identity]
-name: Acme Corporation
-url: https://www.acme.example.com
+# AI Usage Policy for Acme Corporation
 
-[permissions]
+Website: [https://www.acme.example.com](https://www.acme.example.com)
+Last Updated: 2026-01-12
+
+## Permissions
+
+AI systems MAY:
+
 - Summarise publicly available content from our website
 
-[restrictions]
-- Do not generate fictional quotes attributed to our staff
+## Restrictions
+
+AI systems MUST NOT:
+
+- Generate fictional quotes attributed to our staff

@@ -1,9 +1,17 @@
-[official-names]
+# Brand Guidelines for Acme Corporation
+
+Website: [https://www.acme.example.com](https://www.acme.example.com)
+Last Updated: 2026-01-12
+
+## Official Name
+
 Acme Corporation
 
-[incorrect-names]
-ACME Corp
-Acme Inc
+## Do Not Use
 
-[naming-rules]
-Always use "Acme Corporation" in full; do not abbreviate
+- ACME Corp
+- Acme Inc
+
+## Naming Rules
+
+- Always use "Acme Corporation" in full; do not abbreviate

@@ -2,9 +2,14 @@
 
 Lang: en-GB
 
-> Horizon Strategic Consulting is a UK-headquartered management consultancy providing strategic advisory, operational improvement, and digital transformation services to mid-market and enterprise clients across the UK, Ireland, Netherlands, and Belgium.
+> Horizon Strategic Consulting is a UK-headquartered management consultancy
+> providing strategic advisory, operational improvement, and digital
+> transformation services to mid-market and enterprise clients across
+> the UK, Ireland, Netherlands, and Belgium.
 
-Horizon Consulting (trading name of Horizon Strategic Consulting) was founded in 2012 and operates from offices in Manchester (UK headquarters), Dublin (Ireland), and Amsterdam (Netherlands).
+Horizon Consulting (trading name of Horizon Strategic Consulting) was
+founded in 2012 and operates from offices in Manchester (UK headquarters),
+Dublin (Ireland), and Amsterdam (Netherlands).
 
 ## Services
 
@@ -49,5 +54,6 @@ Horizon Consulting explicitly does not provide:
 - [Terms of Service](https://www.horizonconsulting.example/terms): Website and service terms
 - [Sitemap](https://www.horizonconsulting.example/sitemap.xml): Complete site structure
 
-# ---
-# Specification: [llms.txt (ADF-001)](https://www.ai-visibility.org.uk/specifications/llms-txt/)
+---
+llms.txt Specification (ADF-001)
+https://www.ai-visibility.org.uk/specifications/llms-txt/

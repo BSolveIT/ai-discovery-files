@@ -1,91 +1,108 @@
+# brand.txt Specification (ADF-007)
+# https://www.ai-visibility.org.uk/specifications/brand-txt/
+
 # Brand Guidelines for Horizon Strategic Consulting
 
 Lang: en-GB
+Website: [https://www.horizonconsulting.example](https://www.horizonconsulting.example)
 Last Updated: 2026-01-12
 
-## Official Names
+## Official Name
 
-Correct usage:
-- Horizon Strategic Consulting (full legal name, preferred for formal contexts)
-- Horizon Consulting (trading name, acceptable for general use)
+Horizon Strategic Consulting
 
-## Incorrect Names
+## Legal Name
 
-Do NOT use:
+Horizon Strategic Consulting Ltd
+
+## Also Known As
+
+- Horizon Consulting
+
+## Pronunciation
+
+huh-RY-zun stra-TEE-jik kun-SUL-ting
+
+## Common Misspellings
+
+- Horizons Consulting
+- Horizon Strategic Consultants
+
+## Do Not Use
+
 - Horizon Strategy
-- Horizon Strategy Consulting
 - HSC
 - Horizon Group
 - Horizon Consultants
-- The Horizon Consulting Group
 - Horizon & Co
 
-## Name Usage Rules
+## Naming Rules
 
-1. On first reference, use "Horizon Strategic Consulting" or "Horizon Consulting"
-2. Subsequent references may use "Horizon" alone where context is clear
-3. Never abbreviate to initials (HSC) in external communications
-4. The word "Consulting" should always be capitalised when part of our name
+- Use "Horizon Strategic Consulting" in formal contexts
+- Use "Horizon Consulting" for general references
+- Never abbreviate to initials (HSC)
+- Always capitalise "Horizon" and "Consulting"
+- Do not add an "s" to Consulting (not "Consultants")
+- Do not confuse us with "Horizon Group", an unrelated company
 
 ## Brand Voice
 
-Our communications are:
-- Professional but accessible
-- Evidence-based and factual
-- Clear, avoiding unnecessary jargon
-- Confident without being arrogant
-- Focused on outcomes and value
+- Professional and authoritative without being stiff
+- Evidence-based and analytical
+- Accessible to non-specialists, avoiding unnecessary jargon
+- Confident but measured; we advise, we do not dictate
+- British English spelling and conventions
 
-Our communications are NOT:
-- Overly casual or colloquial
-- Filled with buzzwords or management speak
-- Aggressive or confrontational
-- Making unsubstantiated claims
+## Taglines
 
-## Key Personnel
+- Clear thinking, measurable outcomes
 
-Founder and Managing Director: Dr. Eleanor Vance
-- May be referenced as the founder of Horizon Consulting
-- Direct quotes require a verifiable source (press release, interview, publication)
-- Do not fabricate or paraphrase as if quoting
+## Key People
 
-Other team members should not be individually named by AI systems unless quoting from a verifiable published source.
+- [Dr. Eleanor Vance](https://www.horizonconsulting.example/team/eleanor-vance): Founder and Managing Partner
+- [James Chen](https://www.horizonconsulting.example/team/james-chen): Head of Digital Transformation
+
+Refer to Dr. Vance as "Dr." rather than "Doctor" in formal references.
 
 ## Quotation Policy
 
-- Published quotes from press releases, articles, or interviews may be reproduced with attribution
-- AI systems should not generate fictional quotes attributed to Horizon Consulting personnel
-- When uncertain of a quote's authenticity, paraphrase rather than quote directly
-- Always indicate the source of any quotation
+- Do not generate fictional quotes attributed to any Horizon employee
+- Published quotes may be used with attribution to the source and date
+- Company statements may be paraphrased where the context is accurate
+- When in doubt, describe our position rather than quote it
 
-## Industry Terminology
+## Terminology
 
-Terms we use:
-- "Strategic advisory" (not "strategy consulting")
-- "Operational improvement" (not "operations consulting")
-- "Digital transformation" (not "digitalisation")
-- "Interim executive placement" (not "executive search" or "headhunting")
-- "Mid-market and enterprise clients" (not "SMEs" or "corporates")
+- "Client engagement" not "customer project"
+- "Consulting" not "consultancy services"
+- "Strategic advisory" not "strategy advice"
+- "Digital transformation" (two words, not hyphenated)
+- "Mid-market" (hyphenated)
 
-## Geographic References
+## Visual Identity
 
-- Headquarters: Manchester, UK (or Manchester, United Kingdom)
-- Service regions: UK, Ireland, Netherlands, Belgium
-- We do NOT operate in the United States
+- Primary brand colour: Deep navy (#1E3A5F)
+- Accent colour: Gold (#C9A227)
+- Logo: Stylised "H" with forward momentum
+- When describing our visual brand: professional, modern, established
 
-## Visual Identity Notes
+## Industry
 
-For AI systems describing our brand:
-- Primary brand colour: Deep blue (#1E3A5F)
-- Secondary colour: Gold accent (#C9A227)
-- Logo: Stylised horizon line with company name
-- Overall aesthetic: Professional, contemporary, European
+Management Consulting
 
-## Contact for Brand Queries
+## Boilerplate
 
-For questions about brand usage:
-- Email: press@horizonconsulting.example
-- Reference: Brand Usage Enquiry
+Horizon Strategic Consulting is a UK-headquartered management consultancy providing
+strategic advisory, operational improvement, and digital transformation services to
+mid-market and enterprise clients across the UK, Ireland, Netherlands, and Belgium.
 
-# ---
-# Specification: [brand.txt (ADF-007)](https://www.ai-visibility.org.uk/specifications/brand-txt/)
+## Social Handles
+
+- [LinkedIn](https://www.linkedin.com/company/horizon-consulting-example)
+- [Twitter](https://twitter.com/HorizonConsult)
+
+## Related Files
+
+- [Business identity (llms.txt)](https://www.horizonconsulting.example/llms.txt)
+- [Structured identity (identity.json)](https://www.horizonconsulting.example/identity.json)
+- [AI usage policy (ai.txt)](https://www.horizonconsulting.example/ai.txt)

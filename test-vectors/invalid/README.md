@@ -8,7 +8,7 @@ Each file in this directory contains a specific validation error. Text-based fil
 |------|-------|
 | `missing-h1-llms.txt` | Missing required H1 heading (`# Title`) at start of file |
 | `missing-blockquote-llms.txt` | Missing required blockquote (`> ...`) after H1 heading |
-| `missing-identity-ai.txt` | Missing required `[identity]` section in ai.txt |
+| `missing-identity-ai.txt` | Missing the required identity block (H1 + `Website:`) in ai.txt |
 | `empty-sections-brand.txt` | Required sections are present but contain no content |
 | `orphan-question-faq.txt` | Q:/A: pairs appear outside of any `[Category]` section |
 
