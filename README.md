@@ -225,5 +225,5 @@ AI Visibility is a 365i product. The [AI Visibility Checker](https://www.ai-visi
 
 - Canonical website: https://www.ai-visibility.org.uk/
 - Specification pages: https://www.ai-visibility.org.uk/specifications/
-- AI Visibility Checker: https://www.365i.co.uk/ai-visibility-checker/
+- AI Visibility Checker: https://www.ai-visibility.org.uk/ai-visibility-checker/
 - Repository: https://github.com/BSolveIT/ai-discovery-files
