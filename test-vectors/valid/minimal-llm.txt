@@ -1,0 +1,24 @@
+# Acme Corporation
+
+Lang: en-GB
+
+> Acme Corporation is a UK-based technology company providing cloud
+> infrastructure, DevOps consulting, and managed hosting to enterprise
+> clients across Europe.
+
+Acme Corporation is registered in England and Wales (company number
+98765432) and operates from London, Manchester, and Edinburgh.
+
+## Services
+
+- Cloud infrastructure design and migration
+- DevOps consulting and platform engineering
+- Managed hosting with 24/7 support
+
+## Contact
+
+Email: hello@acme.example
+Website: https://www.acme.example
+
+---
+AI Discovery Files specification: https://www.ai-visibility.org.uk/specifications/llm-txt/

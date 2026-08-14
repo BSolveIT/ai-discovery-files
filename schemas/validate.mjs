@@ -359,22 +359,28 @@ function validateDeveloperAiTxt(content, result) {
     return;
   }
 
-  const lower = content.toLowerCase();
+  // Section 5.1.9 requires three named sections. This previously searched the
+  // whole file for any of "api", "stack", "language" and so on, so any prose
+  // mentioning an API passed while a file missing every required section did
+  // too. hasSection() goes through sectionMatches(), which already accepts
+  // both the H2 and the legacy bracketed form, as v1.12.0 requires consumers
+  // to do.
+  const lines = content.split('\n');
 
-  // SHOULD contain technical information
-  const hasTechnical = lower.includes('api') ||
-                       lower.includes('stack') ||
-                       lower.includes('framework') ||
-                       lower.includes('language') ||
-                       lower.includes('architecture') ||
-                       lower.includes('endpoint') ||
-                       lower.includes('technical') ||
-                       lower.includes('developer');
-
-  if (!hasTechnical) {
-    result.warn('File SHOULD contain technical context (APIs, stack, architecture)');
+  for (const section of ['Overview', 'API Information', 'Public Areas']) {
+    if (!hasSection(lines, section)) {
+      result.error(`A "## ${section}" section MUST be present (Section 5.1.9)`);
+    }
   }
 }
+
+// Directives defined for robots-ai.txt in Section 3.11.3, plus `Discovery:`
+// (added in v1.7.0) and `Sitemap:`. The last two are group-independent and
+// carry absolute URLs rather than paths, so the path rule below skips them.
+const ROBOTS_AI_PATH_DIRECTIVES = new Set(['allow', 'disallow']);
+const ROBOTS_AI_DIRECTIVES = new Set([
+  'user-agent', 'allow', 'disallow', 'crawl-delay', 'discovery', 'sitemap',
+]);
 
 function validateRobotsAiTxt(content, result) {
   if (content.trim().length === 0) {
@@ -382,22 +388,62 @@ function validateRobotsAiTxt(content, result) {
     return;
   }
 
+  // Section 5.1.10 states four MUST criteria. This checked none of them: it
+  // searched the whole file for any of "crawler", "bot", "agent", "allow"
+  // and so on, so a file whose entire contents were the word "robot" passed.
   const lines = content.split('\n');
-  const lower = content.toLowerCase();
+  let seenUserAgent = false;
+  let sawGroupDirectiveBeforeUserAgent = false;
 
-  // SHOULD reference specific AI crawlers or general policy
-  const hasCrawlerRef = lower.includes('crawler') ||
-                        lower.includes('bot') ||
-                        lower.includes('agent') ||
-                        lower.includes('gptbot') ||
-                        lower.includes('claudebot') ||
-                        lower.includes('googlebot') ||
-                        lower.includes('allow') ||
-                        lower.includes('disallow') ||
-                        lower.includes('block');
+  lines.forEach((raw, i) => {
+    const line = raw.trim();
+    if (line === '' || line.startsWith('#')) return;
 
-  if (!hasCrawlerRef) {
-    result.warn('File SHOULD reference AI crawlers or define access policies');
+    const sep = line.indexOf(':');
+    if (sep === -1) {
+      result.error(
+        `Line is not a "Directive: value" pair, which RFC 9309 syntax requires: "${line}"`,
+        i + 1
+      );
+      return;
+    }
+
+    const directive = line.slice(0, sep).trim().toLowerCase();
+    const value = line.slice(sep + 1).trim();
+
+    if (!ROBOTS_AI_DIRECTIVES.has(directive)) {
+      // RFC 9309 tells parsers to ignore lines they do not recognise, so an
+      // unknown directive is not a conformance failure on its own.
+      result.warn(`Unknown directive "${line.slice(0, sep).trim()}" will be ignored by conforming parsers`, i + 1);
+      return;
+    }
+
+    if (directive === 'user-agent') {
+      if (value === '') {
+        result.error('"User-agent:" MUST name an AI crawler or the wildcard "*"', i + 1);
+      }
+      seenUserAgent = true;
+      return;
+    }
+
+    if (ROBOTS_AI_PATH_DIRECTIVES.has(directive)) {
+      if (!seenUserAgent) sawGroupDirectiveBeforeUserAgent = true;
+      // An empty Disallow is legal in RFC 9309 and means "allow everything".
+      if (value !== '' && !value.startsWith('/')) {
+        result.error(
+          `Path values MUST be relative paths beginning with "/" (found "${value}")`,
+          i + 1
+        );
+      }
+    }
+  });
+
+  if (!seenUserAgent) {
+    result.error('At least one "User-agent:" line MUST be present (Section 5.1.10, criterion 2)');
+  }
+
+  if (sawGroupDirectiveBeforeUserAgent) {
+    result.error('"Allow:"/"Disallow:" MUST follow a "User-agent:" line; a rule group begins with its user agent');
   }
 }
 

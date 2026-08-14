@@ -1,7 +1,7 @@
 ---
 title: AI Discovery Files Specification
 abbreviation: ADF
-version: 1.12.0
+version: 1.13.0
 status: Community Specification (Stable)
 date: 2026-08-14
 authors: 365i / AI Visibility (https://www.ai-visibility.org.uk/)
@@ -105,6 +105,28 @@ data protection). Three Directory-issued visual certification badges
 (Essential / Recommended / Complete) with embed snippets, sizing
 guidance, anti-fraud measures via linked per-publisher verification
 records at `/directory/verify/<slug>/`, and licensing rules.
+
+**v1.13.0 - conformance suite covers all ten file types, and the reference
+validator enforces ADF-009 and ADF-010.** No normative requirement changes in
+this release: every criterion now checked was already stated in Section 5.1.
+The reference validator did not enforce two of them. `validateRobotsAiTxt` and
+`validateDeveloperAiTxt` searched the whole file for substrings ("bot",
+"agent", "api", "stack") rather than parsing structure, so a `robots-ai.txt`
+whose entire contents were the word "robot" validated clean, and the only hard
+error either could raise was on an empty file. They now check what Section
+5.1.9 and Section 5.1.10 require: the three named sections for `developer-ai.txt`,
+and for `robots-ai.txt` a `Directive: value` line shape, at least one
+`User-agent:`, rooted path values, and `Allow:`/`Disallow:` appearing only
+inside a rule group. Unknown directives warn rather than fail, because RFC 9309
+tells parsers to ignore lines they do not recognise. Section checks accept both
+the H2 and the bracketed form, as v1.12.0 requires of consumers. **Implementers
+should expect files that previously validated to fail**: the text did not
+change, but the enforcement did. Test vectors are added for the four types that
+had none (`llm.txt`, `llms.html`, `developer-ai.txt`, `robots-ai.txt`), taking
+the suite to eleven valid and twelve invalid vectors covering all ten types.
+Separately, `validate.mjs` could not run the usage in its own header: the
+positional-argument search excluded index `flagIdx + 1`, and `indexOf` returns
+-1 for an absent flag, so index 0 was excluded and the file path with it.
 
 **v1.12.0 - example set brought back in line with the reference
 implementation.** The section format documented for `ai.txt` (ADF-004),

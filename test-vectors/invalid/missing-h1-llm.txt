@@ -1,0 +1,12 @@
+Acme Corporation
+
+> Acme Corporation is a UK-based technology company providing cloud
+> infrastructure, DevOps consulting, and managed hosting.
+
+This file opens with a plain paragraph instead of a Markdown H1, so the
+organisation name is not identifiable as the document heading.
+
+## Services
+
+- Cloud infrastructure design and migration
+- DevOps consulting and platform engineering

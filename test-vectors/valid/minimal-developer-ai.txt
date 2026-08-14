@@ -1,0 +1,28 @@
+# developer-ai.txt
+# https://www.ai-visibility.org.uk/specifications/developer-ai-txt/
+
+Lang: en-GB
+
+## Overview
+
+Acme Corporation runs a cloud infrastructure platform for enterprise
+clients. The public website is a static site; the customer platform sits
+behind authentication at portal.acme.example.
+
+## API Information
+
+status: none
+
+No public API is offered. Platform APIs exist but are available only to
+authenticated customers under contract, and are not documented publicly.
+
+## Public Areas
+
+- / - marketing site and company information
+- /services/ - service descriptions
+- /insights/ - published articles
+- /contact/ - contact form
+
+## Technology Stack
+
+Static site generator, CDN-fronted. Customer platform on Kubernetes.

@@ -1,0 +1,16 @@
+# developer-ai.txt
+
+Lang: en-GB
+
+## Technology Stack
+
+Static site generator, CDN-fronted. The customer platform runs on
+Kubernetes with a PostgreSQL backend, and our API endpoints are built
+in Go.
+
+## Developer Notes
+
+This file mentions an API, a stack and endpoints in prose, which the
+previous substring-matching validator accepted. It is nonetheless
+invalid: Section 5.1.9 requires the "## Overview", "## API Information"
+and "## Public Areas" sections, and none of the three is present.

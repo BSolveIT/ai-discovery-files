@@ -1,0 +1,12 @@
+# robots-ai.txt
+# Acme Corporation
+
+# This file fails two MUST criteria from Section 5.1.10. No User-agent
+# line is present, so no rule group is established and the directives
+# below belong to nobody. The Allow path is also relative without a
+# leading slash.
+
+Allow: insights/
+Disallow: /portal/
+
+Discovery: https://www.acme.example/llms.txt
