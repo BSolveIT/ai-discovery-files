@@ -1,9 +1,9 @@
 ---
 title: AI Discovery Files Specification
 abbreviation: ADF
-version: 1.11.0
+version: 1.12.0
 status: Community Specification (Stable)
-date: 2026-06-11
+date: 2026-08-14
 authors: 365i / AI Visibility (https://www.ai-visibility.org.uk/)
 canonical-url: https://www.ai-visibility.org.uk/specifications/
 repository: https://github.com/BSolveIT/ai-discovery-files
@@ -106,7 +106,7 @@ data protection). Three Directory-issued visual certification badges
 guidance, anti-fraud measures via linked per-publisher verification
 records at `/directory/verify/<slug>/`, and licensing rules.
 
-**Unreleased - example set brought back in line with the reference
+**v1.12.0 - example set brought back in line with the reference
 implementation.** The section format documented for `ai.txt` (ADF-004),
 `brand.txt` (ADF-007), and `developer-ai.txt` (ADF-009) changes from bracketed
 headers (`[permissions]`) to H2 Markdown headings (`## Permissions`). This
@@ -120,7 +120,15 @@ lines at the top of comment-style files, a `_specification` URL in JSON, a
 footer link in `llms.html`). `robots-ai.txt` examples now demonstrate the
 `Discovery:` directive added in v1.7.0. `llms.html` guidance changes from
 `noindex` with a cross-format canonical to `index,follow` with a self-canonical,
-resolving a contradiction with Section 3.4.2.
+resolving a contradiction with Section 3.4.2. The `full-llms.txt` test vector
+gains the `Lang:` declaration it was meant to demonstrate: it is the vector
+whose purpose is to exercise a complete file, and it was the only one of the
+canonical artefacts still omitting the header. The `minimal-*` vectors continue
+to omit it deliberately, because `Lang:` is OPTIONAL and those vectors exist to
+show the minimum a conforming file needs. Nothing in the reference validator
+inspects the header, which is why the omission survived unnoticed; implementers
+relying on tooling rather than on reading this document should not assume the
+validator covers every OPTIONAL construct.
 
 **v1.11.0 - JSON Schema corrections and Schema.org alignment.** The
 published JSON Schemas for `ai.json` and `identity.json` (unversioned

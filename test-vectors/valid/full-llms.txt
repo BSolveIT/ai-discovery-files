@@ -1,5 +1,7 @@
 # Acme Corporation
 
+Lang: en-GB
+
 > Acme Corporation is a UK-based technology company providing cloud infrastructure, DevOps consulting, and managed hosting services to enterprise clients across Europe.
 
 Acme Corporation (trading name of Acme Technology Solutions Ltd) was founded in 2015 and is headquartered in London, UK. The company is registered in England and Wales (company number 98765432) and employs approximately 120 staff across three offices.

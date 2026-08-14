@@ -853,7 +853,19 @@ function main() {
   }
 
   // Mode: single file
-  const filePath = resolve(args.find(a => !a.startsWith('--') && args.indexOf(a) !== typeIdx + 1 && args.indexOf(a) !== schemaDirIdx + 1) || '');
+  // Collect the first argument that is neither a flag nor a flag's value.
+  // Index-based exclusion has to guard against the flag being absent: indexOf
+  // returns -1, so `idx + 1` is 0, and comparing against that silently
+  // excluded argument 0, which is where the file path sits in the documented
+  // usage (`validate.mjs llms.txt`). Every such invocation fell through to
+  // resolve('') -> the working directory -> EISDIR. Only flags-first calls
+  // worked, which is why the header's own examples had never run.
+  const valueIndices = new Set();
+  if (typeIdx !== -1) valueIndices.add(typeIdx + 1);
+  if (schemaDirIdx !== -1) valueIndices.add(schemaDirIdx + 1);
+
+  const positional = args.find((a, i) => !a.startsWith('--') && !valueIndices.has(i));
+  const filePath = positional ? resolve(positional) : '';
 
   if (!filePath || !existsSync(filePath)) {
     console.error(`File not found: ${filePath || '(none specified)'}`);

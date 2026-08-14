@@ -2,7 +2,7 @@
 
 **A framework of machine-readable files that help AI systems discover, interpret, trust, and safely use websites.**
 
-![Version](https://img.shields.io/badge/version-1.11.0-blue)
+![Version](https://img.shields.io/badge/version-1.12.0-blue)
 ![License](https://img.shields.io/badge/license-CC%20BY%204.0-green)
 ![Status](https://img.shields.io/badge/status-Community%20Specification%20(Stable)-brightgreen)
 
